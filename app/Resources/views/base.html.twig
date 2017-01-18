@@ -31,7 +31,7 @@
         <!-- WEB HEADER -->
         <header>
             <div style="margin:10px;">
-                <a href="index.php" class="logo">
+                <a href="{{ path('pages_homepage') }}" class="logo">
                 </a>
                 <div class="loginp">
                     Comment ça marche ?
@@ -89,6 +89,97 @@
     {% block javascripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://use.fontawesome.com/0499449a83.js"></script>
+        <script src='js/add.js'></script>
+        <script src='js/wow.js'></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            // Get the modal
+            var modal = document.getElementById('conecterpopup');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("mymobileconnecter");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+        <script>
+            function openCity(evt, cityName) {
+                var i, x, tablinks;
+                x = document.getElementsByClassName("city");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("link9");
+                for (i = 0; i < x.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" w3-bluekap", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += "  w3-bluekap";
+            }
+        </script>
+        <script>
+            // Get the modal
+            var modal = document.getElementById('conecterpopup');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("mybtnconnecter");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+        <script>
+            function betterParseFloat(x){
+                if(isNaN(parseFloat(x)) && x.length > 0)
+                    return betterParseFloat(x.substr(1));
+                return parseFloat(x);
+            }
+            function usd(x){
+                x = betterParseFloat(x);
+                if(isNaN(x))
+                    return "$0.00";
+                var dollars = Math.floor(x);
+                var cents = Math.round((x - dollars) * 100) + "";
+                if(cents.length==1)cents = "0"+cents;
+                return "$"+dollars+"."+cents;
+            }
+        </script>
+        <script>
+            new WOW().init();
+        </script>
         <script>
             $(window).scroll(function() {
                 if ($(this).scrollTop() > 1){
