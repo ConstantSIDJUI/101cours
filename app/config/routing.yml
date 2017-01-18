@@ -1,22 +1,21 @@
 my_admin:
     resource: "@MyAdminBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /my_admin
 
 admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation
-    prefix:   /
-
+    prefix:   /admin
+    
 pages:
-    resource: "@PagesBundle/Controller/"
-    type:     annotation
+    resource: "@PagesBundle/Resources/config/routing.yml"
     prefix:   /
 
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /user
 
 app:
     resource: "@AppBundle/Controller/"

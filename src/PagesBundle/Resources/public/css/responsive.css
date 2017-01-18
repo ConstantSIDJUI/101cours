@@ -1,0 +1,1714 @@
+@media screen and (max-width : 1280px) {
+        /* CSS FOR TABLETS ------------*/
+        .loremrow {
+          text-align: center;
+          float: left;
+          width: 30%;
+    margin: 0px;
+        }
+        .dropdown-content {
+    display: none;
+    position: absolute;
+    border-top: none !important;
+    width: 251px;
+    top: 158px !important;
+    background-color: #fff;
+    border: 1px solid #1ebfe8;
+    z-index: 100;
+    border-radius: 0px 0px 4px 4px;
+}
+        .inputdonner {
+          float: left;
+          width: 29%;
+          margin-right: 10px;
+          background: #f2f2f2;
+          border: none;
+          border-radius: 4px;
+          outline: none;
+          font-weight: 400;
+          padding: 10px;
+          height: 50px;
+          color: #555;
+        }
+        .ofrec1 {
+    color: #6fc252;
+    float: right;
+    width: 120%;
+    text-align: right;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+        .cinktbalwst {
+    float: left;
+    width: 73%;
+    margin: 10px;
+}
+.wst-tht ul li a {
+    float: left;
+    color: #878787;
+    padding: 20px;
+    font-size: 11px;
+}
+        .accreg {
+    float: right;
+    width: 88%;
+    font-size: 13px;
+}
+.profil-right-side {
+    float: right;
+    width: 28%;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.profil-left-side {
+    float: left;
+    width: 24%;
+    margin-right: 10px;
+}
+        .socials {
+    width: 43%;
+    overflow: hidden;
+    text-align: center;
+    margin: 30px auto;
+}
+.row-com {
+    overflow: hidden;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.profil-center-side {
+    float: left;
+    width: 46% !important;
+    margin-right: 0px;
+}
+        .searchin {
+    float: left;
+    width: 30%;
+  }
+  .prenom {
+    float: left;
+    width: 48%;
+    margin-right: 10px;
+}
+  input[type=range] {
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 90%;
+    margin-left: 5px;
+    float: left;
+}
+.left-side-back {
+    float: left;
+    width: 26%;
+    border-right: 1px solid #d1d1d1;
+    margin-right: 10px;
+    overflow: hidden;
+}
+.right-side-back {
+    float: right;
+    width: 72%;
+    overflow: hidden;
+}
+.alaibfo9 {
+    overflow: hidden;
+    float: left;
+    width: 70%;
+    height: 230px;
+}
+.pb1 {
+float: right;
+background: #6fc252;
+color: #fff;
+border: none;
+border-radius: 4px;
+margin-top: 0px;
+padding: 10px 20px 10px 20px;
+outline: none;
+}
+.alaibtht {
+padding-top: 10px;
+float: left;
+border-top: 1px solid #ededed;
+width: 100%;
+}
+.profil-b1 {
+background: #fff;
+overflow: hidden;
+height: auto;
+}
+.alaibfo9c1 {
+    overflow: hidden;
+    float: right;
+    width: 71%;
+    height: auto;
+}
+.pfphotos {
+    float: left;
+    width: 30%;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    overflow: hidden;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    padding: 10px;
+    background: #fff;
+    margin-right: 10px;
+}
+
+
+      }
+      @media screen and (max-width : 1000px) {
+        .prixc1 {
+    float: left;
+    width: 100%;
+}
+.pfphotos {
+    float: left;
+    width: 28%;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    overflow: hidden;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    padding: 10px;
+    background: #fff;
+    margin-right: 10px;
+}
+.leftpage9 {
+    width: 30%;
+    background: #fff;
+    border-radius: 4px;
+    margin-top: 213px;
+    float: left;
+    border: 1px solid #d1d1d1;
+}
+.rechercher {
+    background: #1ebfe8;
+    color: #fff;
+    border: none;
+    padding: 20px 30px 20px 30px;
+    border-radius: 4px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.proposer {
+    background: #37d236;
+    color: #fff;
+    border: none;
+    padding: 20px 30px 20px 30px;
+    border-radius: 4px;
+    outline: none;
+    width: 100%;
+    margin-top: 10px;
+}
+.wstavispopup {
+    width: 70%;
+    background: #ebebeb;
+    color: #555;
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 4px;
+    margin: 15px auto;
+}
+.alaibfo9c1 {
+    overflow: hidden;
+    float: right;
+    width: 62%;
+    height: auto;
+}
+        .alaibfo9 {
+
+    overflow: hidden;
+    float: left;
+    width: 62%;
+    height: 230px;
+}
+.pb1 {
+    float: right;
+    background: #6fc252;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-top: 0px;
+    padding: 10px 20px 10px 20px;
+    outline: none;
+}
+.alaibtht {
+      padding-top: 10px;
+    float: left;
+    border-top: 1px solid #ededed;
+    width: 100%;
+}
+.profil-b1 {
+    background: #fff;
+    overflow: hidden;
+    height: auto;
+  }
+        .right-side-back {
+    float: right;
+    width: 72%;
+    overflow: hidden;
+}
+        .left-side-back {
+    float: left;
+    width: 26%;
+    border-right: 1px solid #d1d1d1;
+    margin-right: 10px;
+    overflow: hidden;
+}
+        /* CSS FOR TABLETS ------------*/
+        .prenom {
+    float: left;
+    width: 48%;
+    margin-right: 10px;
+}
+.allwstnav {
+  overflow: hidden;
+    width: 90%;
+    margin: 0 auto;
+}
+.socials {
+    width: 50%;
+    overflow: hidden;
+    text-align: center;
+    margin: 30px auto;
+}
+.prowtitle {
+    font-weight: bold;
+    margin: 10px;
+    font-size: 14px;
+}
+        .renawrap {
+            width: 50% ;
+          }
+          input[type=range] {
+              -webkit-appearance: none;
+              margin: 10px 0;
+              width: 86%;
+              margin-left: 5px;
+              float: left;
+          }
+          .searchin {
+              float: left;
+              width: 28%;
+          }
+          .profil-left-side {
+      float: left;
+      width: 33%;
+      margin-right: 10px;
+  }
+  .profil-center-side {
+      float: left;
+      width: 65% !important;
+      margin-right: 0px;
+  }
+  .profil-right-side {
+      float: left;
+      margin-top: 10px;
+      width: 100%;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #d1d1d1;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      padding: 20px;
+  }
+  .accreg {
+      float: right;
+      width: 94%;
+      font-size: 13px;
+  }
+  .right-side-backc2 {
+      float: right;
+      width: 100%;
+      overflow: hidden;
+  }
+
+
+      }
+      @media screen and (max-width : 800px) {
+.loremrows {
+    overflow: hidden;
+    width: 100%;
+    margin: 0px;
+}
+.hbtsearch {
+    float: left;
+    background: #fff;
+    border: none;
+    border-radius: 4px;
+    float: right;
+    outline: none;
+    height: 50px;
+    margin-top: 10px;
+    color: #1ebfe8;
+    font-size: 30px;
+    width: 50px;
+    border: 1px solid #d1d1d1;
+}
+.qfeltoltip {
+    font-size: 11px;
+    position: absolute;
+    padding: 20px;
+    left: -200px;
+    bottom: 20px;
+    text-align: left;
+    width: 2000%;
+    color: #555;
+    background: #eee;
+    border-radius: 4px;
+    border: 1px solid #d1d1d1;
+}
+.leftpage9 {
+  width: 30%;
+  background: #fff;
+  border-radius: 4px;
+  margin-top: 223px;
+  float: left;
+  border: 1px solid #d1d1d1;
+}
+.all-contact {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.swy3 {
+    font-size: 17px;
+    float: none;
+    border: 1px solid;
+    padding: 4px;
+    margin-right: 25px;
+}
+.codefourni {
+    float: left;
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+}
+.jours {
+
+    float: left;
+    width: 100% !important;
+}
+.mois {
+    width: 100% !important;
+    margin-right: 0px !important;
+}
+.rightinfos {
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  margin-left: 0px;
+  margin-top: 20px;
+}
+.ofre2 {
+    color: #555;
+    float: none;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.footernav ul li a {
+    float: none;
+    color: #555;
+    border-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+}
+.footernav ul li {
+    float: none;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #d0d0d0;
+}
+        /* CSS FOR SMALL TABLETS ------------*/
+
+        .right-side-backc2 {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+}
+.condwr {
+    width: 100%;
+    margin: 20px auto;
+}
+        .alaibfo9c1 {
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    height: auto;
+}
+.prixc1 {
+  width: 100%;
+    float: right;
+    margin-top: 10px;
+}
+.e1btns {
+    float: right;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.f1rat {
+  overflow: hidden;
+    margin-top: -16px;
+}
+.f1pdp {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+.ofrec1 {
+    color: #6fc252;
+    float: right;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.f1silakhr {
+    float: left;
+    width: 80%;
+    overflow: hidden;
+    margin-left: 0px;
+}
+.f1silakhr {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    margin-left: 0px;
+}
+.laisseravis {
+    float: right;
+    background: #6fc252;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    width: 100%;
+    margin: 0px;
+    outline: none;
+    color: #fff;
+    margin-top: 0px;
+    border-radius: 4px;
+}
+.wstavispopup {
+    width: 96%;
+    background: #ebebeb;
+    color: #555;
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 4px;
+    margin: 15px auto;
+}
+.popupdp {
+    width: 30%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+        .alaibfo9 {
+    overflow: hidden;
+    float: left;
+    width: 62%;
+    height: auto;
+}
+.lesinfosb1 {
+    width: 100%;
+    float: left;
+    overflow: hidden;
+    padding-right: 0px;
+    height: auto;
+    border-right: none;
+}
+.profil-b1 {
+    background: #fff;
+    overflow: hidden;
+    height: auto;
+    padding: 20px;
+    border: 1px solid #dedede;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.b1pdp {
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 0px;
+}
+.pb1 {
+    float: right;
+    background: #6fc252;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+    outline: none;
+}
+.ab1 {
+    padding-left: 0px;
+    text-decoration: underline;
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.alaibfo9 {
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    height: auto;
+}
+.alaibtht {
+    float: left;
+    padding-top: 23px;
+    width: 100%;
+    border-top: 1px solid #ededed;
+}
+
+        .bdel {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    bottom: 32px;
+    padding: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.left-side-back {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    border-right: none;
+    border-bottom: 1px solid #d1d1d1;
+    margin-right: 0px;
+    overflow: hidden;
+}
+.photoleft {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.photoright {
+  text-align: center;
+    float: left;
+    width: 100%;
+}
+.new-rowg4 {
+    padding: 20px;
+    width: 100%;
+    float: left;
+    padding-bottom: 0px;
+}
+.ppl {
+    width: 100%;
+}
+.anne {
+    width: 100% !important;
+    margin-right: 0px !important;
+}
+.g8t {
+    float: left;
+    border-right: none;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #d1d1d1;
+}
+.g8t-lkhr {
+    width: 100%;
+    border-right: none;
+}
+.tablekap td {
+  float: left !important;
+}
+.codef {
+    width: 96%;
+    background: #fff;
+    border: 1px solid #d1d1d1;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    margin-left: 0px;
+    margin-right: 10px;
+    outline: none;
+}
+.dateg8 {
+    float: right;
+    overflow: hidden;
+    width: 100%;
+    margin: 10px;
+    border-radius: 4px;
+    border: 1px solid #d1d1d1;
+    margin-right: 0px;
+    margin-top: 0px;
+}
+.thrk {
+  overflow: hidden;
+  overflow: scroll !important;
+}
+
+.payer {
+    outline: none;
+    text-align: center;
+    width: 100%;
+    clear: both;
+    background: #efefef;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #d1d1d1;
+    padding: 10px 20px 10px 20px;
+}
+.cinox {
+  width: 100% !important;
+float: left;
+}
+        .lesinfosback {
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+                padding-right: 0px;
+            height: auto;
+        }
+        .histo {
+    background: #bbbbbb;
+    overflow: hidden;
+    padding: 10px;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.m3lb1 {
+    padding-top: 0px !important;
+    float: left;
+    padding-left: 0px;
+    margin-top: 10px;
+}
+.prixb1 {
+    float: right;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.ofre1b1 {
+    color: #6fc252;
+    width: 100%;
+    font-size: 25px;
+    margin-bottom: 10px;
+    float: left;
+    text-align: center;
+}
+.khbga {
+  float: left;
+    width: 100%;
+}
+        .backpdp {
+            margin: 0 auto;
+            height: auto;
+            margin-bottom: -6%;
+            overflow: hidden;
+        }
+        .right-side-back {
+            float: left;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .loffre {
+    background: #fff;
+    margin-bottom: 20px;
+    line-height: 3.4;
+    font-size: 17px;
+    border-radius: 4px;
+    overflow: hidden;
+    text-align: center;
+}
+.prenom {
+    float: left;
+    width: 100%;
+    margin-right: 10px;
+}
+.nom {
+    float: left;
+    width: 100%;
+    margin-right: 10px;
+}
+.searchin {
+    float: left;
+    width: 100%;
+    margin-right: 10px;
+    border: none;
+    background: #ffffff;
+    margin-bottom: 14px;
+    background: -moz-linear-gradient(top, #ffffff 0%, #e2e2e2 100%);
+    background: -webkit-linear-gradient(top, #ffffff 0%,#e2e2e2 100%);
+    background: linear-gradient(to bottom, #ffffff 0%,#e2e2e2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2e2e2',GradientType=0 );
+    border-radius: 4px;
+    outline: none;
+    font-weight: 400;
+    padding: 10px;
+    height: 50px;
+    color: #555;
+}
+        .all-wrapper {width:100%;}
+        header {display: none !important;}
+        .mobile-header {display: block !important;height: auto;
+        background: rgba(51, 51, 51, 0.82);
+        color: #fff;
+        overflow: hidden;
+        -webkit-transition: all 0.4s ease;
+        color: #fff;
+        transition: all 0.4s ease;}
+        .navmobile {
+            float: left;
+            font-size: 25px;
+            padding: 15px;
+            width: 0%;
+            padding-left: 15px;
+        }
+      .logomobile {
+      display: block;
+          width: 60px;
+          height: 50px;
+          float: none;
+          margin: 10px auto;
+          background: url(../images/logow.png);
+          background-size: 60px 50px;
+      }
+      .sticky {
+        position: fixed;
+        height: auto;
+        z-index: 1000;
+        width: 100%;
+        box-shadow: -4px -16px 50px #424141;
+        background: #fff !important;
+        color: #555;
+        text-align: left;
+      }
+      .rechercher {
+          background: #1ebfe8;
+          color: #fff;
+          border: none;
+          padding: 20px 30px 20px 30px;
+          border-radius: 4px;
+          outline: none;
+          margin-bottom: 20px;
+          width: 100%;
+      }
+      .proposer {
+          background: #37d236;
+          outline: none;
+          width: 100%;
+          color: #fff;
+          margin-top: 10px;
+          border: none;
+          padding: 20px 30px 20px 30px;
+          border-radius: 4px;
+      }
+      .kaplogomobile{
+      display: block;
+          width: 60px;
+          height: 50px;
+
+          margin: 10px auto;
+          background: url(../images/logoc.png);
+          background-size: 60px 50px;
+      }
+      #thenavmobile {  z-index: 1000;  display: block;
+        position: absolute;
+        height: 100%;
+        background: #fff;
+        width: 75%;color: #555;}
+        #mobilekaml {    position: fixed;
+        width: 100%;
+        z-index: 99999;
+        background: rgba(51, 51, 51, 0.82);
+        height: 100%;}
+        .loremrow {
+          text-align: center;
+          float: left;
+          width: 100%;
+
+        }
+      .closemobilenav {
+          font-size: 35px;
+          padding: 20px;
+          float: left;
+          color: #61bd3e;
+          cursor: pointer;
+      }
+        .trierin {
+    float: left;
+    width: 100%;
+  }
+        .plusrc {
+    float: left;
+    margin-top: 10px;
+    width: 100%;
+}
+        .all-header {height: auto !important;}
+        .closemobilenav:hover {color: #61bd3e;}
+        .seconecter-mobile {       background: transparent;
+    border: 2px solid;
+    padding: 9px;
+    font-size: 14px;
+    outline: none;
+    border-radius: 4px;
+    float: right;
+    margin: 0px !important;}
+        .seconecter-mobile:hover {
+          background: #61bd3e;
+          color: #fff;
+          border: 2px solid;
+        }
+      .mobiletopnav {overflow: hidden;    border-bottom: 1px solid #efefef;}
+      .mobileafternav {overflow: hidden;
+        margin-top: 20px;
+        margin-left: 10px;}
+      .mobileafternav ul li {    float: left;
+        width: 100%;
+        padding: 10px;
+        list-style: none;}
+      .mobileafternav ul li a {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      }
+      #mobilekaml {display: none;}
+      .donnerwrapper {
+        color: #fff;
+        text-align: center;
+        margin: 30px !important;
+        overflow: hidden;
+      }
+      .inputdonner {
+        float: left;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        background: #f2f2f2;
+        border: none;
+        border-radius: 4px;
+        outline: none;
+        font-weight: 400;
+        padding: 10px;
+        color: #555;
+      }
+      .demanderbutton {
+        background: #1ebfe8;
+        border: none;
+        width: 100%;
+        font-weight: 400;
+        font-size: 22px;
+        border-radius: 4px;
+        padding: 10px 25px 10px 25px;
+      }
+      .voulezrow {
+        float: left;
+        width: 100%;
+        margin-right: 10px;
+      }
+      .voulezbut {
+        background: #51a630;
+        border: 2px solid #fff;
+        color: #fff;
+        margin-left: 0px;
+        margin-top: 10px !important;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 20px;
+        border-radius: 4px;
+      }
+      .loremrow {
+        text-align: center;
+        float: left
+        width: 100%;
+      }
+      .pagerow {
+        float: left;
+        width: 100%;
+        margin: 10px;
+        text-align: center;
+      }
+      .navmobilec a {
+      color: #1ebfe8 !important;
+      }
+      .opacity {
+      display: none !important;
+      }
+      .socials {
+          width: 48%;
+          overflow: hidden;
+          text-align: center;
+          margin: 30px auto;
+      }
+      .accreg {
+        float: right;
+          width: 88%;
+          font-size: 13px;
+      }
+      .wstpopupcon {
+        width: 96% !important;
+        background: #fff;
+        color: #555;
+        overflow: hidden;
+        border-radius: 4px;
+        margin: 40px auto !important;
+      }
+      .closecon {
+         float: right;font-size: 40px;cursor: pointer;padding: 30px;
+      }
+      .sincriremobile {
+    float: right;
+    background: #6fc252;
+border:none;
+    padding: 10px;
+    border-radius: 4px;
+    outline: none;
+    margin: 0px;
+margin-right:10px;
+      }
+      .sincriremobile:hover {
+    background: #58a23e;
+    color: #fff;
+      }
+      .navmobile a {color: #fff;}
+      .header-insc {display: none;}
+      .sincriremobilescroll {
+      background: #6fc252;
+      border: none;
+      color: #fff;
+      }
+      .mobilecon {
+          overflow: hidden;
+          margin: 0 auto;
+float: right;
+          margin-top: 10px;
+      }
+      .fourchete {
+      overflow: hidden;
+      float: left;
+      width: 100%;
+      padding-left: 0px;
+      padding-top: 10px;
+      padding-right: 0px;
+  }
+      .connectead {
+        display: block;
+        overflow: hidden;
+        position: fixed;
+        background: #fff;
+        top: 92px;
+        border: 1px solid #1ebfe9;
+        border-top: none;
+        border-bottom: none;
+        width: 220px;
+        right: 195px;
+      }
+      .loffre {
+    background: #fff;
+    margin-bottom: 20px;
+    line-height: 3.4;
+    font-size: 17px;
+    border-radius: 4px;
+    overflow: hidden;
+    text-align: center;
+}
+      .autre-header {
+        height: 100px;
+        display: none;
+      }
+      .villeres {
+        background: #fff;
+          width: 100% !important;
+      }
+      .renawrap {
+        width: 100%;
+        text-align: center;
+        margin: 0px auto;
+        overflow: hidden;
+      }
+      .donnersearch {
+          background: #1ebfe8;
+          border: none;
+          border-radius: 4px;
+          outline: none;
+margin: 0 auto;
+          height: 50px;
+          float: none;
+          font-size: 30px;
+          width: 90px;
+      }
+      .pfphotos {
+          float: left;
+          width: 100%;
+          margin-top: 10px;
+          font-weight: 400;
+          overflow: hidden;
+          border: 1px solid #d1d1d1;
+          border-radius: 4px;
+          padding: 10px;
+          background: #fff;
+          margin-right: 10px;
+      }
+      .hommefemmeres {
+        width: 100% !important;
+      }
+      .profil-left-side {
+          float: left;
+          width: 100% !important;
+          margin-right: 0px;
+          margin-bottom: 20px;
+      }
+      .profil-center-side {
+          float: left;
+          width: 100% !important;
+          margin-bottom: 20px;
+          margin-right: 0px;
+      }
+      .com-right {
+          float: left;
+          width: 62% !important;
+      }
+      .profil-right-side {
+    float: left;
+    width: 100% !important;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.tht-mobile-nav {display: block !important;}
+.tht-back-nav {display: none;}
+.wst-icon-laeba {
+  background: #494949;
+color: #fff;
+padding: 10px;
+text-align: center;
+font-size: 25px;
+
+}
+.wst-icon-dkshi {display: block;
+  margin-bottom: 10px;
+    text-align: center;
+    background: #efefef;}
+.wst-icon-dkshi ul {margin: 0;padding: 0;}
+.wst-icon-dkshi ul li a {
+  float: left;
+width: 100%;
+padding: 20px;
+background: #efefef;
+border-bottom: 1px solid #e2e2e2;
+}
+.wst-icon-dkshi ul li a:hover{text-decoration: none;display: block;
+    text-align: center;
+    background: #e8e8e8;}
+    .iconleft {
+        color: #22bfe8;
+        border: 2px solid;
+        text-align: center;
+        margin: 0 auto;
+        font-size: 33px;
+        line-height: 2.3;
+        height: 80px;
+        width: 80px;
+        border-radius: 100000px;
+    }
+    .cinktbalwst {
+    float: left;
+    width: 100%;
+    margin: 0px;
+    margin-top: 20px;
+}
+
+.addcin {
+    background: #22bfe8;
+    outline: none;
+    border: none;
+    margin-top: 10px;
+    float: left;
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px 20px 10px 20px;
+}
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      @media screen and (max-width : 500px) {
+        /* CSS FOR MOBILES ------------*/
+    .all-wrapper {width:100%;}
+    header {display: none !important;}
+    .mobile-header {display: block !important;height: auto;
+    background: rgba(51, 51, 51, 0.82);
+    color: #fff;
+    overflow: hidden;
+    -webkit-transition: all 0.4s ease;
+    color: #fff;
+    transition: all 0.4s ease;}
+    .accp {
+      float: right;
+    width: 90%;
+    font-size: 13px;
+    }
+    .navmobile {
+        float: left;
+        font-size: 25px;
+        padding: 15px;
+        width: 34%;
+        padding-left: 15px;
+    }
+.logomobile {
+  display: block;
+  width: 60px;
+  height: 50px;
+  float: none;
+  margin: 10px auto;
+  background: url(../images/logow.png);
+  background-size: 60px 50px;
+}
+.sticky {
+    position: fixed;
+    height: auto;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: -4px -16px 50px #424141;
+    background: #fff !important;
+    color: #555;
+    text-align: left;
+}
+.kaplogomobile {
+    display: block;
+    width: 60px;
+    height: 50px;
+    float: none;
+    margin: 10px auto;
+    background: url(../images/logoc.png);
+    background-size: 60px 50px;
+}
+#thenavmobile {  z-index: 1000;  display: block;
+    position: absolute;
+    height: 100%;
+    background: #fff;
+    width: 75%;color: #555;}
+    #mobilekaml {    position: fixed;
+    width: 100%;
+    z-index: 99999;
+    background: rgba(51, 51, 51, 0.82);
+    height: 100%;}
+    .loremrows {
+    overflow: hidden;
+    width: 100%;
+    margin: 0px;
+}
+.closemobilenav {
+    font-size: 35px;
+    padding: 20px;
+    float: left;
+    color: #61bd3e;
+    cursor: pointer;
+}
+.row-com {
+    overflow: hidden;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+    .all-header {height: auto !important;}
+    .closemobilenav:hover {color: #61bd3e;}
+    .seconecter-mobile {     background: transparent;
+    border: 2px solid #555;
+    padding: 9px;
+    outline: none;
+    font-size: 14px;
+    font-size: 14px;
+    border-radius: 4px;
+    float: right;
+    margin-left: 4px !important;
+    margin: 0px;}
+    .seconecter-mobile:hover {
+      background: #fff;
+      color: #555;
+      border: 2px solid #fff;
+    }
+.mobiletopnav {overflow: hidden;    border-bottom: 1px solid #efefef;}
+.mobileafternav {overflow: hidden;
+    margin-top: 20px;
+    margin-left: 10px;}
+.mobileafternav ul li {    float: left;
+    width: 100%;
+    padding: 10px;
+    list-style: none;}
+.mobileafternav ul li a {
+  text-transform: uppercase;
+letter-spacing: 2px;
+}
+#mobilekaml {display: none;}
+.donnerwrapper {
+    color: #fff;
+    text-align: center;
+    margin: 30px !important;
+    overflow: hidden;
+}
+.inputdonner {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background: #f2f2f2;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    font-weight: 400;
+    padding: 10px;
+    color: #555;
+}
+.demanderbutton {
+    background: #1ebfe8;
+    border: none;
+    width: 100%;
+    font-weight: 400;
+    font-size: 22px;
+    border-radius: 4px;
+    padding: 10px 25px 10px 25px;
+}
+.voulezrow {
+    float: left;
+    width: 100%;
+    margin-right: 10px;
+}
+.voulezbut {
+    background: #51a630;
+    border: 2px solid #fff;
+    color: #fff;
+    margin-left: 0px;
+    margin-top: 10px !important;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 20px;
+    border-radius: 4px;
+}
+.loremrow {
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+.leftpage9 {
+  width: 30%;
+  background: #fff;
+  border-radius: 4px;
+  margin-top: 0px;
+  float: left;
+  border: 1px solid #d1d1d1;
+}
+.pagerow {
+    float: left;
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+}
+.navmobilec a {
+  color: #1ebfe8 !important;
+}
+.opacity {
+  display: none !important;
+}
+.socials {
+    width: 82%;
+    overflow: hidden;
+    text-align: center;
+    margin: 30px auto;
+}
+.wstpopupcon {
+    width: 96% !important;
+    background: #fff;
+    color: #555;
+    overflow: hidden;
+    border-radius: 4px;
+    margin: 40px auto !important;
+}
+.closecon {
+     float: right;font-size: 40px;cursor: pointer;padding: 30px;
+}
+.bjujum a {color:#fff;}
+.sincriremobile {
+    float: right;
+    background: #6fc252;
+    padding: 10px;
+    border-radius: 4px;
+    outline: none;
+border:none;
+margin-right:10px;
+    margin: 0px;
+}
+.seconecter {
+float: right;
+    border: 2px solid #555;
+    background: transparent;
+    padding: 8px;
+    border-radius: 4px;
+    outline: none;
+    margin: 4px;
+    font-size: 14px;
+}
+.bjujum {
+overflow: hidden;
+    margin: 24px;
+    margin-right: 8px;
+}
+.sincriremobile:hover {
+    background: #58a23e;
+    color: #fff;
+}
+.navmobile a {color: #fff;}
+.header-insc {display: none;}
+.sincriremobilescroll {
+  background: #6fc252;
+  border: none;
+  color: #fff;
+}
+.mobilecon {
+    overflow: hidden;
+    margin: 0 auto;
+float: right;
+    margin-top: 10px;
+}
+.connectead {
+  display: block;
+  overflow: hidden;
+  position: fixed;
+  background: #fff;
+  top: 93px;
+  border: 1px solid #1ebfe9;
+  border-top: none;
+  border-bottom: none;
+  width: 220px;
+  right: 7px;
+}
+.autre-header {
+    height: 100px;
+    display: none;
+  }
+  .renawrap {
+    width: 100%;
+    text-align: center;
+    margin: 0px auto;
+    overflow: hidden;
+}
+.donnersearch {
+    background: #1ebfe8;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    height: 50px;
+margin: 0 auto;
+    font-size: 30px;
+    float: none;
+    width: 90px;
+}
+.profil-left-side {
+    float: left;
+    width: 100%;
+    margin-right: 0px;
+    margin-bottom: 20px;
+}
+.profil-center-side {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-right: 0px;
+}
+.com-right {
+    float: left;
+    width: 62%;
+}
+.profil-right-side {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.searchin {
+    float: left;
+    width: 100%;
+    margin-right: 10px;
+    border: none;
+    background: #ffffff;
+    margin-bottom: 14px;
+    background: -moz-linear-gradient(top, #ffffff 0%, #e2e2e2 100%);
+    background: -webkit-linear-gradient(top, #ffffff 0%,#e2e2e2 100%);
+    background: linear-gradient(to bottom, #ffffff 0%,#e2e2e2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2e2e2',GradientType=0 );
+    border-radius: 4px;
+    outline: none;
+    font-weight: 400;
+    padding: 10px;
+    height: 50px;
+    color: #555;
+}
+.villeres {
+  background: #fff;
+    width: 100% !important;
+}
+.pfphotos {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 400;
+    overflow: hidden;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    padding: 10px;
+    background: #fff;
+    margin-right: 10px;
+}
+.hommefemmeres {
+  width: 100% !important;
+}
+.plusrc {
+    float: left;
+    margin-top: 10px;
+    width: 100%;
+}
+.trierin {
+    float: left;
+    width: 100%;
+  }
+  .fourchete {
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 10px;
+    padding-right: 0px;
+}
+.prenom {
+    float: left;
+    width: 100%;
+    margin-right: 10px;
+}
+.nom {
+    float: left;
+    width: 100%;
+    margin-right: 10px;
+}
+.dkshi9 {
+    float: right;
+    width: 100%;
+    margin-top: 10px;
+}
+.dkshidakhl {
+  float: right;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+      height: 1300px;
+}
+.leftpage9 {
+    width: 100%;
+    background: #fff;
+    float: left;
+    border: 1px solid #d1d1d1;
+}
+.row-com {
+    overflow: hidden;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.loremrow {
+  text-align: center;
+  float: left;
+  width: 100%;
+      margin-right: 30px;
+}
+.socials ul li a {
+    color: #a0a0a0;
+    float: left;
+    font-size: 30px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+.left-wahd {
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    padding-right: 0px;
+    border-right: none;
+}
+.wstinfos {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+.rightinfos {
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  margin-left: 0px;
+  margin-top: 20px;
+}
+.datedepub {
+    float: right;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #d1d1d1;
+}
+.rechercher {
+    background: #1ebfe8;
+    color: #fff;
+    border: none;
+    padding: 20px 30px 20px 30px;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.proposer {
+    background: #37d236;
+    outline: none;
+    width: 100%;
+    color: #fff;
+    margin-top: 10px;
+    border: none;
+    padding: 20px 30px 20px 30px;
+    border-radius: 4px;
+}
+.tht-mobile-nav {display: block !important;}
+.tht-back-nav {display: none;}
+.wst-icon-laeba {
+  background: #494949;
+color: #fff;
+padding: 10px;
+text-align: center;
+font-size: 25px;
+
+}
+.wst-icon-dkshi {display: block;
+  margin-bottom: 10px;
+    text-align: center;
+    background: #efefef;}
+.wst-icon-dkshi ul {margin: 0;padding: 0;}
+.wst-icon-dkshi ul li a {
+  float: left;
+width: 100%;
+padding: 20px;
+background: #efefef;
+border-bottom: 1px solid #e2e2e2;
+}
+.wst-icon-dkshi ul li a:hover{text-decoration: none;display: block;
+    text-align: center;
+    background: #e8e8e8;}
+    .iconleft {
+        color: #22bfe8;
+        border: 2px solid;
+        text-align: center;
+        margin: 0 auto;
+        font-size: 33px;
+        line-height: 1.5;
+        height: 80px;
+        width: 80px;
+        border-radius: 100000px;
+    }
+    .cinktbalwst {
+    float: left;
+    width: 100%;
+    margin: 0px;
+    margin-top: 20px;
+}
+
+.addcin {
+    background: #22bfe8;
+    outline: none;
+    border: none;
+    margin-top: 10px;
+    color: #fff;
+    float: left;
+    border-radius: 4px;
+    padding: 10px 20px 10px 20px;
+}
+.left-side-back {
+    float: left;
+    width: 100%;
+    border-right: none;
+    margin-right: 0px;
+    overflow: hidden;
+}
+.lesinfosback {
+    width: 100%;
+        padding-right: 0px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: auto;
+}
+.backpdp {
+    margin: 0 auto;
+    height: auto;
+    margin-bottom: -6%;
+    overflow: hidden;
+}
+.right-side-back {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+}
+.bdel {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    bottom: 32px;
+    padding: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+}

@@ -2,12 +2,139 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}101cours.com{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    {% block stylesheets %}
+        {% stylesheets 
+                'bundles/pages/css/bootstrap.min.css'
+                'bundles/pages/css/style.css'
+                'bundles/pages/css/add.css'
+                'bundles/pages/css/w3.css'
+                'bundles/pages/css/responsive.css'
+                'bundles/pages/css/animate.css'
+                'bundles/pages/css/style.css'
+                filter='cssrewrite, ?yui_css' %}
+            <link type="text/css" rel="stylesheet" media="screen" href="{{ asset_url }}" />
+            <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        {% endstylesheets %}
+    {% endblock %}
+    
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+</head>
+<body>
+    {{ render(controller('UserBundle:Security:loginModal')) }}
+    <div class="all-wrapper">
+        <!-- ALL HEADER -->
+        <!-- WEB HEADER -->
+        <header>
+            <div style="margin:10px;">
+                <a href="index.php" class="logo">
+                </a>
+                <div class="loginp">
+                    Comment ça marche ?
+                    <a href="sincrire.php"><button class="sincrire">S’inscrire</button></a>
+                    <button id="mybtnconnecter" class="seconecter">Se connecter</button>
+                </div>
+            </div>
+        </header>
+        <!-- END WEB HEADER -->
+        
+        <!-- MOBILE HEADER -->
+        <div class="all-header">
+            <div class="mobile-header">
+                <div class="navmobile"><a  onclick="document.getElementById('mobilekaml').style.display='block'"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
+                <a href="index.php"><div class="logomobile"></div></a>
+            </div>
+            <!--  END MOBILE HEADER -->
+            <!-- DONNER UN COURS -->
+            {% block content %}{% endblock %}           
+            <!-- END OF DONNER UN COURS -->
+            <div class="footer">
+                <div class="container">
+                    <div class="allwstnav">
+                        <div class="suivre">
+                            <div class="socials">
+                                <span><a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
+                                <span><a class="ytb" href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></span>
+                                <span><a style='margin-right:0px;' class="link" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+                        <div class="footernav">
+                            <ul>
+                                <li><a href="#">Comment ça marche ? </a></li>
+                                <li><a href="#">Conditions générale</a></li>
+                                <li><a href="#">Conseils</a></li>
+                                <li><a href="#">Sécurité</a></li>
+                                <li><a href="#">Charte</a></li>
+                                <li><a href="#">à propos</a></li>
+                                <li><a href="#" style="border-right:none;">Payements</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <span style="float:left;">www.101cours.com - 2016 Tous droits réservés</span>
+                    <span class="card">
+                        <img src="{{ asset('bundles/pages/img/master.png') }}" />
+                        <img src="{{ asset('bundles/pages/img/visa.png') }}" />
+                    </span>
+                </div>
+            </div>
+        </div>
+    <!-- END ALL HEADER -->
+    </div>
+    {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://use.fontawesome.com/0499449a83.js"></script>
+        <script>
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 1){
+                    $('.autre-header').addClass("stickyautre");
+                }
+                else{
+                    $('.autre-header').removeClass("stickyautre");
+                }
+            });
+            
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 1){
+                    $('header').addClass("sticky");
+                    $('.logo').addClass("kaplogo");
+                    $('.seconecter').addClass("seconecterscroll");
+                }
+                else{
+                    $('header').removeClass("sticky");
+                    $('.logo').removeClass("kaplogo");
+                    $('.seconecter').removeClass("seconecterscroll");
+                }
+            });
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 1){
+                    $('.mobile-header').addClass("sticky");
+                    $('.logomobile').addClass("kaplogomobile");
+                    $('.sincriremobile').addClass("sincriremobilescroll");
+                    $('.navmobile').addClass("navmobilec");
+                }
+                else{
+                    $('.mobile-header').removeClass("sticky");
+                    $('.logomobile').removeClass("kaplogomobile");
+                    $('.sincriremobile').removeClass("sincriremobilescroll");
+                    $('.navmobile').removeClass("navmobilec");
+                }
+            });
+            $(document).ready(function(){
+            $(".connectead").hide();
+            $(".profilpic").click(function(){
+            $(".connectead").toggle();
+            });
+            $(span).click(function(){
+            $(".connectead").hide();
+            });
+            });
+        </script>
+    {% endblock %}
+</body>
 </html>
