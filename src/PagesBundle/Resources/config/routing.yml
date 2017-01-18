@@ -1,0 +1,10 @@
+# Import routing ADMIN
+#monbail_pages:
+#    resource: "@PagesBundle/Resources/config/admin.yml"
+#    prefix:   /admin
+    
+# Routing MAIN
+pages_homepage:
+    path:     /
+    methods: [GET]
+    defaults: { _controller: PagesBundle:PagesMain:index }
