@@ -29,25 +29,80 @@
     <div class="all-wrapper">
         <!-- ALL HEADER -->
         <!-- WEB HEADER -->
-        <header>
+        <header {% if app.user is not null and is_granted('ROLE_USER') %}style="background:#fff;color:#555;"{% endif %}>
             <div style="margin:10px;">
-                <a href="{{ path('pages_homepage') }}" class="logo">
+                <a href="{{ path('pages_homepage') }}" class="{% if app.user is not null and is_granted('ROLE_USER') %}logoc{% else %}logo{% endif %}">
                 </a>
-                <div class="loginp">
-                    Comment ça marche ?
-                    <a href="sincrire.php"><button class="sincrire">S’inscrire</button></a>
-                    <button id="mybtnconnecter" class="seconecter">Se connecter</button>
-                </div>
+                {% if app.user is not null and is_granted('ROLE_USER') %}
+                        <div class="loginp">
+                            <div class="iconsconecte">
+                                <a href=""><div class="msgicon"><img src="{{ asset('bundles/pages/img/msg.png') }}" /><span class="nmbrmsg">5</span></div></a>
+                            </div>
+                            <div class="profilpic">
+                                <img src="{{ asset('bundles/pages/img/yaz.jpg') }}" />
+                            </div>
+                            <div class="connectead">
+                                <ul>
+                                    <li><a href="#"><i style="margin-right: 10px;" class="fa fa-user" aria-hidden="true"></i>  Mon profil</a></li>
+                                    <li><a href="#"><i style="margin-right: 10px;" class="fa fa-cog" aria-hidden="true"></i>  Paramètres</a></li>
+                                    <li><a href="#"><i style="margin-right: 10px;" class="fa fa-line-chart" aria-hidden="true"></i>  Activités</a></li>
+                                    <li><a href="#"><i style="margin-right: 10px;" class="fa fa-power-off" aria-hidden="true"></i>  Se déconnecter</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="loginp">
+                        Comment ça marche ?
+                        <a href="sincrire.php"><button class="sincrire">S’inscrire</button></a>
+                        <button id="mybtnconnecter" class="seconecter">Se connecter</button>
+                    </div>
+                {% endif %}
             </div>
         </header>
         <!-- END WEB HEADER -->
         
         <!-- MOBILE HEADER -->
         <div class="all-header">
-            <div class="mobile-header">
-                <div class="navmobile"><a  onclick="document.getElementById('mobilekaml').style.display='block'"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
-                <a href="index.php"><div class="logomobile"></div></a>
-            </div>
+            {% if app.user is not null and is_granted('ROLE_USER') %}
+                <div id="mobilekaml" style="display:none">  
+                    <div class="w3-animate-left"  id="thenavmobile">
+                        <div class="mobiletopnav">
+                            <div class="mobilecon">
+                                <div class="iconsconecte">
+                                    <a href=""><div class="msgicon"><img src="images/msg.png" /><span class="nmbrmsg">5</span></div></a>
+                                </div>
+                                <div class="profilpic">
+                                    <img src="images/yaz.jpg" />
+                                </div>
+                                <div class="connectead">
+                                    <ul>
+                                        <li><a href="#"><i style="margin-right: 10px;" class="fa fa-user" aria-hidden="true"></i>  Mon profil</a></li>
+                                        <li><a href="#"><i style="margin-right: 10px;" class="fa fa-cog" aria-hidden="true"></i>  Paramètres</a></li>
+                                        <li><a href="#"><i style="margin-right: 10px;" class="fa fa-line-chart" aria-hidden="true"></i>  Activités</a></li>
+                                        <li><a href="#"><i style="margin-right: 10px;" class="fa fa-power-off" aria-hidden="true"></i>  Se déconnecter</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span onclick="document.getElementById('mobilekaml').style.display='none'"  class="closemobilenav"><i class="fa fa-times" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="mobileafternav">
+                            <ul>
+                                <li><a href="#">test ici</a></li>
+                                <li><a href="#">test ici</a></li>
+                                <li><a href="#">test ici</a></li>
+                                <li><a href="#">test ici</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="mobile-header">
+                    <div class="navmobile"><a  onclick="document.getElementById('mobilekaml').style.display='block'"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
+                    <a href="index.php"><div class="logomobile"></div></a>
+                </div>
+            {% endif %}
             <!--  END MOBILE HEADER -->
             <!-- DONNER UN COURS -->
             {% block content %}{% endblock %}           
