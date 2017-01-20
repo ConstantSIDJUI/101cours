@@ -12,6 +12,9 @@ pages:
     resource: "@PagesBundle/Resources/config/routing.yml"
     prefix:   /
 
+user_bundle:
+   resource: "@UserBundle/Resources/config/routing.yml"
+   
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation
@@ -20,3 +23,4 @@ user:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
