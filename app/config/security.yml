@@ -19,8 +19,11 @@ security:
                login_path: /login
                provider: fos_userbundle
            logout:
-               path:    /logout
-               target: /
+                path:       fos_user_security_logout
+                target: /
+           remember_me:
+                key:        %secret%
+           logout: true
               # provider: fos_userbundle
               # csrf_provider: form.csrf_provider
 
