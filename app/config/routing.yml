@@ -11,11 +11,12 @@ admin:
 pages:
     resource: "@PagesBundle/Resources/config/routing.yml"
     prefix:   /
-
-user_bundle:
-   resource: "@UserBundle/Resources/config/routing.yml"
-   
+    
 user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+   
+user_controller:
     resource: "@UserBundle/Controller/"
     type:     annotation
     prefix:   /user

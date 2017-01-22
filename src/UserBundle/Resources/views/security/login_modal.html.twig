@@ -2,14 +2,14 @@
     <span onclick="document.getElementById('conecterpopup').style.display='none'" class="closefont"><i class="fa fa-times" aria-hidden="true"></i></span>
     <div class="wow bounceIn wstpopupcon">
         <div class="conlfogin">
-            <form action="" method="post">
+            <form action="{{ path("fos_user_security_check") }}" method="post">
                 <input type="email" class="email-in popupconin" name="_username" value="{{ last_username }}" placeholder="Adresse email" required="required" />
                 <input type="password" class="mdp-in popupconin" name="_password" placeholder="Mot de passe" required="required" />
                 <label for="remember_me" class="control control--checkbox">Se souvenir de moi
                     <input checked="checked" type="checkbox" id="remember_me" name="_remember_me" value="on" />
                     <div style="float:left;top:1px;" class="kapcheck control__indicator"></div>
                 </label>
-                <a href="{#{ path('fos_user_resetting_request') }#}" style="float:right;color:#66a4bb;">Mot de passe oublié</a>
+                <a href="{{ path('fos_user_resetting_request') }}" style="float:right;color:#66a4bb;">Mot de passe oublié</a>
                 <button class="conbut">Connexion</button>
             </form>
         </div>
@@ -20,49 +20,3 @@
         </div>
     </div>
 </div>
-
-{#<div id="content_modal">
-    <p id="title">Zone membre</p>
-    <div id="content_form_modal">
-        <fieldset>
-            <legend>Déjà membre</legend>
-            <form action="{{ path("fos_user_security_check") }}" method="post">
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                <table>
-                    <tr>
-                        <td colspan="2">
-                            <label for="username">Identifiant</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Votre identifiant" required="required" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <label for="password">Mot de passe</label>
-                            <input type="password" id="password" name="_password" placeholder="Votre mot de passe" required="required" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="display_label">
-                            <input checked="checked" type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                            <label for="remember_me">Se souvenir de moi</label>
-                        </td>
-                        <td class="forget col-align-right">
-                            <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <input id="_submit" name="_submit" type="submit" value="Connexion" />
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </fieldset>
-        <fieldset>
-            <legend>Pas encore membre</legend>
-            <p>
-                <a class="button" href="{{ path('monbail_lease_create') }}">Remplir mon bail en ligne</a>
-            </p>
-        </fieldset>
-    </div>
-</div>#}
