@@ -5,8 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title %}101cours.com{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        {% block stylesheets %}
-            {% stylesheets 
+    {% block stylesheets %}
+        {% stylesheets 
                 'bundles/pages/css/bootstrap.min.css'
                 'bundles/pages/css/style.css'
                 'bundles/pages/css/add.css'
@@ -17,79 +17,23 @@
                 filter='cssrewrite, ?yui_css' %}
             <link type="text/css" rel="stylesheet" media="screen" href="{{ asset_url }}" />
             <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-            {% endstylesheets %}
-        {% endblock %}
-        
-        <meta name="description" content="{% block description %}{% endblock %}" />
-        <meta name="keywords" content="{% block keywords %}{% endblock %}" />
-        <meta name=viewport content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        {{ render(controller('UserBundle:Security:loginModal')) }}
-        {% if app.user is not null and is_granted('ROLE_USER') %}
-            <div id="mobilekaml" style="display:none">  
-                <div class="w3-animate-left"  id="thenavmobile">
-                    
-                    <div class="mobiletopnav">
-                        <div class="mobilecon">
-                            <div class="iconsconecte">
-                                <a href=""><div class="msgicon"><img src="{{ asset('bundles/pages/img/msg.jpg') }}" /><span class="nmbrmsg">5</span></div></a>
-                            </div>
-                            <div class="profilpic">
-                                <img src="{{ asset('bundles/pages/img/yaz.jpg') }}" />
-                            </div>
-                            <div class="connectead">
-                                <ul>
-                                    <li><a href="#"><i style="margin-right: 10px;" class="fa fa-user" aria-hidden="true"></i>  Mon profil</a></li>
-                                    <li><a href="#"><i style="margin-right: 10px;" class="fa fa-cog" aria-hidden="true"></i>  Paramètres</a></li>
-                                    <li><a href="#"><i style="margin-right: 10px;" class="fa fa-line-chart" aria-hidden="true"></i>  Activités</a></li>
-                                    <li><a href="#"><i style="margin-right: 10px;" class="fa fa-power-off" aria-hidden="true"></i>  Se déconnecter</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <span onclick="document.getElementById('mobilekaml').style.display='none'"  class="closemobilenav"><i class="fa fa-times" aria-hidden="true"></i></span>
-                    </div>
-                    <div class="mobileafternav">
-                        <ul>
-                            <li><a href="#">test ici</a></li>
-                            <li><a href="#">test ici</a></li>
-                            <li><a href="#">test ici</a></li>
-                            <li><a href="#">test ici</a></li>
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        {% else %}
-            <div id="mobilekaml" style="display:none">  
-                <div class="w3-animate-left"  id="thenavmobile">
-                    <div class="mobiletopnav">
-                        <span onclick="document.getElementById('mobilekaml').style.display='none'"  class="closemobilenav"><i class="fa fa-times" aria-hidden="true"></i></span>
-                        <div class="bjujum">
-                            <button id="mymobileconnecter" class="seconecter-mobile">Se connecter</button>
-                            <a href="sincrire.php"><button  class="sincriremobile">S'inscrire</button></a>
-                        </div>
-                    </div>
-                    <div class="mobileafternav">
-                        <ul>
-                            <li><a href="#">test ici</a></li>
-                            <li><a href="#">test ici</a></li>
-                            <li><a href="#">test ici</a></li>
-                            <li><a href="#">test ici</a></li>
-                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-        <div class="all-wrapper">
-            <!-- ALL HEADER -->
-            <!-- WEB HEADER -->
-            <header {% if app.user is not null and is_granted('ROLE_USER') %}style="background:#fff;color:#555;"{% endif %}>
-                <div style="margin:10px;">
-                    <a href="{{ path('pages_homepage') }}" class="{% if app.user is not null and is_granted('ROLE_USER') %}logoc{% else %}logo{% endif %}">
-                    </a>
-                    {% if app.user is not null and is_granted('ROLE_USER') %}
+        {% endstylesheets %}
+    {% endblock %}
+    
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+</head>
+<body>
+    {{ render(controller('UserBundle:Security:loginModal')) }}
+    <div class="all-wrapper">
+        <!-- ALL HEADER -->
+        <!-- WEB HEADER -->
+        <header {% if app.user is not null and is_granted('ROLE_USER') %}style="background:#fff;color:#555;"{% endif %}>
+            <div style="margin:10px;">
+                <a href="{{ path('pages_homepage') }}" class="{% if app.user is not null and is_granted('ROLE_USER') %}logoc{% else %}logo{% endif %}">
+                </a>
+                {% if app.user is not null and is_granted('ROLE_USER') %}
                         <div class="loginp">
                             <div class="iconsconecte">
                                 <a href=""><div class="msgicon"><img src="{{ asset('bundles/pages/img/msg.png') }}" /><span class="nmbrmsg">5</span></div></a>
@@ -106,58 +50,95 @@
                                 </ul>
                             </div>
                         </div>
-                    {% else %}
-                        <div class="loginp">
-                            Comment ça marche ?
-                            <a href="{{path('fos_user_registration_register')}}"><button class="sincrire">S’inscrire</button></a>
-                            <button id="mybtnconnecter" class="seconecter">Se connecter</button>
-                        </div>
-                    {% endif %}
-                </div>
-            </header>
-            <div class="mobile-header">
-                <div class="navmobile"><a  onclick="document.getElementById('mobilekaml').style.display='block'"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
-                <a href="index.php"><div class="logomobile"></div></a>
+                {% else %}
+                    <div class="loginp">
+                        Comment ça marche ?
+                        <a href="{{path('fos_user_registration_register')}}"><button class="sincrire">S’inscrire</button></a>
+                        <button id="mybtnconnecter" class="seconecter">Se connecter</button>
+                    </div>
+                {% endif %}
             </div>
-            <!-- END WEB HEADER -->
-            
-                <!--  END MOBILE HEADER -->
-                <!-- DONNER UN COURS -->
+        </header>
+        <!-- END WEB HEADER -->
+        
+        <!-- MOBILE HEADER -->
+        <div class="all-header">
+            {% if app.user is not null and is_granted('ROLE_USER') %}
+                <div id="mobilekaml" style="display:none">  
+                    <div class="w3-animate-left"  id="thenavmobile">
+                        <div class="mobiletopnav">
+                            <div class="mobilecon">
+                                <div class="iconsconecte">
+                                    <a href=""><div class="msgicon"><img src="images/msg.png" /><span class="nmbrmsg">5</span></div></a>
+                                </div>
+                                <div class="profilpic">
+                                    <img src="images/yaz.jpg" />
+                                </div>
+                                <div class="connectead">
+                                    <ul>
+                                        <li><a href="#"><i style="margin-right: 10px;" class="fa fa-user" aria-hidden="true"></i>  Mon profil</a></li>
+                                        <li><a href="#"><i style="margin-right: 10px;" class="fa fa-cog" aria-hidden="true"></i>  Paramètres</a></li>
+                                        <li><a href="#"><i style="margin-right: 10px;" class="fa fa-line-chart" aria-hidden="true"></i>  Activités</a></li>
+                                        <li><a href="#"><i style="margin-right: 10px;" class="fa fa-power-off" aria-hidden="true"></i>  Se déconnecter</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span onclick="document.getElementById('mobilekaml').style.display='none'"  class="closemobilenav"><i class="fa fa-times" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="mobileafternav">
+                            <ul>
+                                <li><a href="#">test ici</a></li>
+                                <li><a href="#">test ici</a></li>
+                                <li><a href="#">test ici</a></li>
+                                <li><a href="#">test ici</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="mobile-header">
+                    <div class="navmobile"><a  onclick="document.getElementById('mobilekaml').style.display='block'"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
+                    <a href="index.php"><div class="logomobile"></div></a>
+                </div>
+            {% endif %}
+            <!--  END MOBILE HEADER -->
+            <!-- DONNER UN COURS -->
             {% block content %}{% endblock %}           
             <!-- END OF DONNER UN COURS -->
-        </div>
-        <!-- END ALL HEADER -->
-        <div class="footer">
-            <div class="container">
-                <div class="allwstnav">
-                    <div class="suivre">
-                        <div class="socials">
-                            <span><a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
-                            <span><a class="ytb" href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></span>
-                            <span><a style='margin-right:0px;' class="link" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
+            <div class="footer">
+                <div class="container">
+                    <div class="allwstnav">
+                        <div class="suivre">
+                            <div class="socials">
+                                <span><a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
+                                <span><a class="ytb" href=""><i class="fa fa-youtube-play" aria-hidden="true"></i></a></span>
+                                <span><a style='margin-right:0px;' class="link" href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+                        <div class="footernav">
+                            <ul>
+                                <li><a href="#">Comment ça marche ? </a></li>
+                                <li><a href="#">Conditions générale</a></li>
+                                <li><a href="#">Conseils</a></li>
+                                <li><a href="#">Sécurité</a></li>
+                                <li><a href="#">Charte</a></li>
+                                <li><a href="#">à propos</a></li>
+                                <li><a href="#" style="border-right:none;">Payements</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="footernav">
-                        <ul>
-                            <li><a href="#">Comment ça marche ? </a></li>
-                            <li><a href="#">Conditions générale</a></li>
-                            <li><a href="#">Conseils</a></li>
-                            <li><a href="#">Sécurité</a></li>
-                            <li><a href="#">Charte</a></li>
-                            <li><a href="#">à propos</a></li>
-                            <li><a href="#" style="border-right:none;">Payements</a></li>
-                        </ul>
-                    </div>
+                </div>
+                <div class="copyright">
+                    <span style="float:left;">www.101cours.com - 2016 Tous droits réservés</span>
+                    <span class="card">
+                        <img src="{{ asset('bundles/pages/img/master.png') }}" />
+                        <img src="{{ asset('bundles/pages/img/visa.png') }}" />
+                    </span>
                 </div>
             </div>
-            <div class="copyright">
-                <span style="float:left;">www.101cours.com - 2016 Tous droits réservés</span>
-                <span class="card">
-                    <img src="{{ asset('bundles/pages/img/master.png') }}" />
-                    <img src="{{ asset('bundles/pages/img/visa.png') }}" />
-                </span>
-            </div>
         </div>
+    <!-- END ALL HEADER -->
     </div>
     {% block javascripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -290,13 +271,13 @@
                 }
             });
             $(document).ready(function(){
-                $(".connectead").hide();
-                $(".profilpic").click(function(){
-                    $(".connectead").toggle();
-                });
-                $(span).click(function(){
-                    $(".connectead").hide();
-                });
+            $(".connectead").hide();
+            $(".profilpic").click(function(){
+            $(".connectead").toggle();
+            });
+            $(span).click(function(){
+            $(".connectead").hide();
+            });
             });
         </script>
     {% endblock %}
