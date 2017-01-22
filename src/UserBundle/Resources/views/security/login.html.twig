@@ -1,61 +1,34 @@
-{% extends 'PagesBundle::layout_content.html.twig' %}
+{% extends '::base.html.twig' %}
 {% block js %}
     {{ parent() }}
-    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.js"></script>
-    <script type="text/javascript">
-        $(function(){
-        });
-    </script>
+</script>
 {% endblock %}
-{% block box_fildset %}    
-    <h1>
-        <span> Zone membre </span> 
-    </h1>
-{% endblock %}
-{% block box_content %}
-{% if error %}
-    <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
-<div id="main_content" class="login">
-    <div id="">
-        <h2 class="membre_h2">Déjà membre</h2>
-        <form class="form" action="{{ path("fos_user_security_check") }}" method="post">
-               <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-               <table>
-                    <tr>
-                        <td colspan="2">
-                            <label for="username">Identifiant</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Votre identifiant" required="required" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" >
-                            <label for="password">Mot de passe</label>
-                            <input type="password" id="password" name="_password" placeholder="Votre mot de passe" required="required" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="display_label">
+{% block content %}
+    <div class="autre-wrapper">
+        <div style="margin-bottom:0px !important;" class="renawrap">
+            <span style="    font-size: 23px;padding: 20px;float: left;width: 100%;text-align: center;">Se connecter:</span>
+            <div class="inscform">
+                <form action="{{ path("fos_user_security_check") }}" method="POST">
+                    <input type="email" placeholder="Email" class="email-in inscin" name="_username" value="{{ last_username }}" required="required"/>
+                    <input type="password" placeholder="Mot de passe" class="mdp-in inscin" required="required" name="_password" />
+                    <a href="{{ path('fos_user_resetting_request') }}" class="aa">Mot de passe oublié</a>
+                    <div class="hmfm">
+                        <label for="remember_me" class="control control--checkbox">Se souvenir de moi
                             <input checked="checked" type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                            <label for="remember_me">Se souvenir de moi</label>
-                        </td>
-                        <td class="forget col-align-right">
-                            <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <input id="_submit" name="_submit" type="submit" value="Connexion" />
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        <h2 class="inscription_h2">Pas encore membre</h2>
-        <p>
-            <a class="button" href="{{ path('monbail_lease_create') }}">Remplir mon bail en ligne</a>
-        </p>
+                            <div style="float:left;top:1px;" class="kapcheck control__indicator"></div>
+                        </label>
+                    </div>
+                    <button class="conbut">Connexion</button>
+                </form>
+                <div class="pasencore">
+                    <span class="pasencoretxt">Pas encore membre ?</span>
+                    <a href="{{ path('fos_user_registration_register') }}"><button class="inscriverbtn">Inscrivez-vous gratuitement</button></a>
+                    <span class="lthtinsktba">Inscrivez-vous gratuitement et accédez à toutes les fonctionnalités de 101cours.ma</span>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+</div>
 </div>
 {% endblock %}
