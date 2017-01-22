@@ -50,11 +50,10 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
                 {% else %}
                     <div class="loginp">
                         Comment ça marche ?
-                        <a href="sincrire.php"><button class="sincrire">S’inscrire</button></a>
+                        <a href="{{path('fos_user_registration_register')}}"><button class="sincrire">S’inscrire</button></a>
                         <button id="mybtnconnecter" class="seconecter">Se connecter</button>
                     </div>
                 {% endif %}
