@@ -1,14 +1,11 @@
 {% extends '::base.html.twig' %}
 
-{% block js %}
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
-    
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript">
         $(function(){
-            console.log("ça marcha ici");
             $('#myadminbundle_searchcity_search_cityCours').autocomplete({
                 minLength: 2,
                 messages: {

@@ -14,6 +14,7 @@
                 'bundles/pages/css/responsive.css'
                 'bundles/pages/css/animate.css'
                 'bundles/pages/css/style.css'
+                'bundles/pages/css/jquery-autocomplet.css'
                 filter='cssrewrite, ?yui_css' %}
             <link type="text/css" rel="stylesheet" media="screen" href="{{ asset_url }}" />
             <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -149,33 +150,6 @@
                 }
                 document.getElementById(cityName).style.display = "block";
                 evt.currentTarget.className += "  w3-bluekap";
-            }
-        </script>
-        <script>
-            // Get the modal
-            var modal = document.getElementById('conecterpopup');
-
-            // Get the button that opens the modal
-            var btn = document.getElementById("mybtnconnecter");
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-            // When the user clicks the button, open the modal
-            btn.onclick = function() {
-                modal.style.display = "block";
-            }
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
             }
         </script>
         <script>
