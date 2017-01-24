@@ -1,22 +1,41 @@
 {% extends '::base.html.twig' %}
 
 {% block js %}
-    {{ parent() }}
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
+    
     <script type="text/javascript">
         $(function(){
-            $('#list_products').hover(function(){
-                $('#label img').fadeOut(200);
-            }, function(){
-                $('#label img').fadeIn(200);
-            });
-            
-            $('.content_table').hover(function(){
-                $('#premium').find('.button').removeClass('premium');
-                $(this).find('.button').addClass('active');
-            }, function(){
-                $('#premium').find('.button').addClass('premium');
-                $(this).find('.button').removeClass('active');
-            });
+            console.log("ça marcha ici");
+            $('#myadminbundle_searchcity_search_cityCours').autocomplete({
+                minLength: 2,
+                messages: {
+                    noResults: '',
+                    results: function() {}
+                },
+                source : function(requete, reponse){
+                    $.ajax({
+                        type: "POST",
+                        url : "{{ path('pages_ajax_searchajaxcities') }}",
+                        dataType : 'json',
+                        data : 'city=' + requete['term'],
+                        maxRows : 10,
+                        success : function(data){
+                            reponse($.map(data, function(objet){
+                                objet['label'] = objet['name'] + ' (' + objet['postalCode'] + ')';
+                                return objet;
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui){
+                    $('myadminbundle_searchcity_cities').val(ui.item.id);
+                }
+            }).data('ui-autocomplete')._renderItem = function(ul, item){
+                return $('<li>').append('<a style="text-transform: capitalize;">' + item.name + ' (' + item.postalCode + ')' + '</a>').appendTo(ul);
+            };
         });
     </script>
 {% endblock %}
@@ -34,7 +53,14 @@
             <span class="tr">Trouver votre cours sur 101cours.ma</span>
             <div class="theformdonner">
                 <form action="" method="post">
-                    <input type="text" placeholder="Ville" name="Ville"  class="inputdonner" />
+                <div style="display: none;">
+                    {{ form_widget(form.cities) }}
+                </div>
+                {{ form_widget(form.search_cityCours, { 'attr': {'class': 'inputdonner'} }) }}
+                {{ form_widget(form.level, { 'attr': {'class': 'inputdonner'} }) }}
+                {{ form_widget(form.cours, { 'attr': {'class': 'inputdonner'} }) }}
+                {{ form_rest(form) }}
+                 {#   <input type="text" placeholder="Ville" name="Ville"  class="inputdonner" />
                     <select class="inputdonner" name="Niveau">
                         <option value="volvo">5eme</option>
                         <option value="saab">Saab</option>
@@ -46,7 +72,7 @@
                         <option value="saab">Science</option>
                         <option value="fiat">Français</option>
                         <option value="audi">Englais</option>
-                    </select>
+                    </select>#}
                     
                     <button class="donnersearch"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
