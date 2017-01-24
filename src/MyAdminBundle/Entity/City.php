@@ -76,6 +76,11 @@ class City
     private $country;
     
     /**
+     * @ORM\OneToMany(targetEntity="MyAdminBundle\Entity\Cours", mappedBy="cities", cascade={"all"})
+     */
+    private $cours;
+    
+    /**
      * @ORM\OneToMany(targetEntity="MyAdminBundle\Entity\PostalAdress", mappedBy="city")
      */
     private $postaladress;
@@ -313,5 +318,38 @@ class City
     public function getPostaladress()
     {
         return $this->postaladress;
+    }
+
+    /**
+     * Add cours
+     *
+     * @param \MyAdminBundle\Entity\Cours $cours
+     * @return City
+     */
+    public function addCour(\MyAdminBundle\Entity\Cours $cours)
+    {
+        $this->cours[] = $cours;
+
+        return $this;
+    }
+
+    /**
+     * Remove cours
+     *
+     * @param \MyAdminBundle\Entity\Cours $cours
+     */
+    public function removeCour(\MyAdminBundle\Entity\Cours $cours)
+    {
+        $this->cours->removeElement($cours);
+    }
+
+    /**
+     * Get cours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCours()
+    {
+        return $this->cours;
     }
 }
