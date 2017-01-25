@@ -8,3 +8,15 @@ pages_homepage:
     path:     /
     methods: [GET]
     defaults: { _controller: PagesBundle:PagesMain:index }
+
+pages_result-search:
+    path:     /recherche
+    methods: [GET|POST]
+    defaults: { _controller: PagesBundle:PagesMain:resultSearch }
+
+
+# Routing AJAX SEARCH CITY
+pages_ajax_searchajaxcities:
+    path:     /search-cities
+    methods: [POST]
+    defaults: { _controller: PagesBundle:PagesMain:searchAjaxCities }
