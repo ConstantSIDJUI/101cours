@@ -27,6 +27,34 @@ class UserCours
      * @ORM\Column(name="created_date", type="datetime", nullable=true)
      */
     private $createdDate;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="home", type="integer", nullable=true)
+     */
+    protected $home;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="coffe", type="integer", nullable=true)
+     */
+    protected $coffe;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tea", type="integer", nullable=true)
+     */
+    protected $tea;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="subject_matter", type="string", nullable=true, length=255)
+     */
+    protected $subjectMatter;
 
     /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
@@ -118,5 +146,97 @@ class UserCours
     public function getCreatedDate()
     {
         return $this->createdDate;
+    }
+
+    /**
+     * Set home
+     *
+     * @param integer $home
+     * @return UserCours
+     */
+    public function setHome($home)
+    {
+        $this->home = $home;
+
+        return $this;
+    }
+
+    /**
+     * Get home
+     *
+     * @return integer 
+     */
+    public function getHome()
+    {
+        return $this->home;
+    }
+
+    /**
+     * Set coffe
+     *
+     * @param integer $coffe
+     * @return UserCours
+     */
+    public function setCoffe($coffe)
+    {
+        $this->coffe = $coffe;
+
+        return $this;
+    }
+
+    /**
+     * Get coffe
+     *
+     * @return integer 
+     */
+    public function getCoffe()
+    {
+        return $this->coffe;
+    }
+
+    /**
+     * Set tea
+     *
+     * @param integer $tea
+     * @return UserCours
+     */
+    public function setTea($tea)
+    {
+        $this->tea = $tea;
+
+        return $this;
+    }
+
+    /**
+     * Get tea
+     *
+     * @return integer 
+     */
+    public function getTea()
+    {
+        return $this->tea;
+    }
+
+    /**
+     * Set subjectMatter
+     *
+     * @param string $subjectMatter
+     * @return UserCours
+     */
+    public function setSubjectMatter($subjectMatter)
+    {
+        $this->subjectMatter = $subjectMatter;
+
+        return $this;
+    }
+
+    /**
+     * Get subjectMatter
+     *
+     * @return string 
+     */
+    public function getSubjectMatter()
+    {
+        return $this->subjectMatter;
     }
 }

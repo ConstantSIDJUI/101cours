@@ -123,9 +123,9 @@ class User extends BaseUser
     protected $facebookVerified;
     
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="status", type="integer", nullable=true)
+     * @ORM\Column(name="status", type="string", nullable=true, length=255)
      */
     protected $status;
     
