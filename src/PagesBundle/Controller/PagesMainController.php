@@ -63,4 +63,36 @@ class PagesMainController extends Controller
             }
     	}
     }  
+    
+    /**
+     * Get list of cities
+     * @return Response Response json
+     * @access public
+     * @version 1.0
+     * @author Constant SIDJUI
+     * @copyright © 2017.
+     */
+    public function resultSearchAction(Request $request){
+    var_dump($request);
+    die();
+    	if($request->isXmlHttpRequest()){
+            $keyCity = $request->request->get('city');
+            // Get city parameter
+            if(!empty($keyCity)){ // Keyword != NULL
+                // Get city by key
+                $cities = $this->getDoctrine()
+                               ->getManager()
+                               ->getRepository('MyAdminBundle:City')
+                               ->getAjaxSearch($keyCity);
+                
+                // Build json response
+                $response = new Response();
+                $response->headers->set('Content-Type', 'application/json');
+                // Set content of response
+                $response->setContent(json_encode($cities));
+                
+                return $response;
+            }
+    	}
+    }  
 }

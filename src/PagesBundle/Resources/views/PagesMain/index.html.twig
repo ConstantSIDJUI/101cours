@@ -42,128 +42,128 @@
 {% endblock %}
 
 {% block content %}
-<!-- MOBILE HEADER -->
-<div class="all-header">
-    <!-- DONNER UN COURS -->
-    <div class="wow bounceIn donnerwrapper">
+    <!-- MOBILE HEADER -->
+    <div class="all-header">
+        <!-- DONNER UN COURS -->
+        <div class="wow bounceIn donnerwrapper">
+            <div class="container">
+                <span class="tr">Trouver votre cours sur 101cours.ma</span>
+                <div class="theformdonner">
+                    <form action="{{ path("pages_result-search") }}" method="post">
+                        <div style="display: none;">
+                            {{ form_widget(form.cities) }}
+                        </div>
+                        {{ form_widget(form.search_cityCours, { 'attr': {'class': 'inputdonner'} }) }}
+                        {{ form_widget(form.level, { 'attr': {'class': 'inputdonner'} }) }}
+                        {{ form_widget(form.cours, { 'attr': {'class': 'inputdonner'} }) }}
+                        {{ form_rest(form) }}
+                        {#   <input type="text" placeholder="Ville" name="Ville"  class="inputdonner" />
+                           <select class="inputdonner" name="Niveau">
+                               <option value="volvo">5eme</option>
+                               <option value="saab">Saab</option>
+                               <option value="fiat">Fiat</option>
+                               <option value="audi">Audi</option>
+                           </select>
+                           <select class="inputdonner" name="Matiere">
+                               <option value="volvo">Math</option>
+                               <option value="saab">Science</option>
+                               <option value="fiat">Français</option>
+                               <option value="audi">Englais</option>
+                           </select>#}
+                        
+                        <button class="donnersearch"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END OF DONNER UN COURS -->
+    </div>
+    <!-- Vous voulez donner un cours -->
+    <div class="wow bounceInUp voulezvous">
         <div class="container">
-            <span class="tr">Trouver votre cours sur 101cours.ma</span>
-            <div class="theformdonner">
-                <form action="" method="post">
-                <div style="display: none;">
-                    {{ form_widget(form.cities) }}
-                </div>
-                {{ form_widget(form.search_cityCours, { 'attr': {'class': 'inputdonner'} }) }}
-                {{ form_widget(form.level, { 'attr': {'class': 'inputdonner'} }) }}
-                {{ form_widget(form.cours, { 'attr': {'class': 'inputdonner'} }) }}
-                {{ form_rest(form) }}
-                 {#   <input type="text" placeholder="Ville" name="Ville"  class="inputdonner" />
-                    <select class="inputdonner" name="Niveau">
-                        <option value="volvo">5eme</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select class="inputdonner" name="Matiere">
-                        <option value="volvo">Math</option>
-                        <option value="saab">Science</option>
-                        <option value="fiat">Français</option>
-                        <option value="audi">Englais</option>
-                    </select>#}
-                    
-                    <button class="donnersearch"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- END OF DONNER UN COURS -->
-</div>
-<!-- Vous voulez donner un cours -->
-<div class="wow bounceInUp voulezvous">
-    <div class="container">
-        <div class="wstvoulez">
-            <span class="vt">Vous voulez donner un cours</span><br />
-            <div class="voulezrows">
-                <div class="voulezrow">
-                    <div class="voulezmor">
-                        <span class="moricon"><img src="{{ asset('bundles/pages/img/editc.png') }}"/></span><br /><br />
-                        <span class="mortitle">Publie une annonce</span><br />
-                        <span class="mortext">Lorem Ipsum is simply dummy text of the
-                            printing and typesetting industry.</span>
+            <div class="wstvoulez">
+                <span class="vt">Vous voulez donner un cours</span><br />
+                <div class="voulezrows">
+                    <div class="voulezrow">
+                        <div class="voulezmor">
+                            <span class="moricon"><img src="{{ asset('bundles/pages/img/editc.png') }}"/></span><br /><br />
+                            <span class="mortitle">Publie une annonce</span><br />
+                            <span class="mortext">Lorem Ipsum is simply dummy text of the
+                                printing and typesetting industry.</span>
+                        </div>
+                        <button class="voulezbut">Publie une annonce</button>
                     </div>
-                    <button class="voulezbut">Publie une annonce</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- end of Vous voulez donner un cours -->
-
-<!-- lorem -->
-<div class="wow bounceInUp loremwrapper">
-    <div class="container">
-        <div class="loremrows">
-            <div class="loremrow">
-                <div class="loremicon"><i class="secu" ></i></div><br />
-                <span class="loremtitle">Qu'est-ce que le Lorem</span><br />
-                <span class="loremtext">Le Lorem Ipsum est simplement du faux texte employé dans la composition.</span>
-            </div>
-            <div class="loremrow">
-                <div class="loremicon"><i class="time" ></i></div><br />
-                <span class="loremtitle">Qu'est-ce que le Lorem</span><br />
-                <span class="loremtext">Le Lorem Ipsum est simplement du faux texte employé dans la composition.</span>
-            </div>
-            <div class="loremrow">
-                <div class="loremicon"><i class="money" ></i></div><br />
-                <span class="loremtitle">Qu'est-ce que le Lorem</span><br />
-                <span class="loremtext">Le Lorem Ipsum est simplement du faux texte employé dans la composition.</span>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end of lorem -->
-
-<!-- les pages -->
-<div class="wow bounceInUp lespageswrapper">
-    <div class="container">
-        <div class="pagerows">
-            <div class="pagerow">
-                <div class="prowtitle">Comment ça marche ?</div>
-                
-                <div class="prowimg"><img src="{{ asset('bundles/pages/img/img1.png') }}"/></div>
-            </div>
-            
-            <div class="pagerow">
-                <div class="prowtitle">Demander un cours </div>
-                
-                <div class="prowimg"><img src="{{ asset('bundles/pages/img/img2.png') }}" /></div>
-            </div>
-            
-            <div class="pagerow">
-                <div class="prowtitle">Télécharger l’application</div>
-                
-                <div class="prowimg"><img src="{{ asset('bundles/pages/img/img3.png') }}"/></div>
-            </div>
-            
-            <div class="pagerow">
-                <div class="prowtitle">Cours sur mesure</div>
-                
-                <div class="prowimg"><img src="{{ asset('bundles/pages/img/img6.png') }}" /></div>
-            </div>
-            
-            <div class="pagerow">
-                <div class="prowtitle">Publier une annonce</div>
-                
-                <div class="prowimg"><img src="{{ asset('bundles/pages/img/img4.png') }}" /></div>
-            </div>
-            
-            <div class="pagerow">
-                <div class="prowtitle">Savoir plus</div>
-                
-                <div class="prowimg"><img src="{{ asset('bundles/pages/img/img5.png') }}" /></div>
+    <!-- end of Vous voulez donner un cours -->
+    
+    <!-- lorem -->
+    <div class="wow bounceInUp loremwrapper">
+        <div class="container">
+            <div class="loremrows">
+                <div class="loremrow">
+                    <div class="loremicon"><i class="secu" ></i></div><br />
+                    <span class="loremtitle">Qu'est-ce que le Lorem</span><br />
+                    <span class="loremtext">Le Lorem Ipsum est simplement du faux texte employé dans la composition.</span>
+                </div>
+                <div class="loremrow">
+                    <div class="loremicon"><i class="time" ></i></div><br />
+                    <span class="loremtitle">Qu'est-ce que le Lorem</span><br />
+                    <span class="loremtext">Le Lorem Ipsum est simplement du faux texte employé dans la composition.</span>
+                </div>
+                <div class="loremrow">
+                    <div class="loremicon"><i class="money" ></i></div><br />
+                    <span class="loremtitle">Qu'est-ce que le Lorem</span><br />
+                    <span class="loremtext">Le Lorem Ipsum est simplement du faux texte employé dans la composition.</span>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- end of les pages -->
+    <!-- end of lorem -->
+    
+    <!-- les pages -->
+    <div class="wow bounceInUp lespageswrapper">
+        <div class="container">
+            <div class="pagerows">
+                <div class="pagerow">
+                    <div class="prowtitle">Comment ça marche ?</div>
+                    
+                    <div class="prowimg"><img src="{{ asset('bundles/pages/img/img1.png') }}"/></div>
+                </div>
+                
+                <div class="pagerow">
+                    <div class="prowtitle">Demander un cours </div>
+                    
+                    <div class="prowimg"><img src="{{ asset('bundles/pages/img/img2.png') }}" /></div>
+                </div>
+                
+                <div class="pagerow">
+                    <div class="prowtitle">Télécharger l’application</div>
+                    
+                    <div class="prowimg"><img src="{{ asset('bundles/pages/img/img3.png') }}"/></div>
+                </div>
+                
+                <div class="pagerow">
+                    <div class="prowtitle">Cours sur mesure</div>
+                    
+                    <div class="prowimg"><img src="{{ asset('bundles/pages/img/img6.png') }}" /></div>
+                </div>
+                
+                <div class="pagerow">
+                    <div class="prowtitle">Publier une annonce</div>
+                    
+                    <div class="prowimg"><img src="{{ asset('bundles/pages/img/img4.png') }}" /></div>
+                </div>
+                
+                <div class="pagerow">
+                    <div class="prowtitle">Savoir plus</div>
+                    
+                    <div class="prowimg"><img src="{{ asset('bundles/pages/img/img5.png') }}" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of les pages -->
 {% endblock %}
