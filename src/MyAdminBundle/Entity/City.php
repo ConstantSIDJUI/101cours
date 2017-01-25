@@ -84,6 +84,11 @@ class City
      * @ORM\OneToMany(targetEntity="MyAdminBundle\Entity\PostalAdress", mappedBy="city")
      */
     private $postaladress;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="city", cascade={"all"})
+     */
+    private $user;
 
     /**
      * Constructor
@@ -351,5 +356,38 @@ class City
     public function getCours()
     {
         return $this->cours;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \UserBundle\Entity\User $user
+     * @return City
+     */
+    public function addUser(\UserBundle\Entity\User $user)
+    {
+        $this->user[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \UserBundle\Entity\User $user
+     */
+    public function removeUser(\UserBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

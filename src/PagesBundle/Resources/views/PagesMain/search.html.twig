@@ -1,0 +1,198 @@
+{% extends '::base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".dkshiihbt").hide();
+            $(".hbtsearch").click(function(){
+                $('.hbtsearch').addClass("hbtsearch22");
+                $(".dkshiihbt").toggle();
+            });
+            
+            $('#myadminbundle_searchcity_search_cityCours').autocomplete({
+                minLength: 2,
+                messages: {
+                    noResults: '',
+                    results: function() {}
+                },
+                source : function(requete, reponse){
+                    $.ajax({
+                        type: "POST",
+                        url : "{{ path('pages_ajax_searchajaxcities') }}",
+                        dataType : 'json',
+                        data : 'city=' + requete['term'],
+                        maxRows : 10,
+                        success : function(data){
+                            reponse($.map(data, function(objet){
+                                objet['label'] = objet['name'] + ' (' + objet['postalCode'] + ')';
+                                return objet;
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui){
+                    $('#myadminbundle_searchcity_cities').val(ui.item.id);
+                }
+            }).data('ui-autocomplete')._renderItem = function(ul, item){
+                return $('<li>').append('<a style="text-transform: capitalize;">' + item.name + ' (' + item.postalCode + ')' + '</a>').appendTo(ul);
+            };
+        });
+    </script>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="autre-wrapper">
+        <div class="container">
+            
+            <div class="theformdonner">
+                <form action="" method="post">
+                    
+                    <select  class="searchin" name="Niveau">
+                        <option value="volvo">5eme</option>
+                        <option value="saab">Saab</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <select class="searchin" name="Matiere">
+                        <option value="volvo">Math</option>
+                        <option value="saab">Science</option>
+                        <option value="fiat">Français</option>
+                        <option value="audi">Englais</option>
+                    </select>
+                    <input style="background:#fff;width: 30%;" type="text" placeholder="Ville" name="Ville"  class="villeres inputdonner" />
+                    <button style="width: 60px;" class="donnersearch"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
+            </div>
+            <div class="lesprofs">
+                <div class="pfphotos">
+                    <span class="pft" >Professeur avec photo <i style="color:#d1d1d;" class="fa fa-question-circle" aria-hidden="true"></i></span>
+                    <div class="pfch">
+                        <label  class="control control--checkbox">
+                            <input type="checkbox" />
+                            <div class="control__indicator kapcheck"></div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="pfphotos">
+                    <span class="pft" >Professeur cértifiè <i style="color:#d1d1d;" class="fa fa-question-circle" aria-hidden="true"></i></span>
+                    <div class="pfch">
+                        <label  class="control control--checkbox">
+                            <input type="checkbox" />
+                            <div class="control__indicator kapcheck"></div>
+                        </label>
+                    </div>
+                </div>
+                <div style="width:30%;" class="hommefemmeres pfphotos">
+                    <div class="mal"><input type="radio" name="gender" value="mal" > Homme</div>
+                    <div class="femal"><input type="radio" name="gender" value="female" > Femme</div>
+                </div>
+                <button style="width:60px;" id="hbta" class="hbtsearch"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                <div class="dkshiihbt">
+                    <div class="lieutravaile">
+                        <div class="lieutop">
+                            <span class="lieuktba">Lieu de travaille</span>
+                            <div class="lieuicons">
+                                
+                                <div class="lieuwahd">
+                                    <label  class="control control--checkbox"><img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/home.png') }}" />
+                                        <input type="checkbox" />
+                                        <div class="control__indicator gradientcheck "></div>
+                                    </label>
+                                </div>
+                                
+                                <div class="lieuwahd">
+                                    <label  class="control control--checkbox"><img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/coffe.png') }}" />
+                                        <input type="checkbox" />
+                                        <div class="control__indicator gradientcheck"></div>
+                                    </label>
+                                </div>
+                                
+                                <div class="lieuwahd">
+                                    <label  class="control control--checkbox"><img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/tea.png') }}" />
+                                        <input type="checkbox" />
+                                        <div class="control__indicator gradientcheck"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="laeba">
+                        <span class="fprix">Fourchette de prix <i style="color:#d1d1d;" class="fa fa-question-circle" aria-hidden="true"></i></span>
+                        <div class="fourchete">
+                            <input
+                                data-addui='slider'
+                                data-min='10'
+                                data-max='100'
+                                data-range='true'
+                                value='10'
+                                />
+                        </div>
+                    </div>
+                    <div class="recwrap">
+                        <div class="plusrc">
+                            <label  class="control control--checkbox">Les plus recentes <i style="color:#d1d1d;" class="fa fa-question-circle" aria-hidden="true"></i>
+                                <input type="checkbox" />
+                                <div style="margin-right:10px;" class="control__indicator gradientcheck"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="personeoffre">
+                {% for listUserCour in listUserCours %}
+                    <div class="wahd">
+                        <div class="left-wahd">
+                            <div class="user-pdp"><img src="{{ asset('bundles/pages/img/yaz.jpg') }}" /></div>
+                            <div class="rating">
+                                <fieldset class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                </fieldset>
+                            </div>
+                            <div style="margin-bottom: 0px;" class="friendsfb"><i class="fbfriendsicon fa fa-users" aria-hidden="true"></i> 300 amis sur facebook</div>
+                        </div>
+                        <div class="lfoginfos">
+                            <div class="wstinfos">
+                                <span style="font-size:23px;"><b>{{ listUserCour.user.lastname }} {{ listUserCour.user.firstname }}</b> <span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i></span></span><br />
+                                {% set age = 'now'|date('Y') -  listUserCour.user.birthDate|date('Y') %}
+                                <span>{{ age }} ans</span><br />
+                                <span>Ville : {{ listUserCour.user.city.name }}</span><br />
+                                <span>Etudiant</span><br />
+                                <span>Matiéres métrisés : Math , Pc , englais</span><br />
+                                <span>Lieu de travail :  <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/home.png') }}" /> <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/coffe.png') }}" /> <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/tea.png') }}" /></span>
+                            </div>
+                            <div class="rightinfos ">
+                                <div class="ofre1">20DH/h <span class="swy3">10H</span></div>
+                                <div class="ofre2">18DH/h <span class="swy32">10H</span></div>
+                                <div class="ofre2">14DH/h <span class="swy32">10H</span></div>
+                            </div>
+                            <span class="datedepub">Offre publié depuis 5 jours</span>
+                        </div>
+                        <div class="lthtinfos">
+
+                        </div>
+                    </div>
+                {% else %}
+                        Aucun cours
+                {% endfor %}                
+            </div>
+        </div>
+    </div>
+    <!-- end of les pages -->
+{% endblock %}

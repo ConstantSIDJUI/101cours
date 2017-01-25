@@ -87,18 +87,21 @@ class PagesMainController extends Controller
             // Get data of form
             $data = $form->getData();
             
+            // Create form search
+            $form = $this->createForm(new SearchCityType(), null, array('em' => $this->getDoctrine()->getManager()));
+
+            // Check message publish
+            $message = $request->query->get('message');
             
-            var_dump($data);
-            die();
-
-            // Load service for search routing
-            //$SearchRouting = $this->container->get('Immojeune_Advert.searchQuery');
-
-            // Get route
-            //$route = $SearchRouting->getRoute($data);
-
-            // Redirect
-            return $this->redirect($route);
+            $listUserCours = $em->getRepository('MyAdminBundle:UserCours')
+                                ->findBy(array('cours' => $data['cours']))
+              ;
+            
+            return $this->render('PagesBundle:PagesMain:search.html.twig', array(
+                'listUserCours'     => $listUserCours,
+                'form'              => $form->createView(),
+                'message'           => $message
+            ));
         }
         
         // Default redirection
