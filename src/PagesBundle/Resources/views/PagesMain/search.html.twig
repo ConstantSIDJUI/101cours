@@ -52,21 +52,14 @@
         <div class="container">
             
             <div class="theformdonner">
-                <form action="" method="post">
-                    
-                    <select  class="searchin" name="Niveau">
-                        <option value="volvo">5eme</option>
-                        <option value="saab">Saab</option>
-                        <option value="fiat">Fiat</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select class="searchin" name="Matiere">
-                        <option value="volvo">Math</option>
-                        <option value="saab">Science</option>
-                        <option value="fiat">Français</option>
-                        <option value="audi">Englais</option>
-                    </select>
-                    <input style="background:#fff;width: 30%;" type="text" placeholder="Ville" name="Ville"  class="villeres inputdonner" />
+                <form action="{{ path("pages_result-search") }}" method="post">
+                    <div style="display: none;">
+                        {{ form_widget(form.cities) }}
+                    </div>
+                    {{ form_widget(form.level, { 'attr': {'class': 'searchin'} }) }}
+                    {{ form_widget(form.cours, { 'attr': {'class': 'searchin'} }) }}
+                    {{ form_widget(form.search_cityCours, { 'attr': {'class': 'villeres inputdonner', 'style': 'background:#fff;width: 30%;'} }) }}
+                    {{ form_rest(form) }}
                     <button style="width: 60px;" class="donnersearch"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
             </div>

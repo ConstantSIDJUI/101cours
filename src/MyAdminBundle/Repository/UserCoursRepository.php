@@ -12,4 +12,31 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserCoursRepository extends EntityRepository
 {
+    /**
+     * Get number of signed lease
+     * @return number integer of signed lease
+     * @access public
+     * @version 1.0
+     * @Author Constant SIDJUI
+     * @copyright ©100Cours 2017.
+     */
+    public function getCoursSearch($data){
+        
+        // Build query builder
+    	$qb = $this->createQueryBuilder('l')
+                   ->select('l')
+                   ->join('l.cours', 'c')
+                   ->where('c = :cours')
+                   ->andWhere('c.cities = :city')
+                   ->andWhere('c.level = :level')
+                   ->setParameter('city', $data['cities'])
+                   ->setParameter('level', $data['level'])
+                   ->setParameter('cours', $data['cours']);
+        
+        // Get query
+        $query = $qb->getQuery();
+    	
+    	// Return results
+        return $query->getResult();
+    }
 }

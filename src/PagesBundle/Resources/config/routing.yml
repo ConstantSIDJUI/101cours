@@ -10,8 +10,8 @@ pages_homepage:
     defaults: { _controller: PagesBundle:PagesMain:index }
 
 pages_result-search:
-    path:     /recherche.html
-    methods: [POST]
+    path:     /recherche
+    methods: [GET|POST]
     defaults: { _controller: PagesBundle:PagesMain:resultSearch }
 
 

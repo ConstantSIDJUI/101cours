@@ -88,13 +88,13 @@ class PagesMainController extends Controller
             $data = $form->getData();
             
             // Create form search
-            $form = $this->createForm(new SearchCityType(), null, array('em' => $this->getDoctrine()->getManager()));
+            //$form = $this->createForm(new SearchCityType(), null, array('em' => $this->getDoctrine()->getManager()));
 
             // Check message publish
             $message = $request->query->get('message');
             
             $listUserCours = $em->getRepository('MyAdminBundle:UserCours')
-                                ->findBy(array('cours' => $data['cours']))
+                                ->getCoursSearch($data)
               ;
             
             return $this->render('PagesBundle:PagesMain:search.html.twig', array(
