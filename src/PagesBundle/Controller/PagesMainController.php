@@ -73,26 +73,35 @@ class PagesMainController extends Controller
      * @copyright © 2017.
      */
     public function resultSearchAction(Request $request){
-    var_dump($request);
-    die();
-    	if($request->isXmlHttpRequest()){
-            $keyCity = $request->request->get('city');
-            // Get city parameter
-            if(!empty($keyCity)){ // Keyword != NULL
-                // Get city by key
-                $cities = $this->getDoctrine()
-                               ->getManager()
-                               ->getRepository('MyAdminBundle:City')
-                               ->getAjaxSearch($keyCity);
-                
-                // Build json response
-                $response = new Response();
-                $response->headers->set('Content-Type', 'application/json');
-                // Set content of response
-                $response->setContent(json_encode($cities));
-                
-                return $response;
-            }
-    	}
+         // Get manager
+        $em = $this->getDoctrine()
+                   ->getManager();
+        
+        // Create form and hydrate
+        $form = $this->createForm(new SearchCityType(), null, array('em' => $em));
+        
+        // Handler
+        $form->handleRequest($request);
+        
+        if($form->isValid()){
+            // Get data of form
+            $data = $form->getData();
+            
+            
+            var_dump($data);
+            die();
+
+            // Load service for search routing
+            //$SearchRouting = $this->container->get('Immojeune_Advert.searchQuery');
+
+            // Get route
+            //$route = $SearchRouting->getRoute($data);
+
+            // Redirect
+            return $this->redirect($route);
+        }
+        
+        // Default redirection
+        return $this->redirectToRoute('pages_homepage');
     }  
 }

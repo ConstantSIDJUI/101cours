@@ -28,7 +28,7 @@
                     });
                 },
                 select: function(event, ui){
-                    $('myadminbundle_searchcity_cities').val(ui.item.id);
+                    $('#myadminbundle_searchcity_cities').val(ui.item.id);
                 }
             }).data('ui-autocomplete')._renderItem = function(ul, item){
                 return $('<li>').append('<a style="text-transform: capitalize;">' + item.name + ' (' + item.postalCode + ')' + '</a>').appendTo(ul);
