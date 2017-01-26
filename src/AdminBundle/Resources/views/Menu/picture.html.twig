@@ -1,0 +1,39 @@
+{% extends 'AdminBundle::Layout.html.twig' %}
+
+{% block js %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} 
+{% endblock %}
+
+{% block body %}   
+
+<div class="admin-laeba">
+          <div class="admin-title">Validation du Photo</div>
+            <div class="cin-left">
+               <img src="https://www.whitehouse.gov/sites/whitehouse.gov/files/images/twitter_cards_potus.jpg" />
+            </div>
+            <div class="cin-right">
+              <img src="http://i.skyrock.net/7544/53207544/pics/2766935890_1.jpg" />
+              <div class="button-cin">
+                <form action="" method="POST">
+                  <select class="selectwhy" name="">
+                    <option >Pourquoi la photo n'est pas confirme</option>
+                    <option value="">Parceque c'est l'option numero 1</option>
+                    <option value="">Parceque c'est l'option numero 2</option>
+                  </select>
+                <button class="yes yesorno">Oui</button>
+                <button class="no yesorno">Non</button>
+                </form>
+              </div>
+            </div>
+
+            <button class="suivant">Suivant <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+
+
+        </div>
+
+    
+ {% endblock %}   

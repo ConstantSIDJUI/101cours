@@ -78,7 +78,7 @@ fos_user:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [PagesBundle]
+    bundles:        [PagesBundle, AdminBundle]
     filters:
         cssrewrite: ~
         closure:

@@ -18,13 +18,17 @@
                 filter='cssrewrite, ?yui_css' %}
             <link type="text/css" rel="stylesheet" media="screen" href="{{ asset_url }}" />
             <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
             {% endstylesheets %}
         {% endblock %}
         
         <meta name="description" content="{% block description %}{% endblock %}" />
         <meta name="keywords" content="{% block keywords %}{% endblock %}" />
         <meta name=viewport content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+        <script src="https://use.fontawesome.com/0499449a83.js"></script>
     </head>
+    {% block body %}   
     <body>
         {{ render(controller('UserBundle:Security:loginModal')) }}
         <div class="all-wrapper">
@@ -248,4 +252,5 @@
     </script>
 {% endblock %}
 </body>
+{% endblock %}
 </html>
