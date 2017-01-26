@@ -9,8 +9,9 @@
             <span style="    font-size: 23px;padding: 20px;float: left;width: 100%;text-align: center;">Se connecter:</span>
             <div class="inscform">
                 <form action="{{ path("fos_user_security_check") }}" method="POST">
-                    <input type="email" placeholder="Email" class="email-in inscin" name="_username" value="{{ last_username }}" required="required"/>
-                    <input type="password" placeholder="Mot de passe" class="mdp-in inscin" required="required" name="_password" />
+                   <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <input type="text" id="username" placeholder="Username" class="email-in inscin" name="_username" value="{{ last_username }}" required="required"/>
+                    <input type="password" id="password" placeholder="Mot de passe" class="mdp-in inscin" required="required" name="_password" />
                     <a href="{{ path('fos_user_resetting_request') }}" class="aa">Mot de passe oublié</a>
                     <div class="hmfm">
                         <label for="remember_me" class="control control--checkbox">Se souvenir de moi
@@ -18,7 +19,8 @@
                             <div style="float:left;top:1px;" class="kapcheck control__indicator"></div>
                         </label>
                     </div>
-                    <button class="conbut">Connexion</button>
+                    {#<button class="conbut">Connexion</button>#}
+                    <input type="submit" class="conbut" id="_submit" name="_submit" value="Connexion" />
                 </form>
                 <div class="pasencore">
                     <span class="pasencoretxt">Pas encore membre ?</span>

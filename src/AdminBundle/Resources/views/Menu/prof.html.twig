@@ -1,0 +1,69 @@
+{% extends 'AdminBundle::Layout.html.twig' %}
+
+{% block js %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} 
+{% endblock %}
+
+{% block body %}   
+
+<div class="admin-laeba">
+          <div class="admin-title">Validation du Professeurs certifiés</div>
+            <div class="cin-left">
+               <img src="http://www.zeblog.com/blog/uploads/n/nomad/attestation_eric.jpg" />
+            </div>
+            <div class="cin-right">
+              <table class="cint table table-striped">
+  <tr>
+<td>Numero Cin </td>
+<td>IA354152</td>
+  </tr>
+  <tr>
+<td>Nom </td>
+<td>Kherrati</td>
+  </tr>
+  <tr>
+<td>Prenom </td>
+<td>Yazid</td>
+  </tr>
+  <tr>
+<td>Genre </td>
+<td>Homme</td>
+<tr>
+<td>Anniversaire </td>
+<td>30/07/1999</td>
+</tr>
+<tr>
+<td>Niveau </td>
+<td>Bacaleureat</td>
+</tr>
+<tr>
+<td>Discpline </td>
+<td>Lorem ipsum</td>
+</tr>
+  </tr>
+</table>
+<div class="button-cin">
+  <form action="" method="POST">
+    <select class="selectwhy" name="">
+      <option >Pourquoi le certificat n'est pas valide</option>
+      <option value="">Parceque c'est l'option numero 1</option>
+      <option value="">Parceque c'est l'option numero 2</option>
+    </select>
+  <button class="yes yesorno">Oui</button>
+  <button class="no yesorno">Non</button>
+  </form>
+</div>
+            </div>
+
+            <button class="suivant">Suivant <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+
+
+        </div>
+
+
+    
+ {% endblock %}   
