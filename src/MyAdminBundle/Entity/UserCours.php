@@ -48,13 +48,6 @@ class UserCours
      * @ORM\Column(name="tea", type="integer", nullable=true)
      */
     protected $tea;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="subject_matter", type="string", nullable=true, length=255)
-     */
-    protected $subjectMatter;
 
     /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
@@ -215,28 +208,5 @@ class UserCours
     public function getTea()
     {
         return $this->tea;
-    }
-
-    /**
-     * Set subjectMatter
-     *
-     * @param string $subjectMatter
-     * @return UserCours
-     */
-    public function setSubjectMatter($subjectMatter)
-    {
-        $this->subjectMatter = $subjectMatter;
-
-        return $this;
-    }
-
-    /**
-     * Get subjectMatter
-     *
-     * @return string 
-     */
-    public function getSubjectMatter()
-    {
-        return $this->subjectMatter;
     }
 }

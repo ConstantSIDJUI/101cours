@@ -143,7 +143,9 @@
                 {% for listUserCour in listUserCours %}
                     <div class="wahd">
                         <div class="left-wahd">
-                            <div class="user-pdp"><img src="{{ asset('bundles/pages/img/yaz.jpg') }}" /></div>
+                            <a  href="{{ path('pages_result_search', { 'id' : listUserCour.id }) }}">
+                                <div class="user-pdp"><img src="{{ asset('bundles/pages/img/yaz.jpg') }}" /></div>
+                            </a>
                             <div class="rating">
                                 <fieldset class="rating">
                                     <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
@@ -160,27 +162,29 @@
                             </div>
                             <div style="margin-bottom: 0px;" class="friendsfb"><i class="fbfriendsicon fa fa-users" aria-hidden="true"></i> 300 amis sur facebook</div>
                         </div>
-                        <div class="lfoginfos">
-                            <div class="wstinfos">
-                                <span style="font-size:23px;"><b>{{ listUserCour.user.lastname }} {{ listUserCour.user.firstname }}</b> <span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i></span></span><br />
-                                {% set age = 'now'|date('Y') -  listUserCour.user.birthDate|date('Y') %}
-                                {% set jour = 'now'|date('d - m -Y') -  listUserCour.createdDate|date('d - m -Y') %}
-                                <span>{{ age }} ans</span><br />
-                                <span>Ville : {{ listUserCour.user.city.name }}</span><br />
-                                <span>{{ listUserCour.user.status }}</span><br />
-                                <span>Matiéres métrisés : {{ listUserCour.subjectMatter }}</span><br />
-                                <span>Lieu de travail :  {% if listUserCour.home > 0 %}<img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/home.png') }}" />{% endif %} {% if listUserCour.coffe > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/coffe.png') }}" />{% endif %} {% if listUserCour.tea > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/tea.png') }}" />{% endif %}</span>
+                        <a  href="{{ path('pages_result_search', { 'id' : listUserCour.id }) }}">
+                            <div class="lfoginfos">
+                                <div class="wstinfos">
+                                    <span style="font-size:23px;"><b>{{ listUserCour.user.lastname }} {{ listUserCour.user.firstname }}</b> <span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i></span></span><br />
+                                    {% set age = 'now'|date('Y') -  listUserCour.user.birthDate|date('Y') %}
+                                    {% set jour = 'now'|date('d - m -Y') -  listUserCour.createdDate|date('d - m -Y') %}
+                                    <span>{{ age }} ans</span><br />
+                                    <span>Ville : {{ listUserCour.user.city.name }}</span><br />
+                                    <span>{{ listUserCour.user.status }}</span><br />
+                                    <span>Matiéres métrisés : {{ listUserCour.user.profil.subjectMatter }}</span><br />
+                                    <span>Lieu de travail :  {% if listUserCour.home > 0 %}<img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/home.png') }}" />{% endif %} {% if listUserCour.coffe > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/coffe.png') }}" />{% endif %} {% if listUserCour.tea > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/tea.png') }}" />{% endif %}</span>
+                                </div>
+                                <div class="rightinfos ">
+                                    <div class="ofre1">20DH/h <span class="swy3">10H</span></div>
+                                    <div class="ofre2">18DH/h <span class="swy32">10H</span></div>
+                                    <div class="ofre2">14DH/h <span class="swy32">10H</span></div>
+                                </div>
+                                <span class="datedepub">Offre publié depuis {{jour}} jour{% if jour > 1 %}s{% endif %}</span>
                             </div>
-                            <div class="rightinfos ">
-                                <div class="ofre1">20DH/h <span class="swy3">10H</span></div>
-                                <div class="ofre2">18DH/h <span class="swy32">10H</span></div>
-                                <div class="ofre2">14DH/h <span class="swy32">10H</span></div>
-                            </div>
-                            <span class="datedepub">Offre publié depuis {{jour}} jour{% if jour > 1 %}s{% endif %}</span>
-                        </div>
-                        <div class="lthtinfos">
+                            <div class="lthtinfos">
 
-                        </div>
+                            </div>
+                        </a>
                     </div>
                 {% else %}
                         Aucun cours

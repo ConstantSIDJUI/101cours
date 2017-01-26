@@ -14,6 +14,13 @@ pages_result-search:
     methods: [GET|POST]
     defaults: { _controller: PagesBundle:PagesMain:resultSearch }
 
+pages_result_search:
+    path:     /offre/{id}
+    methods: [GET|POST]
+    defaults: { _controller: PagesBundle:PagesMain:resultOffre }
+    requirements:
+        id: \d+
+
 
 # Routing AJAX SEARCH CITY
 pages_ajax_searchajaxcities:

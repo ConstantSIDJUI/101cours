@@ -155,6 +155,11 @@ class User extends BaseUser
      * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\City", cascade={"all"}, inversedBy="user")
      */
     private $city;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Profil", cascade={"all"}, inversedBy="user")
+     */
+    private $profil;
 
    public function __construct()
    {
@@ -584,5 +589,28 @@ class User extends BaseUser
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set profil
+     *
+     * @param \UserBundle\Entity\Profil $profil
+     * @return User
+     */
+    public function setProfil(\UserBundle\Entity\Profil $profil = null)
+    {
+        $this->profil = $profil;
+
+        return $this;
+    }
+
+    /**
+     * Get profil
+     *
+     * @return \UserBundle\Entity\Profil 
+     */
+    public function getProfil()
+    {
+        return $this->profil;
     }
 }

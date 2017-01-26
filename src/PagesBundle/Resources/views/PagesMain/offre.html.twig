@@ -1,0 +1,200 @@
+{% extends '::base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".dkshiihbt").hide();
+            $(".hbtsearch").click(function(){
+                $('.hbtsearch').addClass("hbtsearch22");
+                $(".dkshiihbt").toggle();
+            });
+            
+            $('#myadminbundle_searchcity_search_cityCours').autocomplete({
+                minLength: 2,
+                messages: {
+                    noResults: '',
+                    results: function() {}
+                },
+                source : function(requete, reponse){
+                    $.ajax({
+                        type: "POST",
+                        url : "{{ path('pages_ajax_searchajaxcities') }}",
+                        dataType : 'json',
+                        data : 'city=' + requete['term'],
+                        maxRows : 10,
+                        success : function(data){
+                            reponse($.map(data, function(objet){
+                                objet['label'] = objet['name'] + ' (' + objet['postalCode'] + ')';
+                                return objet;
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui){
+                    $('#myadminbundle_searchcity_cities').val(ui.item.id);
+                }
+            }).data('ui-autocomplete')._renderItem = function(ul, item){
+                return $('<li>').append('<a style="text-transform: capitalize;">' + item.name + ' (' + item.postalCode + ')' + '</a>').appendTo(ul);
+            };
+        });
+    </script>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="autre-wrapper">
+        <div class="container">
+            <div class="loffre"><i style="cursor:pointer;float:left;background: #28b6de;padding: 20px;color: #fff;" class="fa fa-chevron-left" aria-hidden="true"></i> Cours de {{ userCours.cours.libelle }} pour {{ userCours.cours.level.libelle }} à {{ userCours.cours.cities.name }}</div>
+            <div class="profil-left-side">
+                
+                <div class="user-infos">
+                    <div class="user-pdp"><img src="{{ asset('bundles/pages/img/yaz.jpg') }}" /></div>
+                    <div class="rating">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>
+                    </div>
+                    <div class="friendsfb"><i class="fbfriendsicon fa fa-users" aria-hidden="true"></i> 300 amis sur facebook</div>
+                    <div class="verifyinfos">
+                        <div class="cin"><i class="fa fa-address-card" aria-hidden="true"></i> <span>CIN</span> {% if userCours.user.cinVerifed > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                        <div class="cin"><i class="fa fa-envelope" aria-hidden="true"></i> <span>Email</span> {% if userCours.user.emailVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                        <div class="cin"><i class="fa fa-linkedin-square" aria-hidden="true"></i> <span>Linkedin</span> {% if userCours.user.linkedinVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                        <div class="cin"><i class="fa fa-facebook-official" aria-hidden="true"></i> <span>Facebook</span> {% if userCours.user.facebookVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                    </div>
+                </div>
+                
+                <div class="activitewrapper">
+                    <span><b>Activité</b></span><br />
+                    <span>Annonces publiées : 100</span>
+                    <span>Conexion : 17/0/</span>
+                    <span>Inscription : {{ userCours.user.dateCreated|date('d - m -Y') }}</span>
+                    <span>Heureus enseignées : 200</span>
+                </div>
+                <div class="socialusers">
+                    <span><a class="fb" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
+                    <span><a class="tw" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></span>
+                    <span><a class="eml" href=""><i class="fa fa-envelope" aria-hidden="true"></i></a></span>
+                </div>
+            </div>
+            <div class="profil-center-side">
+                <div class="usermaa">
+                    {% set age = 'now'|date('Y') -  userCours.user.birthDate|date('Y') %}
+                    {% set jour = 'now'|date('d - m -Y') -  userCours.createdDate|date('d - m -Y') %}
+                    <span style="font-size:23px;"><b>{{ userCours.user.lastname }} {{ userCours.user.firstname }}</b> <span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i></span></span><br />
+                    <span>{{ age }} ans</span><br />
+                    <span>Ville : {{ userCours.user.city.name }}</span><br />
+                    <span>{{ userCours.user.status }}</span><br />
+                    <span>Matiéres métrisés : {{ userCours.user.profil.subjectMatter }}</span><br />
+                    <span>Lieu de cours : {% if userCours.home > 0 %}<img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/home.png') }}" />{% endif %} {% if userCours.coffe > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/coffe.png') }}" />{% endif %} {% if userCours.tea > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/tea.png') }}" />{% endif %}</span>
+                </div>
+                <div class="exp-wrap">
+                    <div class="exper"><i class="expiconbg"></i> <b style="font-size:23px;">Experience</b></div>
+                    <h4>{{ userCours.user.profil.experience }}</h4>
+                    {#<h5>101kapital.ma</h5>
+                    <h5>Novembre 2016 - Aujourd'hui (2 mois)</h5>#}
+                    <br />
+                    <div class="exper"><i class="formaiconbg"></i> <b style="font-size:23px;">Formation</b></div>
+                    <h4>{{ userCours.user.profil.training }}</h4>
+                    {#<h5>Wordpress and front end developer</h5>
+                    <h5>2015 - 2016</h5>#}
+                </div>
+                
+                <div class="commentaires">
+                    <div class="histo">Historique des demandes</div>
+                    <div class="row-com">
+                        <div class="com-left">
+                            <span><img src="images/yaz.jpg" /></span>
+                            <span class="smyalicom">Yazid Kh</span>
+                        </div>
+                        <div class="com-right">
+                            <span> <i class="tbien fa fa-circle" aria-hidden="true"></i> Tres bien</span>
+                            <div class="thecom">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row-com">
+                        <div class="com-left">
+                            <span><img src="{{ asset('bundles/pages/img/yaz.jpg') }}" /></span>
+                            <span class="smyalicom">Yazid Kh</span>
+                        </div>
+                        <div class="com-right">
+                            <span> <i class="parfait fa fa-circle" aria-hidden="true"></i> Parfait</span>
+                            <div class="thecom">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut .
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="profil-right-side">
+                <div class="packs">
+                    <span class="packt">Choisissez votre pack</span>
+                    <form action="" method="post">
+                        <div class="packrow">
+                            <span class="huwa">
+                                <label  class="control control--checkbox">30dh pour 10dh/h
+                                    <input class="radio" type="radio" />
+                                </label>
+                            </span>
+                            <span class="packprix">
+                                450DH
+                            </span>
+                        </div>
+                        
+                        <div class="packrow">
+                            <span class="huwa">
+                                <label  class="control control--checkbox">20dh pour 20dh/h
+                                    <input class="radio" type="radio" />
+                                </label>
+                            </span>
+                            <span class="packprix">
+                                400DH
+                            </span>
+                        </div>
+                        
+                        <div class="packrow">
+                            <span class="huwa">
+                                <label class="control control--checkbox">10h pour 25dh/h
+                                    <input class="radio" type="radio" />
+                                </label>
+                            </span>
+                            <span class="packprix">
+                                250DH
+                            </span>
+                        </div>
+                        
+                        <div class="offreconditions">
+                            <label class="control control--checkbox"><span  class="accreg" style="">J'accepte les conditions générales d'utulisations, et cértifié avoir +18ans</span>
+                                <input type="checkbox" />
+                                <div style="float:left;top:1px;" class="control__indicator kapcheck"></div>
+                            </label>
+                        </div>
+                        
+                        <button class="envoyerdemande">Envoyer une demande</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <!-- end of les pages -->
+{% endblock %}

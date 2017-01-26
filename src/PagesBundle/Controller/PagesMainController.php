@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use UserBundle\Entity\User;
 use MyAdminBundle\Form\Type\SearchCityType;
+use MyAdminBundle\Entity\UserCours;
 
 class PagesMainController extends Controller 
 {
@@ -106,5 +107,20 @@ class PagesMainController extends Controller
         
         // Default redirection
         return $this->redirectToRoute('pages_homepage');
-    }  
+    }
+    
+    /**
+     * 
+     * @param Lease $userCours
+     * @param Request $request
+     * @return type
+     * @throws type
+     * @author Constant SIDJUI
+     * @copyright ©101Cours 2017.
+     */
+    public function resultOffreAction(UserCours $userCours, Request $request){
+        return $this->render('PagesBundle:PagesMain:offre.html.twig', array(
+            'userCours'  => $userCours
+        ));
+    }
 }
