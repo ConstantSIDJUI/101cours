@@ -1,0 +1,22 @@
+{% extends 'MonBailPagesBundle::layout_content.html.twig' %}
+{% block js %}
+    {{ parent() }}
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.js"></script>
+    <script type="text/javascript">
+    </script>
+{% endblock %}
+    
+{% block box_content %}
+    {{ tinymce_init() }}
+    <h1>Mes informations</h1>
+    <div id="main_content">
+    {% include "MonBailUserBundle:Resetting:reset_content.html.twig" %}
+</div>
+{% endblock %}
+{% block box_nav %}
+    {% include 'MonBailPagesBundle:Partials:nav_member.html.twig' %}
+{% endblock %}
+
+

@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+</script>
+{% endblock %}
+{% block content %}
+    {% include "UserBundle:Resetting:request_content.html.twig" %}
+{% endblock %}
+
+
