@@ -18,6 +18,10 @@ security:
                check_path: /login_check
                login_path: /login
                provider: fos_userbundle
+               always_use_default_target_path: false
+               default_target_path:            /my_admin/tableau-de-bord.html
+               target_path_parameter:          _target_path
+               use_referer:                    false
            logout:
                 path:       fos_user_security_logout
                 target: /

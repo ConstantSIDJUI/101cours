@@ -1,0 +1,7 @@
+# Import routing ADMIN
+    
+# Routing MAIN
+my_admin:
+    path:     /tableau-de-bord.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:dashboard }

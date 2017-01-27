@@ -5,9 +5,7 @@ namespace MyAdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use MyAdminBundle\Form\Type\SearchCityType;
-
-class PagesSearchController extends Controller
+class MyAdminController extends Controller
 {
     /**
      * Generate and display the home page
@@ -17,16 +15,13 @@ class PagesSearchController extends Controller
      * @author Constant SIDJUI
      * @copyright © 2016-2017.
      */
-    public function indexAction(Request $request){
-        // Create form search
-        $form = $this->createForm(new SearchCityType(), null, array('em' => $this->getDoctrine()->getManager()));
+    public function dashboardAction(Request $request){
         
-        // Check message publish
-        $message = $request->query->get('message');
+        return $this->render('MyAdminBundle:dashboard:dashboard.html.twig');
         
-        return $this->render('MyAdminBundle:PagesMain:search.html.twig', array(
+       /* return $this->render('MyAdminBundle:PagesMain:search.html.twig', array(
             'form'      => $form->createView(),
             'message'   => $message
-        ));
+        ));*/
     }
 }
