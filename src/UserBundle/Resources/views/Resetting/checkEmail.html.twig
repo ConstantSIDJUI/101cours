@@ -1,9 +1,16 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends '::base.html.twig' %}
 
-{% trans_default_domain 'FOSUserBundle' %}
-
-{% block fos_user_content %}
-<p>
-{{ 'resetting.check_email'|trans({'%email%': email}) }}
-</p>
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+    <div class="autre-wrapper">
+        <div class="renawrap">
+            <div class="alert alert-success" role="alert">
+                {#{ 'resetting.check_email'|trans({'%email%': email}) }#}
+                <img src="{{ asset('bundles/pages/img/message.png') }}" /><br />
+                Nous vous avons envoyé un e-mail contenant un lien pour que vous puissiez réanitialiser votre mot de passe</div>
+        </div>
+    </div>
 {% endblock %}

@@ -24,7 +24,7 @@ class User extends BaseUser
     /**
      * @var date
      * 
-     * @ORM\Column(name="date_created", type="datetime")
+     * @ORM\Column(name="date_created", type="datetime", nullable=true)
      */
     protected $dateCreated;
     
