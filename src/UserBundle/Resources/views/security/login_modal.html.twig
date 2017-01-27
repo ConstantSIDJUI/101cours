@@ -3,19 +3,19 @@
     <div class="wow bounceIn wstpopupcon">
         <div class="conlfogin">
             <form action="{{ path("fos_user_security_check") }}" method="post">
-                <input type="text" class="email-in popupconin" name="_username" value="{{ last_username }}" placeholder="Adresse email" required="required" />
+                <input type="email" class="email-in popupconin" name="_username" value="{{ last_username }}" placeholder="Adresse email" required="required" />
                 <input type="password" class="mdp-in popupconin" name="_password" placeholder="Mot de passe" required="required" />
                 <label for="remember_me" class="control control--checkbox">Se souvenir de moi
                     <input checked="checked" type="checkbox" id="remember_me" name="_remember_me" value="on" />
                     <div style="float:left;top:1px;" class="kapcheck control__indicator"></div>
                 </label>
                 <a href="{{ path('fos_user_resetting_request') }}" style="float:right;color:#66a4bb;">Mot de passe oublié</a>
-                <button type="submit" class="conbut">Connexion</button>
+                <button class="conbut">Connexion</button>
             </form>
         </div>
         <div class="pasencore">
             <span class="pasencoretxt">Pas encore membre ?</span>
-            <button type="submit" class="inscriverbtn">Inscrivez-vous gratuitement</button>
+            <button class="inscriverbtn">Inscrivez-vous gratuitement</button>
             <span class="lthtinsktba">Inscrivez-vous gratuitement et accédez à toutes les fonctionnalités de 101cours.ma</span>
         </div>
     </div>
