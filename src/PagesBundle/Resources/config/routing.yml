@@ -21,6 +21,11 @@ pages_result_search:
     requirements:
         id: \d+
 
+pages_help:
+    path:     /comment-ca-marche.html
+    methods: [GET]
+    defaults: { _controller: PagesBundle:PagesMain:help }
+
 
 # Routing AJAX SEARCH CITY
 pages_ajax_searchajaxcities:

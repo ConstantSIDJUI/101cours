@@ -123,4 +123,16 @@ class PagesMainController extends Controller
             'userCours'  => $userCours
         ));
     }
+    
+    /**
+     * Generate help page
+     * @return Render Display the help page
+     * @access public
+     * @version 1.0
+     * @author Constant SIDJUI
+     * @copyright © 2017.
+     */
+    public function helpAction(Request $request){
+        return $this->render('PagesBundle:PagesMain:help.html.twig');
+    }
 }

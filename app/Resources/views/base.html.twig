@@ -57,7 +57,7 @@
                         </div>
                     {% else %}
                         <div class="loginp">
-                            Comment ça marche ?
+                            <a href="{{ path('pages_help') }}">Comment ça marche ? </a>
                             <a href="{{path('fos_user_registration_register')}}"><button class="sincrire">S’inscrire</button></a>
                             <button id="mybtnconnecter" class="seconecter">Se connecter</button>
                         </div>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="footernav">
                         <ul>
-                            <li><a href="#">Comment ça marche ? </a></li>
+                            <li><a href="{{ path('pages_help') }}">Comment ça marche ? </a></li>
                             <li><a href="#">Conditions générale</a></li>
                             <li><a href="#">Conseils</a></li>
                             <li><a href="#">Sécurité</a></li>
