@@ -70,12 +70,13 @@ doctrine:
     #spool:     { type: memory }
     
 swiftmailer:
-    transport: mail
+    transport: smtp
     auth_mode:  login
-    host: auth.smtp.1and1.fr
-    port: 587
-    username:  101cour@anouarismail.com
-    password:  101cours@101cours  
+    host: ssl0.ovh.net
+    encryption: ssl
+    port: 465
+    username:  101cours@101kapital.com
+    password:  faq5y&RAC5!t  
 
 # FosUserBundle Configuration
 fos_user:
