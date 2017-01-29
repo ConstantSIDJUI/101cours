@@ -1,7 +1,16 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends '::base.html.twig' %}
 
-{% trans_default_domain 'FOSUserBundle' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+    <div class="autre-wrapper">
+        <div class="renawrap">
+            <div class="alert alert-success" role="alert">
+                <img src="{{ asset('bundles/pages/img/message.png') }}" /><br />
+                Nous vous avons envoyé un e-mail contenant un lien pour que vous puissiez activer votre compte</div>
+        </div>
+    </div>
+{% endblock %}
 
-{% block fos_user_content %}
-    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
-{% endblock fos_user_content %}

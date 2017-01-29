@@ -1,0 +1,143 @@
+ <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" role="form">
+    <table>
+        <tr>
+            <td><span style="    font-size: 23px;padding: 20px;float: left;width: 100%;text-align: center;">S'incrire pour:</span></td>
+        </tr>
+        <tr>
+            <td>
+                <button type=button class="recevoir">
+                    {{ form_widget(form.status[0]) }}
+                    {{ form_label(form.status[0]) }}
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="our">Ou</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type=button class="donner">
+                    {{ form_widget(form.status[1]) }}
+                    {{ form_label(form.status[1]) }}
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="message error">{{ form_errors(form.status) }}</div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                {{ form_widget(form.username) }}
+                {{ form_widget(form.lastname) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="message error">{{ form_errors(form.username) }}</div>
+                <div class="message error">{{ form_errors(form.lastname) }}</div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="field">
+                    {{ form_widget(form.email) }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="message error">{{ form_errors(form.email) }}</div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="field">
+                    {{ form_widget(form.password) }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="message error">{{ form_errors(form.password) }}</div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="field">
+                    {{ form_widget(form.plainPassword) }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="message error">{{ form_errors(form.plainPassword) }}</div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <span style="    float: left;width: 100%;text-align: left;padding-bottom: 10px;"><b>Date de naissance</b></span>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div>
+                    {{ form_widget(form.birthDate) }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="message error">{{ form_errors(form.birthDate) }}</div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td> <a href="" class="aa">Pourquoi indiquer ma date de naissance ?</a> </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="hmfm">
+                    {{ form_widget(form.gender) }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="message error">{{ form_errors(form.gender) }}</div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="acc">
+                        <label class="control control--checkbox"><span class="accp">J'accepte les conditions générales d'utulisations, et cértifié avoir +18ans</span>
+                            <input type="checkbox" />
+                            <div class="gradientcheck control__indicator"></div>
+                        </label>
+                    </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               {{ form_rest(form) }}
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <button class="conbut" action="submit">Inscription</button>
+            </td>
+        </tr>
+    </table>
+</form>
