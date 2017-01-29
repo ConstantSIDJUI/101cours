@@ -62,14 +62,20 @@ doctrine:
         auto_mapping: true
 
 # Swiftmailer Configuration
+#swiftmailer:
+    #transport: %mailer_transport%
+    #host:      %mailer_host%
+    #username:  %mailer_user%
+    #password:  %mailer_password%
+    #spool:     { type: memory }
+    
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    port:      %mailer_port%
-    encryption: %mailer_encryption%
-    username:  %mailer_user%
-    password:  %mailer_password%
-    spool:     { type: memory }
+    transport: mail
+    auth_mode:  login
+    host: auth.smtp.1and1.fr
+    port: 587
+    username:  101cour@anouarismail.com
+    password:  101cours@101cours  
 
 # FosUserBundle Configuration
 fos_user:
@@ -77,13 +83,17 @@ fos_user:
     firewall_name: main
     user_class:    UserBundle\Entity\User
     from_email:
-        address: nepasrepondre@1001cours.com
-        sender_name: Immojeune
+        address: nepasrepondre@101cours.com
+        sender_name: 101Cours
     registration:
         form:
-            type: user_registration
+            type: user_inscription_form
         confirmation:
             enabled:    true
+            template: UserBundle:Registration:email.txt.twig
+            from_email:
+                address:        nepasrepondre@101cours.com
+                sender_name:    101Cours
     service:
         mailer: fos_user.mailer.twig_swift
 
