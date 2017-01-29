@@ -33,4 +33,3 @@ user_controller:
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
-

@@ -32,7 +32,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="phone_number", type="string", nullable=true, length=20)
-     * @Assert\NotBlank()
      */
     protected $phoneNumber;
     
@@ -40,7 +39,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", nullable=true, length=30)
-     * @Assert\NotBlank()
      */
     protected $firstname;
     

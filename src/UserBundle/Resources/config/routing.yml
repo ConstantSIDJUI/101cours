@@ -4,7 +4,6 @@ fos_user_security:
 
 fos_user_security_reset:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /connexion
 
 fos_user:
     resource: "@UserBundle/Resources/config/routing/all.xml"
