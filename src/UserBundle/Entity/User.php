@@ -158,6 +158,21 @@ class User extends BaseUser
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Profil", cascade={"all"}, inversedBy="user")
      */
     private $profil;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PagesBundle\Entity\Message", mappedBy="userSend", cascade={"all"})
+     */
+    private $messageSend;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PagesBundle\Entity\Message", mappedBy="userReceive", cascade={"all"})
+     */
+    private $messageReceive;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PagesBundle\Entity\Notification", mappedBy="user", cascade={"all"})
+     */
+    private $notification;
 
    public function __construct()
    {
@@ -610,5 +625,104 @@ class User extends BaseUser
     public function getProfil()
     {
         return $this->profil;
+    }
+
+    /**
+     * Add messageSend
+     *
+     * @param \PagesBundle\Entity\Message $messageSend
+     * @return User
+     */
+    public function addMessageSend(\PagesBundle\Entity\Message $messageSend)
+    {
+        $this->messageSend[] = $messageSend;
+
+        return $this;
+    }
+
+    /**
+     * Remove messageSend
+     *
+     * @param \PagesBundle\Entity\Message $messageSend
+     */
+    public function removeMessageSend(\PagesBundle\Entity\Message $messageSend)
+    {
+        $this->messageSend->removeElement($messageSend);
+    }
+
+    /**
+     * Get messageSend
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessageSend()
+    {
+        return $this->messageSend;
+    }
+
+    /**
+     * Add messageReceive
+     *
+     * @param \PagesBundle\Entity\Message $messageReceive
+     * @return User
+     */
+    public function addMessageReceive(\PagesBundle\Entity\Message $messageReceive)
+    {
+        $this->messageReceive[] = $messageReceive;
+
+        return $this;
+    }
+
+    /**
+     * Remove messageReceive
+     *
+     * @param \PagesBundle\Entity\Message $messageReceive
+     */
+    public function removeMessageReceive(\PagesBundle\Entity\Message $messageReceive)
+    {
+        $this->messageReceive->removeElement($messageReceive);
+    }
+
+    /**
+     * Get messageReceive
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessageReceive()
+    {
+        return $this->messageReceive;
+    }
+
+    /**
+     * Add notification
+     *
+     * @param \PagesBundle\Entity\Notification $notification
+     * @return User
+     */
+    public function addNotification(\PagesBundle\Entity\Notification $notification)
+    {
+        $this->notification[] = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Remove notification
+     *
+     * @param \PagesBundle\Entity\Notification $notification
+     */
+    public function removeNotification(\PagesBundle\Entity\Notification $notification)
+    {
+        $this->notification->removeElement($notification);
+    }
+
+    /**
+     * Get notification
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
     }
 }
