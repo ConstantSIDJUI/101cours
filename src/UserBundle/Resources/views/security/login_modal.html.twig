@@ -3,7 +3,7 @@
     <div class="wow bounceIn wstpopupcon">
         <div class="conlfogin">
             <form action="{{ path("fos_user_security_check") }}" method="post">
-                <input type="text" class="email-in popupconin" name="_username" value="{{ last_username }}" placeholder="Adresse email" required="required" />
+                <input type="email" class="email-in popupconin" name="_username" value="{{ last_username }}" placeholder="Adresse email" required="required" />
                 <input type="password" class="mdp-in popupconin" name="_password" placeholder="Mot de passe" required="required" />
                 <label for="remember_me" class="control control--checkbox">Se souvenir de moi
                     <input checked="checked" type="checkbox" id="remember_me" name="_remember_me" value="on" />
