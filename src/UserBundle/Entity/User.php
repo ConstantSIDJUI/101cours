@@ -176,9 +176,20 @@ class User extends BaseUser
 
    public function __construct()
    {
-       parent::__construct();
-       // your own logic
+        parent::__construct();
+        
+        // Set default value
+        $this->dateCreated  = new \DateTime(null, new \DateTimeZone('Europe/Paris'));
    }
+
+    /**
+     * 
+     * @param type $email
+     */
+    public function setEmail($email){
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
 
     /**
      * Add cours

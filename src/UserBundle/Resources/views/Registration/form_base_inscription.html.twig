@@ -1,4 +1,4 @@
- <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" role="form">
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" role="form">
     <table>
         <tr>
             <td><span style="    font-size: 23px;padding: 20px;float: left;width: 100%;text-align: center;">S'incrire pour:</span></td>
@@ -32,13 +32,13 @@
         
         <tr>
             <td>
-                {{ form_widget(form.username) }}
+                {{ form_widget(form.firstname) }}
                 {{ form_widget(form.lastname) }}
             </td>
         </tr>
         <tr>
             <td>
-                <div class="message error">{{ form_errors(form.username) }}</div>
+                <div class="message error">{{ form_errors(form.firstname) }}</div>
                 <div class="message error">{{ form_errors(form.lastname) }}</div>
             </td>
         </tr>
@@ -106,7 +106,7 @@
                         <option value="November">November</option>
                         <option value="December">December</option>
                     </select>
-
+                    
                     <select class="  inscan" name="DOBDay">
                         <option> Jours </option>
                         <option value="1">1</option>
@@ -140,8 +140,8 @@
                         <option value="29">29</option>
                         <option value="30">30</option>
                         <option value="31">31</option>
-                   </select>
-
+                    </select>
+                    
                     <select class=" inscan" name="DOBYear">
                         <option> Année </option>
                         <option value="1993">2015</option>
@@ -191,15 +191,15 @@
                         <option value="1949">1949</option>
                         <option value="1948">1948</option>
                         <option value="1947">1947</option>
-                   </select>
+                    </select>
                 </div>
             </td>
         </tr>
-        <tr>
+        {#<tr>
             <td>
                 <div class="message error">{{ form_errors(form.birthDate) }}</div>
             </td>
-        </tr>
+        </tr>#}
         
         <tr>
             <td> <a href="" class="aa">Pourquoi indiquer ma date de naissance ?</a> </td>
@@ -217,20 +217,19 @@
                 <div class="message error">{{ form_errors(form.gender) }}</div>
             </td>
         </tr>
-        
         <tr>
             <td>
                 <div class="acc">
-                        <label class="control control--checkbox"><span class="accp">J'accepte les conditions générales d'utulisations, et cértifié avoir +18ans</span>
-                            <input type="checkbox" />
-                            <div class="gradientcheck control__indicator"></div>
-                        </label>
-                    </div>
+                    <label class="control control--checkbox"><span class="accp">J'accepte les conditions générales d'utulisations, et cértifié avoir +18ans</span>
+                        <input type="checkbox" />
+                        <div class="gradientcheck control__indicator"></div>
+                    </label>
+                </div>
             </td>
         </tr>
         <tr>
             <td>
-               {{ form_rest(form) }}
+                {{ form_rest(form) }}
             </td>
         </tr>
         
