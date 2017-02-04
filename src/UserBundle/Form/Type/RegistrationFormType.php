@@ -103,7 +103,7 @@ class RegistrationFormType extends AbstractType
                      )
                 ))
                
-               ->add('username',   'text', array(
+               ->add('firstname',   'text', array(
                      'attr'  => array(
                          'label'         => false,
                          'class'         => 'prenom inscin',
@@ -133,17 +133,6 @@ class RegistrationFormType extends AbstractType
                         'class'         => 'mdp-in inscin',
                         'placeholder'   => 'Confirmer le mot de passe'
                     )
-                ))
-               
-                ->add('birthDate', 'date', array(
-                    'widget'            => 'single_text',
-                    'input'             => 'datetime',
-                    'required'          => false,
-                    'format'            => 'dd/MM/yyyy',
-                    'label'             => 'Date de naissance :',
-                    'attr'              => array(
-                    'class'             => 'field-input',
-                )
                 ))
                
                 ->add('gender','choice', array(
