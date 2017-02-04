@@ -5,3 +5,40 @@ my_admin:
     path:     /tableau-de-bord.html
     methods: [GET]
     defaults: { _controller: MyAdminBundle:MyAdmin:dashboard }
+    
+my_admin_infos_perso:
+    path:     /infos_personnelles.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:infosPerso }
+
+my_admin_infos_cin:
+    path:     /infos_cin.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:infosCin }       
+    
+my_admin_infos_picture:
+    path:     /infos_picture.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:infosPic }
+    
+my_admin_infos_prof:
+    path:     /infos_professeur.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:prof }
+    
+my_admin_infos_verification:
+    path:     /infos_verification.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:verif }    
+
+my_admin_infos_rib:
+    path:     /infos_identite_bancaire.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:rib }
+    
+my_admin_infos_compl:
+    path:     /infos_complementaires.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:infoComplementaire } 
+    
+    
