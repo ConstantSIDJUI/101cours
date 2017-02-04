@@ -35,7 +35,6 @@ class RegistrationFormType extends AbstractType
                 'expanded' => true
                 ))
                 
-               
                 ->add('lastname',   'text', array(
                      'attr'  => array(
                          'label'         => false,

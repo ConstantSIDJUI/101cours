@@ -35,7 +35,7 @@ class MyAdminController extends Controller
      */
     public function infosPersoAction(Request $request){
         
-        return $this->render('MyAdminBundle:dashboard:infos.html.twig');
+        return $this->render('MyAdminBundle:infos:infos.html.twig');
         
        /* return $this->render('MyAdminBundle:PagesMain:search.html.twig', array(
             'form'      => $form->createView(),
@@ -53,7 +53,7 @@ class MyAdminController extends Controller
      */
     public function infosCinAction(Request $request){
         
-        return $this->render('MyAdminBundle:dashboard:cin.html.twig');
+        return $this->render('MyAdminBundle:infos:cin.html.twig');
     }
     
     /**
@@ -66,7 +66,7 @@ class MyAdminController extends Controller
      */
     public function infosPicAction(Request $request){
         
-        return $this->render('MyAdminBundle:dashboard:picture.html.twig');
+        return $this->render('MyAdminBundle:infos:picture.html.twig');
     }
     
     /**
@@ -79,7 +79,7 @@ class MyAdminController extends Controller
      */
     public function profAction(Request $request){
         
-        return $this->render('MyAdminBundle:dashboard:prof.html.twig');
+        return $this->render('MyAdminBundle:infos:infos_prof.html.twig');
     }
     
     /**
@@ -92,7 +92,7 @@ class MyAdminController extends Controller
      */
     public function verifAction(Request $request){
         
-        return $this->render('MyAdminBundle:dashboard:verif.html.twig');
+        return $this->render('MyAdminBundle:infos:verif.html.twig');
     }
     
     /**
@@ -105,7 +105,7 @@ class MyAdminController extends Controller
      */
     public function ribAction(Request $request){
         
-        return $this->render('MyAdminBundle:dashboard:rib.html.twig');
+        return $this->render('MyAdminBundle:infos:rib.html.twig');
     }
     
     /**
@@ -118,7 +118,7 @@ class MyAdminController extends Controller
      */
     public function infoComplementaireAction(Request $request){
         
-        return $this->render('MyAdminBundle:dashboard:infos_complementaires.html.twig');
+        return $this->render('MyAdminBundle:infos:infos_complementaires.html.twig');
     }
     
 }
