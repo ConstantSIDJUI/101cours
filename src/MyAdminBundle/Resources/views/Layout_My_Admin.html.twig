@@ -102,35 +102,36 @@
     {% block content_my_admin %}
     <div class="autre-wrapper">
         <div class="container">
-            
-            <div class="cinm">
-                <div class="iconleft"><i class="fa fa-address-card" aria-hidden="true"></i></div>
-                <div class="cinktbalwst">
-                    <span style="font-size:17px;"><b>CIN Manquante </b><i class="fa fa-question-circle" aria-hidden="true"></i></span><br />
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+            {% if user.cin is empty %}
+                <div class="cinm">
+                    <div class="iconleft"><i class="fa fa-address-card" aria-hidden="true"></i></div>
+                    <div class="cinktbalwst">
+                        <span style="font-size:17px;"><b>CIN Manquante </b><i class="fa fa-question-circle" aria-hidden="true"></i></span><br />
+                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                    </div>
+                    <a href="{{ path('my_admin_infos_cin') }}">
+                        <button class="addcin">Ajouter CIN</button></a>
                 </div>
-                <a href="{{ path('my_admin_infos_cin') }}">
-                    <button class="addcin">Ajouter CIN</button></a>
-            </div>
+            {% endif %}
             <div class="left-side-back">
                 <div class="lesinfosback">
                     <div class="backpdp">
-                        <img src="{{ asset('bundles/pages/img/user_default.png') }}" />
+                        <img src="{% if user.avatar is not empty %}{{ asset('bundles/101cours/uploads/profil/' ~ user.avatar.name ~ '.' ~ user.avatar.extension) }}{% else %}{{ asset('bundles/pages/img/user_default.png') }}{% endif %}" />
                         <a href="{{ path('my_admin_infos_picture') }}"><div class="bdel">Ajouter une photo de profil</div></a>
                     </div>
-                    <span style="    font-size: 23px; " >{{ app.user.username }} {{ app.user.lastname }}</span><br /><br />
-                    <a href="">Voir le profil</a>
-                    <a href="">Modifier le profil</a>
+                    <span style="    font-size: 23px; " >{{ user.firstname }} {{ user.lastname }}</span><br /><br />
+                    <a href="{{ path('my_admin_infos_perso') }}">Voir le profil</a>
+                    <a href="{{ path('my_admin_infos_perso') }}">Modifier le profil</a>
                     <div class="verifications-box">
                         <div class="ver-title">
                             Vérification  <i class="fa fa-question-circle" aria-hidden="true"></i>
                         </div>
                         <div class="ver-row">
                             <div class="verifyinfos">
-                                <div class="cin"><i class="fa fa-address-card" aria-hidden="true"></i> <span>CIN</span> <span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span></div>
-                                <div class="cin"><i class="fa fa-envelope" aria-hidden="true"></i> <span>Email</span> <span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span></div>
-                                <div class="cin"><i class="fa fa-linkedin-square" aria-hidden="true"></i> <span>Linkedin</span> <span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span></div>
-                                <div class="cin"><i class="fa fa-facebook-official" aria-hidden="true"></i> <span>Facebook</span> <span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span></div>
+                                <div class="cin"><i class="fa fa-address-card" aria-hidden="true"></i> <span>CIN</span> {% if user.cinVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                                <div class="cin"><i class="fa fa-envelope" aria-hidden="true"></i> <span>Email</span> {% if user.emailVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                                <div class="cin"><i class="fa fa-linkedin-square" aria-hidden="true"></i> <span>Linkedin</span> {% if user.linkedinVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                                <div class="cin"><i class="fa fa-facebook-official" aria-hidden="true"></i> <span>Facebook</span> {% if user.facebookVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
                             </div>
                         </div>
                     </div>
@@ -139,7 +140,7 @@
             <div class="right-side-back">
                 <div style="margin:0px;" class="verifications-box">
                     <div  class="new-title">
-                        <i style="font-weight:bold;color:#1ebfe9;margin-right:5px;" class="fa fa-envelope-o" aria-hidden="true"></i> Nouveaux messages <span style="margin-left:5px;color:#1ebfe9;" >(2)</span>
+                        <i style="font-weight:bold;color:#1ebfe9;margin-right:5px;" class="fa fa-envelope-o" aria-hidden="true"></i> Nouveaux messages <span style="margin-left:5px;color:#1ebfe9;" >({{ messageNumber }})</span>
                     </div>
                     <div class="new-row">
                         <span>Notification 1 : Veullez ajouter votre CIN afin d'activer votre compte</span>

@@ -95,9 +95,9 @@ class User extends BaseUser
     /**
      * @var integer
      *
-     * @ORM\Column(name="cin_verifed", type="integer", nullable=true)
+     * @ORM\Column(name="cin_verified", type="integer", nullable=true)
      */
-    protected $cinVerifed;
+    protected $cinVerified;
     
     /**
      * @var integer
@@ -173,14 +173,19 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="PagesBundle\Entity\Notification", mappedBy="user", cascade={"all"})
      */
     private $notification;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Avatar", cascade={"all"})
+     */
+    protected $avatar;
 
-   public function __construct()
-   {
+    public function __construct()
+    {
         parent::__construct();
         
         // Set default value
         $this->dateCreated  = new \DateTime(null, new \DateTimeZone('Europe/Paris'));
-   }
+    }
 
     /**
      * 
@@ -455,26 +460,26 @@ class User extends BaseUser
     }
 
     /**
-     * Set cinVerifed
+     * Set cinVerified
      *
-     * @param integer $cinVerifed
+     * @param integer $cinVerified
      * @return User
      */
-    public function setCinVerifed($cinVerifed)
+    public function setCinVerified($cinVerified)
     {
-        $this->cinVerifed = $cinVerifed;
+        $this->cinVerified = $cinVerified;
 
         return $this;
     }
 
     /**
-     * Get cinVerifed
+     * Get cinVerified
      *
      * @return integer 
      */
-    public function getCinVerifed()
+    public function getCinVerified()
     {
-        return $this->cinVerifed;
+        return $this->cinVerified;
     }
 
     /**
@@ -735,5 +740,28 @@ class User extends BaseUser
     public function getNotification()
     {
         return $this->notification;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param \UserBundle\Entity\Avatar $avatar
+     * @return User
+     */
+    public function setAvatar(\UserBundle\Entity\Avatar $avatar = null)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return \UserBundle\Entity\Avatar 
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 }

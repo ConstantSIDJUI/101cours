@@ -16,8 +16,23 @@ class MyAdminController extends Controller
      * @copyright © 2016-2017.
      */
     public function dashboardAction(Request $request){
+        $user = $this->getUser();
         
-        return $this->render('MyAdminBundle:dashboard:dashboard.html.twig');
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        return $this->render('MyAdminBundle:dashboard:dashboard.html.twig', array(
+            'user'      => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages
+        ));
         
        /* return $this->render('MyAdminBundle:PagesMain:search.html.twig', array(
             'form'      => $form->createView(),
