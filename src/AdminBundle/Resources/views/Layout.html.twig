@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}Administartion - 101cours.com{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}
+            {% stylesheets 
+                'bundles/pages/css/bootstrap.min.css'
+                'bundles/pages/css/style.css'
+                'bundles/pages/css/add.css'
+                'bundles/pages/css/w3.css'
+                'bundles/pages/css/responsive.css'
+                'bundles/pages/css/animate.css'
+                'bundles/pages/css/style.css'
+                'bundles/pages/css/jquery-autocomplet.css'
+                filter='cssrewrite, ?yui_css' %}
+            <link type="text/css" rel="stylesheet" media="screen" href="{{ asset_url }}" />
+            <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+            {% endstylesheets %}
+        {% endblock %}
+        
+        <meta name="description" content="{% block description %}{% endblock %}" />
+        <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+        <script src="https://use.fontawesome.com/0499449a83.js"></script>
+    </head>  
+   <body style="background:#f1f1f1;">
+   <div class="all-backoffice">
+     <div class="left-office">
+       <div class="logo-office">
+       <div class="logooffice"> </div>
+       </div>
+       <div class="office-nav">
+          <ul>
+            <li><a href="{{ path('admin_pages_index') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
+            <li><a href="{{ path('admin_validate_cin') }}"><i class="fa fa-address-card" aria-hidden="true"></i> Validation CIN</a></li>
+            <li><a href="{{ path('admin_validate_pic') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> Validation photo</a></li>
+            <li><a href="{{ path('admin_validate_prof') }}"><i class="fa fa-users" aria-hidden="true"></i> Validation professeurs</a></li>
+            <li><a href="{{ path('admin_validate_expert') }}"><i class="fa fa-product-hunt" aria-hidden="true"></i> Validation exper pro</a></li>
+            <li><a href="{{ path('admin_validate_scolarite') }}"><i class="fa fa-university" aria-hidden="true"></i> Validation scolarité</a></li>
+          </ul>
+       </div>
+     </div>
+     <div class="right-office">
+
+        <div class="topright">
+           <div class="rightlaeba">
+               <ul>
+<li><a href="" ><i class="fa fa-user-circle" aria-hidden="true"></i> Admin</a></li>
+<li><a href="" ><i class="fa fa-cog" aria-hidden="true"></i> Paramétres</a></li>
+               </ul>
+           </div>
+        </div>
+         {% block body %}
+        <div class="admin-laeba">
+            <h2>User behavior</h2>
+            <p>24 hours performance</p>
+        </div>
+       {% endblock %}
+
+     </div>
+   </div>
+    {% block js %}
+    <script src={{ asset('bundles/pages/js/wow.js') }}></script>
+    <script>
+     new WOW().init();
+    </script>
+    <script src={{ asset('bundles/pages/js/bootstrap.min.js') }}></script>
+{% endblock %}
+  </body>
+</html>
+ 

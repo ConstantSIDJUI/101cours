@@ -936,7 +936,7 @@ float: left;
       }
       .loremrow {
         text-align: center;
-        float: left
+        float: left;
         width: 100%;
       }
       .pagerow {
@@ -1396,7 +1396,7 @@ overflow: hidden;
     margin-right: 8px;
 }
 .sincriremobile:hover {
-    background: #58a23e;
+    background: #58a23e;
     color: #fff;
 }
 .navmobile a {color: #fff;}

@@ -1,0 +1,29 @@
+admin_pages_index:
+    pattern:  /
+    methods: [GET]
+    defaults: { _controller: AdminBundle:Admin:index }
+    
+admin_validate_cin:
+    pattern:  /cinvalidate
+    methods: [GET]
+    defaults: { _controller: AdminBundle:Admin:cin }
+    
+admin_validate_pic:
+    pattern:  /picvalidate
+    methods: [GET]
+    defaults: { _controller: AdminBundle:Admin:pic }
+    
+admin_validate_prof:
+    pattern:  /profvalidate
+    methods: [GET]
+    defaults: { _controller: AdminBundle:Admin:prof } 
+
+admin_validate_expert:
+    pattern:  /expertvalidate
+    methods: [GET]
+    defaults: { _controller: AdminBundle:Admin:expert }
+    
+admin_validate_scolarite:
+    pattern:  /scolaritevalidate
+    methods: [GET]
+    defaults: { _controller: AdminBundle:Admin:scol }

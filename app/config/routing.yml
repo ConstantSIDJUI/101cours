@@ -1,22 +1,35 @@
-my_admin:
+my_admin_controller:
     resource: "@MyAdminBundle/Controller/"
     type:     annotation
     prefix:   /my_admin
+    
+my_admin:
+    resource: "@MyAdminBundle/Resources/config/routing.yml"
+    prefix:   /my_admin
 
-admin:
+admin_controller:
     resource: "@AdminBundle/Controller/"
     type:     annotation
     prefix:   /admin
     
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+pages_controller:
+    resource: "@PagesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    
 pages:
     resource: "@PagesBundle/Resources/config/routing.yml"
     prefix:   /
-
-user:
+   
+user_controller:
     resource: "@UserBundle/Controller/"
     type:     annotation
     prefix:   /user
-
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+    
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /

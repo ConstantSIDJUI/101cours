@@ -10,6 +10,30 @@ body {
   color: #555 !important;
   font-size: 16px !important;
 }
+
+.field-input{
+    position: relative;
+    display: block;
+    width: 70%;
+    height: 40px;
+    padding: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9em;
+    border: 1px solid #e6e9ed;
+    -webkit-appearance: none;
+    outline: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: black;
+    background: white;
+}
+
+#fos_user_registration_form_gender label{
+    margin-right: 24px;
+    padding-left: 8px;
+}
+
 .bjujum a {color:#fff;}
 .all-wrapper {
  width: 100%;
@@ -599,7 +623,7 @@ input[type=checkbox] {
   width: 20px;
   left: 4px;
   font-size: 14px;
-  color: #6fc252 !important:
+  color: #6fc252 !important;
   position: absolute;
 }
 label {
@@ -1270,6 +1294,14 @@ border-radius: 4px;
 border: 1px solid #d1d1d1;
 }
 
+.autre-wrapper .renawrap .inscform form table{
+    width: 100%;
+}
+
+.autre-wrapper .renawrap .inscform form table recevoir input{
+    display: none;
+}
+
 .qfeltoltip {
     font-size: 11px;
     position: absolute;
@@ -1299,7 +1331,6 @@ border: 1px solid #1ebfe8;
 .prenom {
   float: left;
 width: 49%;
-margin-right: 10px;
 }
 .nom {
   float: right;
@@ -1984,13 +2015,18 @@ width: 37%;
   color: #1ebfe9;
   font-size: 79px;
   border: 4px solid;
-  line-height: 2;
   height: 165px;
   margin: 0 auto;
   margin-bottom: 20px;
   width: 166px;
   text-align: center;
   border-radius: 10000px;
+}
+.cam img.avatar-img{
+    border-radius: 1000px;
+    width: 158px;
+    height: 158px;
+    position: relative;
 }
 .chose {
   background: #1ebfe9;

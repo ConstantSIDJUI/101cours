@@ -1,10 +1,29 @@
-# Import routing ADMIN
-#monbail_pages:
-#    resource: "@PagesBundle/Resources/config/admin.yml"
-#    prefix:   /admin
-    
 # Routing MAIN
 pages_homepage:
     path:     /
     methods: [GET]
     defaults: { _controller: PagesBundle:PagesMain:index }
+
+pages_result-search:
+    path:     /recherche
+    methods: [GET|POST]
+    defaults: { _controller: PagesBundle:PagesMain:resultSearch }
+
+pages_result_search:
+    path:     /offre/{id}
+    methods: [GET|POST]
+    defaults: { _controller: PagesBundle:PagesMain:resultOffre }
+    requirements:
+        id: \d+
+
+pages_help:
+    path:     /comment-ca-marche.html
+    methods: [GET]
+    defaults: { _controller: PagesBundle:PagesMain:help }
+
+
+# Routing AJAX SEARCH CITY
+pages_ajax_searchajaxcities:
+    path:     /search-cities
+    methods: [POST]
+    defaults: { _controller: PagesBundle:PagesMain:searchAjaxCities }

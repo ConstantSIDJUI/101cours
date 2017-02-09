@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function(){
+            $('.field-checkbox input, .field-radio input').addClass('field-input');
+            
+            $('#fos_user_registration_form_birthDate').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange:'0:+80',
+                minDate: "-45y",
+                maxDate: "+y",
+                altField: "#fos_user_registration_form_birthDate",
+                closeText: 'Fermer',
+                prevText: 'Précédent',
+                nextText: 'Suivant',
+                currentText: 'Aujourd\'hui',
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                monthNamesShort: ['Janv', 'Févr', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim.', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                weekHeader: 'Sem.',
+                dateFormat : 'dd/mm/yy'
+            });
+        });
+    </script>
+</script>
+{% endblock %}
+{% block content %}
+    <div class="autre-wrapper">
+        <div style="margin-bottom:0px !important;" class="renawrap">
+            <div class="inscform">
+               {{ include('UserBundle:Registration:form_base_inscription.html.twig') }}
+            </div>
+        </div>
+    </div>
+    {#% include "FOSUserBundle:Registration:register_content.html.twig" %#}
+{% endblock content %}

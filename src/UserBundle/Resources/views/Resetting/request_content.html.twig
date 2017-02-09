@@ -1,0 +1,16 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="autre-wrapper">
+    <div class="renawrap">
+        <span style="    font-size: 23px;padding: 20px;float: left;width: 100%;text-align: center;">Mot de passe oublié</span>
+        <span class="rena1">Pour réinitialiser votre mot de passe veuillez saisir votre adresse mail et valider.  </span>
+        <div class="renaform">
+            <form action="{{ path('fos_user_resetting_send_email') }}" method="Post" class="fos_user_resetting_request">
+                <input type="email" id="username" name="username" required="required" class="email-in popupconin " placeholder="Adresse email"/>
+                {% if invalid_username is defined %}
+                    {{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}
+                {% endif %}
+                <button class="conbut">Envoyer</button>
+            </form>
+        </div>
+    </div>
+</div>

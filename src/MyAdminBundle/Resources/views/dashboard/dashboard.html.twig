@@ -1,0 +1,51 @@
+{% extends 'MyAdminBundle::Layout_My_Admin.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".dkshiihbt").hide();
+            $(".hbtsearch").click(function(){
+                $('.hbtsearch').addClass("hbtsearch22");
+                $(".dkshiihbt").toggle();
+            });
+            
+            $('#myadminbundle_searchcity_search_cityCours').autocomplete({
+                minLength: 2,
+                messages: {
+                    noResults: '',
+                    results: function() {}
+                },
+                source : function(requete, reponse){
+                    $.ajax({
+                        type: "POST",
+                        url : "{{ path('pages_ajax_searchajaxcities') }}",
+                        dataType : 'json',
+                        data : 'city=' + requete['term'],
+                        maxRows : 10,
+                        success : function(data){
+                            reponse($.map(data, function(objet){
+                                objet['label'] = objet['name'] + ' (' + objet['postalCode'] + ')';
+                                return objet;
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui){
+                    $('#myadminbundle_searchcity_cities').val(ui.item.id);
+                }
+            }).data('ui-autocomplete')._renderItem = function(ul, item){
+                return $('<li>').append('<a style="text-transform: capitalize;">' + item.name + ' (' + item.postalCode + ')' + '</a>').appendTo(ul);
+            };
+        });
+    </script>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+{% block menu_my_admin %}
+{{ parent() }}
+{% endblock %}

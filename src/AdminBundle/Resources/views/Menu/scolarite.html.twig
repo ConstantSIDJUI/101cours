@@ -1,0 +1,75 @@
+{% extends 'AdminBundle::Layout.html.twig' %}
+
+{% block js %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} 
+{% endblock %}
+
+{% block body %}   
+ <div class="admin-laeba">
+          <div class="admin-title">Validation de experience professionel</div>
+            <div class="cin-left">
+               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtdOPI1H-_WaqmDhuyUkuY1XnNt4uhP-xPEnvZnqD6opPoYQeQnA" />
+            </div>
+            <div class="cin-right">
+              <table class="cint table table-striped">
+  <tr>
+<td>Numero Cin </td>
+<td>IA354152</td>
+  </tr>
+  <tr>
+<td>Nom </td>
+<td>Kherrati</td>
+  </tr>
+  <tr>
+<td>Prenom </td>
+<td>Yazid</td>
+  </tr>
+  <tr>
+<td>Genre </td>
+<td>Homme</td>
+<tr>
+<td>Anniversaire </td>
+<td>30/07/1999</td>
+</tr>
+<tr>
+<td>Ecole </td>
+<td>Ben abdoun</td>
+</tr>
+<tr>
+<td>Annés </td>
+<td>2000-2016</td>
+</tr>
+<tr>
+<td>Diplome </td>
+<td>Front end developer</td>
+</tr>
+<tr>
+<td>Discipline </td>
+<td>Lipsum is test</td>
+</tr>
+  </tr>
+</table>
+<div class="button-cin">
+  <form action="" method="POST">
+    <select class="selectwhy" name="">
+      <option >Pourquoi le certificat n'est pas valide</option>
+      <option value="">Parceque c'est l'option numero 1</option>
+      <option value="">Parceque c'est l'option numero 2</option>
+    </select>
+  <button class="yes yesorno">Oui</button>
+  <button class="no yesorno">Non</button>
+  </form>
+</div>
+            </div>
+
+            <button class="suivant">Suivant <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+
+
+        </div>
+
+    
+ {% endblock %}   
