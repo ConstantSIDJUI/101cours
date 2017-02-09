@@ -55,9 +55,9 @@
                 <ul>
                     <li><a class="active" href="{{ path('my_admin') }}">Tableau de bord</a></li>
                     <li class="dropdown">
-                        <a href="{{ path('my_admin_infos_perso') }}" class="dropbtn">Profil</a>
+                        <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}" class="dropbtn">Profil</a>
                         <div class="dropdown-content">
-                          <a href="{{ path('my_admin_infos_perso') }}">Informations Personelles</a>
+                          <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}">Informations Personelles</a>
                           <a href="{{ path('my_admin_infos_cin') }}">CIN</a>
                           <a href="{{ path('my_admin_infos_picture') }}">Photo</a>
                           <a href="{{ path('my_admin_infos_rib') }}">Identité bancaire</a>
@@ -120,8 +120,8 @@
                         <a href="{{ path('my_admin_infos_picture') }}"><div class="bdel">Ajouter une photo de profil</div></a>
                     </div>
                     <span style="    font-size: 23px; " >{{ user.firstname }} {{ user.lastname }}</span><br /><br />
-                    <a href="{{ path('my_admin_infos_perso') }}">Voir le profil</a>
-                    <a href="{{ path('my_admin_infos_perso') }}">Modifier le profil</a>
+                    <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}">Voir le profil</a>
+                    <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}">Modifier le profil</a>
                     <div class="verifications-box">
                         <div class="ver-title">
                             Vérification  <i class="fa fa-question-circle" aria-hidden="true"></i>

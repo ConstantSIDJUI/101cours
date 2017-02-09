@@ -7,12 +7,14 @@ my_admin:
     defaults: { _controller: MyAdminBundle:MyAdmin:dashboard }
     
 my_admin_infos_perso:
-    path:     /infos_personnelles.html
-    methods: [GET]
+    path:     /infos-personnelles/{id}
+    methods: [GET|POST]
     defaults: { _controller: MyAdminBundle:MyAdmin:infosPerso }
+    requirements:
+        id: \d+
 
 my_admin_infos_cin:
-    path:     /infos_cin.html
+    path:     /infos-cin.html
     methods: [GET]
     defaults: { _controller: MyAdminBundle:MyAdmin:infosCin }       
     

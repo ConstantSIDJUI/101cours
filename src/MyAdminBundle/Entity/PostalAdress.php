@@ -35,12 +35,6 @@ class PostalAdress
      * @ORM\Column(name="complement", type="string", length=255, nullable=true)
      */
     private $complement;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\City", inversedBy="postaladress", cascade={"persist"}))
-     * @ORM\JoinColumn(onDelete="CASCADE", nullable=true)
-     */
-    private $city;
 
 
     /**
@@ -97,28 +91,5 @@ class PostalAdress
     public function getComplement()
     {
         return $this->complement;
-    }
-
-    /**
-     * Set city
-     *
-     * @param \MyAdminBundle\Entity\City $city
-     * @return PostalAdress
-     */
-    public function setCity(\MyAdminBundle\Entity\City $city = null)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return \MyAdminBundle\Entity\City 
-     */
-    public function getCity()
-    {
-        return $this->city;
     }
 }
