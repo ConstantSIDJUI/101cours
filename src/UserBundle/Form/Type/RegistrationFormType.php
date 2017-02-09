@@ -134,19 +134,6 @@ class RegistrationFormType extends AbstractType
                         'placeholder'   => 'Confirmer le mot de passe'
                     )
                 ))
-               
-                ->add('gender','choice', array(
-                    'choices' => array(
-                        '1'         => 'Homme',
-                        '2' => 'Femme'
-                    ),
-                    'label'         => false,
-                    'required'    => false,
-                    'empty_value' => false,
-                    'empty_data'  => null,
-                    'multiple' => false,
-                    'expanded' => true
-                ))
             ;
     }
     

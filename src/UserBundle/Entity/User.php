@@ -135,19 +135,16 @@ class User extends BaseUser
     protected $birthDate;
     
     /**
-     * @ORM\OneToMany(targetEntity="MonBail\PagesBundle\Entity\Message", mappedBy="user", cascade={"persist"})
-     *
-    private $messages;*/
-    
-    /**
-     * @ORM\OneToMany(targetEntity="MonBail\PagesBundle\Entity\Message", mappedBy="user", cascade={"persist"})
-     *
-    private $avatar;*/
-    
-    /**
      * @ORM\OneToMany(targetEntity="MyAdminBundle\Entity\Cours", mappedBy="user", cascade={"all"})
      */
     private $cours;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="confirm_condition", type="boolean", nullable=true)
+     */
+    protected $confirmCondition;
     
     /**
      * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\City", cascade={"all"}, inversedBy="user")
@@ -178,6 +175,11 @@ class User extends BaseUser
      * @ORM\OneToOne(targetEntity="UserBundle\Entity\Avatar", cascade={"all"})
      */
     protected $avatar;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\PostalAdress", cascade={"all"})
+     */
+    private $postalAdress;
 
     public function __construct()
     {
@@ -763,5 +765,51 @@ class User extends BaseUser
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Set confirmCondition
+     *
+     * @param integer $confirmCondition
+     * @return User
+     */
+    public function setConfirmCondition($confirmCondition)
+    {
+        $this->confirmCondition = $confirmCondition;
+
+        return $this;
+    }
+
+    /**
+     * Get confirmCondition
+     *
+     * @return integer 
+     */
+    public function getConfirmCondition()
+    {
+        return $this->confirmCondition;
+    }
+
+    /**
+     * Set postalAdress
+     *
+     * @param \MyAdminBundle\Entity\PostalAdress $postalAdress
+     * @return User
+     */
+    public function setPostalAdress(\MyAdminBundle\Entity\PostalAdress $postalAdress = null)
+    {
+        $this->postalAdress = $postalAdress;
+
+        return $this;
+    }
+
+    /**
+     * Get postalAdress
+     *
+     * @return \MyAdminBundle\Entity\PostalAdress 
+     */
+    public function getPostalAdress()
+    {
+        return $this->postalAdress;
     }
 }

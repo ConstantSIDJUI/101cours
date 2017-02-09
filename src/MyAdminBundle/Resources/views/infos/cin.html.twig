@@ -13,7 +13,7 @@
 <div class="autre-wrapper">
     <div class="container">
         <div class="left-side-back">
-            <a href="{{ path('my_admin_infos_perso') }}"><p><b>Information personelles</b></p></a>
+            <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}"><p><b>Information personelles</b></p></a>
             <a href="{{ path('my_admin_infos_cin') }}"><p>Cin</p></a>
             <a href="{{ path('my_admin_infos_picture') }}"><p>Photo</p></a>
             <a href="{{ path('my_admin_infos_prof') }}"><p><b>Professeur</b></p></a>

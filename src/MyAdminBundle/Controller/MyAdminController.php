@@ -4,6 +4,8 @@ namespace MyAdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use UserBundle\Entity\User;
+use UserBundle\Form\Type\UserProfileType;
 
 class MyAdminController extends Controller
 {
@@ -29,7 +31,7 @@ class MyAdminController extends Controller
         $messageNumber  = count($messages);
         
         return $this->render('MyAdminBundle:dashboard:dashboard.html.twig', array(
-            'user'      => $user,
+            'user'              => $user,
             'messageNumber'     => $messageNumber,
             '$messages'         => $messages
         ));
@@ -45,17 +47,44 @@ class MyAdminController extends Controller
      * @return Render Display the home page
      * @access public
      * @version 1.0
-     * @author Anouar ISMAIL
+     * @author Constant SIDJUI
      * @copyright © 2016-2017.
      */
-    public function infosPersoAction(Request $request){
+    public function infosPersoAction(User $user, Request $request){
         
-        return $this->render('MyAdminBundle:infos:infos.html.twig');
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
         
-       /* return $this->render('MyAdminBundle:PagesMain:search.html.twig', array(
-            'form'      => $form->createView(),
-            'message'   => $message
-        ));*/
+        // Create form search
+        $form = $this->createForm(new UserProfileType(), $user, array('em' => $em));
+        
+        // Get message user
+        $messages   = $em->getRepository('PagesBundle:Message')
+                         ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        // Handler
+        $form->handleRequest($request);
+        //var_dump($form->isValid());
+        //die();
+        if($form->isValid()){ 
+            // Persist and commit
+            $em->persist($user);
+            $em->flush();
+            
+            // Flash message and redirection
+            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été édité avec succès.');
+            return $this->redirect($this->generateUrl('my_admin'));
+        }
+        
+       return $this->render('MyAdminBundle:infos:infos.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages,
+            'form'              => $form->createView()
+        ));
     }
     
     /**
