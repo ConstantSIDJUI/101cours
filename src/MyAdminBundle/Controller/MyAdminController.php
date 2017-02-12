@@ -12,6 +12,7 @@ use MyAdminBundle\Form\Type\CinType;
 use UserBundle\Form\Type\AvatarType;
 use UserBundle\Form\Type\UserAvatarType;
 use UserBundle\Form\Type\UserRibType;
+use UserBundle\Form\Type\UserCinType;
 
 class MyAdminController extends Controller
 {
@@ -105,13 +106,8 @@ class MyAdminController extends Controller
         // Get manager
         $em = $this->getDoctrine()->getManager();
         
-        if(!empty($user->getCin()))
-            $cin = $user->getCin();
-        else
-            $cin = new Cin();
-        
         // Create form info cin
-        $form = $this->createForm(new UserProfileType(), $cin, array('em' => $em));
+        $form = $this->createForm(new UserCinType(), $user, array('em' => $em));
         
         // Get message user
         $messages   = $em->getRepository('PagesBundle:Message')
@@ -124,19 +120,28 @@ class MyAdminController extends Controller
         $form->handleRequest($request);
         
         if($form->isValid()){ 
-            var_dump($cin);
-            //die();
-            // Persist and commit
-            $em->persist($cin);
-            $em->flush();
             
-            $user->setCin($cin);
-            $em->persist($user);
-            $em->flush();
-            
-            // Flash message and redirection
-            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été édité avec succès.');
-            return $this->redirect($this->generateUrl('my_admin'));
+            if($user->getCin()->getNumberCin() == $user->getCin()->getNumberCinConfirm()){
+                // Set RootDir
+                $user->getCin()->getCinAttachement()->setRootDir($this->get('kernel')->getRootDir());
+                
+                var_dump($user->getCin());
+                die();
+                // Persist and commit
+                $em->persist($user);
+                $em->flush();
+
+                // Flash message and redirection
+                $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été édité avec succès.');
+                return $this->redirect($this->generateUrl('my_admin'));
+            }else{
+                return $this->render('MyAdminBundle:infos:cin.html.twig', array(
+                    'user'              => $user,
+                    'messageNumber'     => $messageNumber,
+                    '$messages'         => $messages,
+                    'form'              => $form->createView()
+                ));
+            }
         }
         
         return $this->render('MyAdminBundle:infos:cin.html.twig', array(
@@ -248,7 +253,6 @@ class MyAdminController extends Controller
         
         if($form->isValid()){ 
             if($user->getRib()->getNumberRib() == $user->getRib()->getNumberRibConfirm()){
-
                 // Persist and commit
                 $em->persist($user);
                 $em->flush();

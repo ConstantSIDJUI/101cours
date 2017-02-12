@@ -151,8 +151,7 @@ class User extends BaseUser
     private $notification;
     
     /**
-     * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\Cin", cascade={"all"}, inversedBy="user")
-     * @ORM\JoinColumn(name="cin_id", referencedColumnName="id", nullable=true)
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\Cin", cascade={"all"})
      */
     private $cin;
     

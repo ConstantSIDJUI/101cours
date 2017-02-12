@@ -61,12 +61,6 @@ class Cin
      */
     protected $cinAttachement;
     
-    
-    /**
-     * @ORM\OneToMany(targetEntity="UserBundle\Entity\User", mappedBy="cin", cascade={"all"})
-     */
-    private $user;
-    
     /**
      * Constructor
      */
@@ -221,38 +215,5 @@ class Cin
     public function getConfirmCondition()
     {
         return $this->confirmCondition;
-    }
-
-    /**
-     * Add user
-     *
-     * @param \UserBundle\Entity\User $user
-     * @return Cin
-     */
-    public function addUser(\UserBundle\Entity\User $user)
-    {
-        $this->user[] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Remove user
-     *
-     * @param \UserBundle\Entity\User $user
-     */
-    public function removeUser(\UserBundle\Entity\User $user)
-    {
-        $this->user->removeElement($user);
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }

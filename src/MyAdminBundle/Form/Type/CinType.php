@@ -33,7 +33,7 @@ class CinType extends AbstractType
                  ),    
                 'required'    => true
             ))
-            ->add('cinAttachement', new CinAttachementType())
+            ->add('cinAttachement', new CinAttachementType(), array('em' => $entityManager))
             ->add('confirmCondition',  'checkbox', array(
                 'label'         => 'J\'accepte les conditions générales d\'utulisations, et cértifié avoir +18ans',
                 'required'      => true,
@@ -47,7 +47,8 @@ class CinType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MyAdminBundle\Entity\Cin'
+            'data_class' => 'MyAdminBundle\Entity\Cin',
+            'cascade_validation'    => true
         ));
         
         $resolver->setRequired(array(
