@@ -15,6 +15,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use MyAdminBundle\Form\Type\AvatarType;
+
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -134,6 +136,11 @@ class RegistrationFormType extends AbstractType
                         'placeholder'   => 'Confirmer le mot de passe'
                     )
                 ))
+            ->add('confirmCondition',  'checkbox', array(
+                'label'         => 'J\'accepte les conditions générales d\'utulisations, et cértifié avoir +18ans',
+                'required'      => true,
+            )) 
+            //->add('avatar', new AvatarType())
             ;
     }
     

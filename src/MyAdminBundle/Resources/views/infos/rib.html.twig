@@ -11,46 +11,45 @@
 
 {% block content_my_admin %}
     <div class="autre-wrapper">
-     <div class="container">
-
-
-
-      <div class="left-side-back">
-        <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}"><p><b>Information personelles</b></p></a>
-        <a href="{{ path('my_admin_infos_cin') }}"><p>Cin</p></a>
-        <a href="{{ path('my_admin_infos_picture') }}"><p>Photo</p></a>
-        <a href="{{ path('my_admin_infos_prof') }}"><p><b>Professeur</b></p></a>
-        <a href="{{ path('my_admin_infos_verification') }}"><p><b>Verifications</b></p></a>
-        <a href="{{ path('my_admin_infos_rib') }}"><p><b>Identité bancaire</b></p></a>
-        <a href="{{ path('my_admin_infos_compl') }}"><p><b>Informations complémentaires</b></p></a>
-</div>
- <div class="right-side-back">
- <div class="right-side-backc2">
-<div class="histo">Historique des demandes</div>
-   <table class="tablekap" style="width:100%">
-    <tr>
-      <td class="cinox"  style="width:30%;">RIB (Compte au maroc) <span style="color: #fd8e95;margin-right:10px;float:right;" class="w3-tooltip"><i class="fa fa-lock" aria-hidden="true"></i><span  class="qfeltoltip w3-text w3-tag">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></span></td>
-      <td class="cinox" ><input type="text" class="tableinput" /></td>
-    </tr>
-    <tr>
-      <td class="cinox"  style="width:30%;">Confirmer le RIB <span style="color: #fd8e95;margin-right:10px;float:right;" class="w3-tooltip"><i class="fa fa-lock" aria-hidden="true"></i><span  class="qfeltoltip w3-text w3-tag">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></span></td>
-      <td class="cinox" ><input type="text" class="tableinput" /></td>
-    </tr>
-    <tr>
-
-      <td style="width:30%;"> </td>
-      <td ><span class="par">les informations n'est partagée qu'une fois que vous avez confirmer une réservation avec un autre membre </span></td>
-          </tr>
-
-
-   </table>
-
-   <div class="condwr">
-     <button class="publierc2">S'inscrire</button>
-   </div>
-
-</div>
-</div>
- </div>
- </div>
+        <div class="container">
+            
+            
+            
+            <div class="left-side-back">
+                <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}"><p><b>Information personelles</b></p></a>
+                <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}"><p>Cin</p></a>
+                <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}"><p>Photo</p></a>
+                <a href="{{ path('my_admin_infos_prof') }}"><p><b>Professeur</b></p></a>
+                <a href="{{ path('my_admin_infos_verification') }}"><p><b>Verifications</b></p></a>
+                <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}"><p><b>Identité bancaire</b></p></a>
+                <a href="{{ path('my_admin_infos_compl') }}"><p><b>Informations complémentaires</b></p></a>
+            </div>
+            <div class="right-side-back">
+                <div class="right-side-backc2">
+                    <div class="histo">Historique des demandes</div>
+                    <form method="post" {{ form_enctype(form) }} action="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}">
+                        <table class="tablekap" style="width:100%">
+                            <tr>
+                                <td class="cinox"  style="width:30%;">{{ form_label(form.rib.numberRib) }}<span style="color: #fd8e95;margin-right:10px;float:right;" class="w3-tooltip"><i class="fa fa-lock" aria-hidden="true"></i><span  class="qfeltoltip w3-text w3-tag">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></span></td>
+                                <td class="cinox" >{{ form_widget(form.rib.numberRib) }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cinox"  style="width:30%;">{{ form_label(form.rib.numberRibConfirm) }}<span style="color: #fd8e95;margin-right:10px;float:right;" class="w3-tooltip"><i class="fa fa-lock" aria-hidden="true"></i><span  class="qfeltoltip w3-text w3-tag">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></span></td>
+                                <td class="cinox" >{{ form_widget(form.rib.numberRibConfirm) }}</td>
+                            </tr>
+                            <tr>
+                                
+                                <td style="width:30%;"> </td>
+                                <td ><span class="par">les informations n'est partagée qu'une fois que vous avez confirmer une réservation avec un autre membre </span></td>
+                            </tr>
+                        </table>
+                        <div class="condwr">
+                            <button class="publierc2">Valider</button>
+                        </div>
+                        {{ form_rest(form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -11,11 +11,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @ORM\Table(name="avatar")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\AvatarRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Avatar
 {
     /**
-     * @var int
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -31,23 +32,23 @@ class Avatar
     private $name;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateUpdate", type="datetimetz", nullable=true)
-     */
-    private $dateUpdate;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="extension", type="string", length=255, nullable=true)
      */
     private $extension;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateUpdate", type="datetime", nullable=true)
+     */
+    private $dateUpdate;
     
     /**
      * @Assert\File(
-     *     maxSize = "2M",
-     *     mimeTypes = {"image/jpeg", "image/gif", "image/png"},
+     *     maxSize = "5M",
+     *     mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/x-icon"},
      *     mimeTypesMessage = "Le fichier choisi ne correspond pas à un fichier valide",
      *     notFoundMessage = "Le fichier n'a pas été trouvé sur le disque",
      *     uploadErrorMessage = "Erreur dans l'upload du fichier"
@@ -62,33 +63,73 @@ class Avatar
     private $filenameForRemove;
     
     /**
-     * Temp extension for remove action
-     * @var string 
-     */
-    private $fileForRemoveExtension;
-    
-    /**
-     * Temp path for old extension
-     * @var string 
-     */
-    private $fileForOldExtension;
-    
-    /**
      * Temp path for old file
      * @var string 
      */
     private $filenameForOldFile;
     
     /**
-     * Constructor
+     * Temp name
+     * @var string
      */
-    public function __construct(){
-        // Set date update
-        $this->dateUpdate = new \DateTime();
-    }
+    private $tempName;
     
     /**
-     * get absolute path
+     * @var string
+     */
+    private $rootDir;
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload(){
+        if(null !== $this->file){
+            // Update action
+            if(null !== $this->name)
+                $this->filenameForOldFile = $this->getAbsolutePath();
+            
+            // Set extension and true name
+            $this->extension    = $this->file->guessExtension();
+            $this->name         = $this->tempName;
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload(){
+        if(null === $this->file)
+            return;
+
+        // Upload action
+        if($this->filenameForOldFile)
+            unlink($this->filenameForOldFile);
+        
+        // Move file (detect exception)
+        $this->file->move($this->getUploadRootDir(), $this->name.'.'.$this->extension);
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storeFilenameForRemove(){
+        $this->filenameForRemove = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload(){
+        if($this->filenameForRemove)
+            unlink($this->filenameForRemove);
+    }
+
+    /**
+     * Get absolute path
      * @return string
      */
     public function getAbsolutePath(){
@@ -100,7 +141,7 @@ class Avatar
      * @return string
      */
     protected function getUploadRootDir(){
-       return $this->rootDir.'/../web/'.$this->getUploadDir();
+        return $this->rootDir.'/../web/'.$this->getUploadDir();
     }
 
     /**
@@ -108,70 +149,67 @@ class Avatar
      * @return string
      */
     protected function getUploadDir(){
-        return 'bundles/101cours/uploads/profil';
+        return 'bundles/101cours/avatar';
     }
     
     /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
+     * Create slug
+     * @return string
      */
-    public function preUpload(){
-        if(null !== $this->file){
-            // Update action
-            if(null !== $this->name){
-                $this->filenameForOldFile   = $this->name;
-                $this->fileForOldExtension  = $this->extension;
-            }
-            
-            // Set extension and clean name
-            $this->extension = $this->file->guessExtension();
-            // Clean name
-            $this->name = sha1(uniqid(mt_rand(), true));
-        }
-    }
-    
-    /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
-    public function upload(){
-        if(null === $this->file)
-            return;
-
-        // Upload action
-        if($this->filenameForOldFile){
-            $folder = '/web/bundles/101cours/uploads/profil/';
-            @unlink($folder.$this->filenameForOldFile.'.'.$this->fileForOldExtension);
-        }
+    public function createSlug(){
+        $slug = $this->name;
         
-        // Move file (detect exception)
-        $this->file->move($this->getUploadRootDir(), $this->name.'.'.$this->extension);
-
-        unset($this->file);
+        // Transform title to create slug
+        setlocale(LC_ALL, 'fr_FR.UTF8'); // Very important !
+        
+	$slug = iconv('UTF-8', 'ASCII//TRANSLIT', $slug);
+	$slug = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $slug);
+	$slug = strtolower(trim($slug, '-'));
+	$slug = preg_replace("/[\/_|+ -]+/", '-', $slug);
+        
+        return $slug;
     }
     
     /**
-     * @ORM\PreRemove()
+     * Constructor
      */
-    public function storeFilenameForRemove(){
-        $this->filenameForRemove        = $this->name;
-        $this->fileForRemoveExtension   = $this->extension;
+    public function __construct(){
+        // Generate unique and random name
+        $this->tempName     = sha1(uniqid(mt_rand(), true));
+        
+        // Set date update
+        $this->dateUpdate  = new \DateTime;
     }
 
     /**
-     * @ORM\PostRemove()
+     * Sets file.
+     *
+     * @param UploadedFile $file
      */
-    public function removeUpload(){
-        if($this->filenameForRemove){            
-            $folder = '/web/bundles/101cours/uploads/profil/';
-            @unlink($folder.$this->filenameForRemove.'.'.$this->fileForRemoveExtension);
-        }
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+        
+        // Generate unique and random name
+        $this->tempName = sha1(uniqid(mt_rand(), true));
     }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -182,7 +220,8 @@ class Avatar
      * Set name
      *
      * @param string $name
-     * @return Avatar
+     *
+     * @return LeaseAttachment
      */
     public function setName($name)
     {
@@ -194,7 +233,7 @@ class Avatar
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -202,33 +241,11 @@ class Avatar
     }
 
     /**
-     * Set dateUpdate
-     *
-     * @param \DateTime $dateUpdate
-     * @return Avatar
-     */
-    public function setDateUpdate($dateUpdate)
-    {
-        $this->dateUpdate = $dateUpdate;
-
-        return $this;
-    }
-
-    /**
-     * Get dateUpdate
-     *
-     * @return \DateTime 
-     */
-    public function getDateUpdate()
-    {
-        return $this->dateUpdate;
-    }
-
-    /**
      * Set extension
      *
      * @param string $extension
-     * @return Avatar
+     *
+     * @return LeaseAttachment
      */
     public function setExtension($extension)
     {
@@ -240,10 +257,47 @@ class Avatar
     /**
      * Get extension
      *
-     * @return string 
+     * @return string
      */
     public function getExtension()
     {
         return $this->extension;
+    }
+
+    /**
+     * Set dateUpdate
+     *
+     * @param \DateTime $dateUpdate
+     *
+     * @return LeaseAttachment
+     */
+    public function setDateUpdate($dateUpdate)
+    {
+        $this->dateUpdate = $dateUpdate;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpdate
+     *
+     * @return \DateTime
+     */
+    public function getDateUpdate()
+    {
+        return $this->dateUpdate;
+    }
+    
+    /**
+     * Set rootDir
+     *
+     * @param string $rootDir
+     * @return Picture
+     */
+    public function setRootDir($rootDir)
+    {
+        $this->rootDir = $rootDir;
+
+        return $this;
     }
 }

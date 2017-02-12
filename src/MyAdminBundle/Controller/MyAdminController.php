@@ -4,8 +4,14 @@ namespace MyAdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
+use UserBundle\Entity\Avatar;
 use UserBundle\Entity\User;
 use UserBundle\Form\Type\UserProfileType;
+use MyAdminBundle\Form\Type\CinType;
+use UserBundle\Form\Type\AvatarType;
+use UserBundle\Form\Type\UserAvatarType;
+use UserBundle\Form\Type\UserRibType;
 
 class MyAdminController extends Controller
 {
@@ -55,7 +61,7 @@ class MyAdminController extends Controller
         // Get manager
         $em = $this->getDoctrine()->getManager();
         
-        // Create form search
+        // Create form infos user
         $form = $this->createForm(new UserProfileType(), $user, array('em' => $em));
         
         // Get message user
@@ -67,8 +73,7 @@ class MyAdminController extends Controller
         
         // Handler
         $form->handleRequest($request);
-        //var_dump($form->isValid());
-        //die();
+        
         if($form->isValid()){ 
             // Persist and commit
             $em->persist($user);
@@ -88,16 +93,58 @@ class MyAdminController extends Controller
     }
     
     /**
-     * Generate and display the home page
-     * @return Render Display the home page
+     * Generate and display the cin infos page
+     * @return Render Display the cni infos page
      * @access public
      * @version 1.0
      * @author Anouar ISMAIL
      * @copyright © 2016-2017.
      */
-    public function infosCinAction(Request $request){
+    public function infosCinAction(User $user, Request $request){
         
-        return $this->render('MyAdminBundle:infos:cin.html.twig');
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        if(!empty($user->getCin()))
+            $cin = $user->getCin();
+        else
+            $cin = new Cin();
+        
+        // Create form info cin
+        $form = $this->createForm(new UserProfileType(), $cin, array('em' => $em));
+        
+        // Get message user
+        $messages   = $em->getRepository('PagesBundle:Message')
+                         ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        // Handler
+        $form->handleRequest($request);
+        
+        if($form->isValid()){ 
+            var_dump($cin);
+            //die();
+            // Persist and commit
+            $em->persist($cin);
+            $em->flush();
+            
+            $user->setCin($cin);
+            $em->persist($user);
+            $em->flush();
+            
+            // Flash message and redirection
+            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été édité avec succès.');
+            return $this->redirect($this->generateUrl('my_admin'));
+        }
+        
+        return $this->render('MyAdminBundle:infos:cin.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages,
+            'form'              => $form->createView()
+        ));
     }
     
     /**
@@ -108,9 +155,43 @@ class MyAdminController extends Controller
      * @author Anouar ISMAIL
      * @copyright © 2016-2017.
      */
-    public function infosPicAction(Request $request){
+    public function infosPicAction(User $user, Request $request){
         
-        return $this->render('MyAdminBundle:infos:picture.html.twig');
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Create form info cin
+        $form = $this->createForm(new UserAvatarType(), $user, array('em' => $em));
+        
+        // Get message user
+        $messages   = $em->getRepository('PagesBundle:Message')
+                         ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        // Handler
+        $form->handleRequest($request);
+        
+        if($form->isValid()){ 
+            $user->getAvatar()->setRootDir($this->get('kernel')->getRootDir());
+            
+            // Persist and commit
+            $em->persist($user);
+            $em->flush();
+            
+            // Flash message and redirection
+            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été édité avec succès.');
+            return $this->redirect($this->generateUrl('my_admin'));
+        }
+        
+        
+        return $this->render('MyAdminBundle:infos:picture.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages,
+            'form'              => $form->createView()
+        ));
     }
     
     /**
@@ -147,9 +228,50 @@ class MyAdminController extends Controller
      * @author Anouar ISMAIL
      * @copyright © 2016-2017.
      */
-    public function ribAction(Request $request){
+    public function ribAction(User $user, Request $request){
         
-        return $this->render('MyAdminBundle:infos:rib.html.twig');
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Create form info cin
+        $form = $this->createForm(new UserRibType(), $user, array('em' => $em));
+        
+        // Get message user
+        $messages   = $em->getRepository('PagesBundle:Message')
+                         ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        // Handler
+        $form->handleRequest($request);
+        
+        if($form->isValid()){ 
+            if($user->getRib()->getNumberRib() == $user->getRib()->getNumberRibConfirm()){
+
+                // Persist and commit
+                $em->persist($user);
+                $em->flush();
+
+                // Flash message and redirection
+                $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été édité avec succès.');
+                return $this->redirect($this->generateUrl('my_admin'));
+            }else{
+                return $this->render('MyAdminBundle:infos:rib.html.twig', array(
+                    'user'              => $user,
+                    'messageNumber'     => $messageNumber,
+                    '$messages'         => $messages,
+                    'form'              => $form->createView()
+                ));
+            }
+        }
+        
+        return $this->render('MyAdminBundle:infos:rib.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages,
+            'form'              => $form->createView()
+        ));
     }
     
     /**
