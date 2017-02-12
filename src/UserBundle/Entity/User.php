@@ -65,20 +65,6 @@ class User extends BaseUser
     protected $about;
     
     /**
-     * @var string
-     *
-     * @ORM\Column(name="rib", type="string", nullable=true, length=255)
-     */
-    protected $rib;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cin", type="string", nullable=true, length=255)
-     */
-    protected $cin;
-    
-    /**
      * @var integer
      *
      * @ORM\Column(name="linkedin", type="integer", nullable=true)
@@ -93,30 +79,23 @@ class User extends BaseUser
     protected $facebook;
     
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="cin_verified", type="integer", nullable=true)
-     */
-    protected $cinVerified;
-    
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="email_verified", type="integer", nullable=true)
+     * @ORM\Column(name="email_verified", type="boolean", nullable=true)
      */
     protected $emailVerified;
     
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="linkedin_verified", type="integer", nullable=true)
+     * @ORM\Column(name="linkedin_verified", type="boolean", nullable=true)
      */
     protected $linkedinVerified;
     
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="facebook_verified", type="integer", nullable=true)
+     * @ORM\Column(name="facebook_verified", type="boolean", nullable=true)
      */
     protected $facebookVerified;
     
@@ -172,6 +151,11 @@ class User extends BaseUser
     private $notification;
     
     /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\Cin", cascade={"all"})
+     */
+    private $cin;
+    
+    /**
      * @ORM\OneToOne(targetEntity="UserBundle\Entity\Avatar", cascade={"all"})
      */
     protected $avatar;
@@ -180,6 +164,11 @@ class User extends BaseUser
      * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\PostalAdress", cascade={"all"})
      */
     private $postalAdress;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Rib", cascade={"all"})
+     */
+    private $rib;
 
     public function __construct()
     {
@@ -368,53 +357,7 @@ class User extends BaseUser
     {
         return $this->about;
     }
-
-    /**
-     * Set rib
-     *
-     * @param string $rib
-     * @return User
-     */
-    public function setRib($rib)
-    {
-        $this->rib = $rib;
-
-        return $this;
-    }
-
-    /**
-     * Get rib
-     *
-     * @return string 
-     */
-    public function getRib()
-    {
-        return $this->rib;
-    }
-
-    /**
-     * Set cin
-     *
-     * @param string $cin
-     * @return User
-     */
-    public function setCin($cin)
-    {
-        $this->cin = $cin;
-
-        return $this;
-    }
-
-    /**
-     * Get cin
-     *
-     * @return string 
-     */
-    public function getCin()
-    {
-        return $this->cin;
-    }
-
+    
     /**
      * Set linkedin
      *
@@ -459,29 +402,6 @@ class User extends BaseUser
     public function getFacebook()
     {
         return $this->facebook;
-    }
-
-    /**
-     * Set cinVerified
-     *
-     * @param integer $cinVerified
-     * @return User
-     */
-    public function setCinVerified($cinVerified)
-    {
-        $this->cinVerified = $cinVerified;
-
-        return $this;
-    }
-
-    /**
-     * Get cinVerified
-     *
-     * @return integer 
-     */
-    public function getCinVerified()
-    {
-        return $this->cinVerified;
     }
 
     /**
@@ -811,5 +731,74 @@ class User extends BaseUser
     public function getPostalAdress()
     {
         return $this->postalAdress;
+    }
+
+    /**
+     * Add cin
+     *
+     * @param \MyAdminBundle\Entity\Cin $cin
+     * @return User
+     */
+    public function addCin(\MyAdminBundle\Entity\Cin $cin)
+    {
+        $this->cin[] = $cin;
+
+        return $this;
+    }
+
+    /**
+     * Remove cin
+     *
+     * @param \MyAdminBundle\Entity\Cin $cin
+     */
+    public function removeCin(\MyAdminBundle\Entity\Cin $cin)
+    {
+        $this->cin->removeElement($cin);
+    }
+
+    /**
+     * Get cin
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCin()
+    {
+        return $this->cin;
+    }
+
+    /**
+     * Set cin
+     *
+     * @param \MyAdminBundle\Entity\Cin $cin
+     * @return User
+     */
+    public function setCin(\MyAdminBundle\Entity\Cin $cin = null)
+    {
+        $this->cin = $cin;
+
+        return $this;
+    }
+
+    /**
+     * Set rib
+     *
+     * @param \UserBundle\Entity\Rib $rib
+     * @return User
+     */
+    public function setRib(\UserBundle\Entity\Rib $rib = null)
+    {
+        $this->rib = $rib;
+
+        return $this;
+    }
+
+    /**
+     * Get rib
+     *
+     * @return \UserBundle\Entity\Rib 
+     */
+    public function getRib()
+    {
+        return $this->rib;
     }
 }

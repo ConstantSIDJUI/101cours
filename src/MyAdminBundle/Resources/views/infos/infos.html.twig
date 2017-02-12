@@ -47,11 +47,11 @@
     <div class="container">
         <div class="left-side-back">
             <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}"><p><b>Information personelles</b></p></a>
-            <a href="{{ path('my_admin_infos_cin') }}"><p>Cin</p></a>
-            <a href="{{ path('my_admin_infos_picture') }}"><p>Photo</p></a>
+            <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}"><p>Cin</p></a>
+            <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}"><p>Photo</p></a>
             <a href="{{ path('my_admin_infos_prof') }}"><p><b>Professeur</b></p></a>
             <a href="{{ path('my_admin_infos_verification') }}"><p><b>Verifications</b></p></a>
-            <a href="{{ path('my_admin_infos_rib') }}"><p><b>Identité bancaire</b></p></a>
+            <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}"><p><b>Identité bancaire</b></p></a>
             <a href="{{ path('my_admin_infos_compl') }}"><p><b>Informations complémentaires</b></p></a>
         </div>
         <div class="right-side-back">

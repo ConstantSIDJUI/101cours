@@ -1,19 +1,18 @@
 <?php
 
-namespace UserBundle\Entity;
+namespace MyAdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Avatar
+ * CinAttachement
  *
- * @ORM\Table(name="avatar")
- * @ORM\Entity(repositoryClass="UserBundle\Repository\AvatarRepository")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Table(name="cin_attachement")
+ * @ORM\Entity(repositoryClass="MyAdminBundle\Repository\CinAttachementRepository")
  */
-class Avatar
+class CinAttachement
 {
     /**
      * @var integer
@@ -149,7 +148,7 @@ class Avatar
      * @return string
      */
     protected function getUploadDir(){
-        return 'bundles/101cours/avatar';
+        return 'bundles/101cours/cin';
     }
     
     /**
@@ -203,8 +202,6 @@ class Avatar
     {
         return $this->file;
     }
-
-
 
     /**
      * Get id

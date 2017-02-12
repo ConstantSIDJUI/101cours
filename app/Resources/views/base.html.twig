@@ -44,10 +44,10 @@
                     {% if app.user is not null and is_granted('ROLE_USER') %}
                         <div class="loginp">
                             <div class="iconsconecte">
-                                <a href=""><div class="msgicon"><img src="{{ asset('bundles/pages/img/msg.png') }}" /><span class="nmbrmsg">{{ messageNumber }}</span></div></a>
+                                <a href=""><div class="msgicon"><img src="{{ asset('bundles/pages/img/msg.png') }}" /><span class="nmbrmsg">{% if messageNumber is defined %}{{ messageNumber }}{% endif %}</span></div></a>
                             </div>
                             <div class="profilpic">
-                                <img src="{% if app.user.avatar is not empty %}{{ asset('bundles/101cours/uploads/profil/' ~ app.user.avatar.name ~ '.' ~ app.user.avatar.extension) }}{% else %}{{ asset('bundles/pages/img/user_default.png') }}{% endif %}" />
+                                <img src="{% if app.user.avatar is not empty %}{{ asset('bundles/101cours/avatar/' ~ app.user.avatar.name ~ '.' ~ app.user.avatar.extension) }}{% else %}{{ asset('bundles/pages/img/user_default.png') }}{% endif %}" />
                             </div>
                             <div class="connectead">
                                 <ul>
