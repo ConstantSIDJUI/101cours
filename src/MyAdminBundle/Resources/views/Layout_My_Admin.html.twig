@@ -61,9 +61,9 @@
                           <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}">CIN</a>
                           <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}">Photo</a>
                           <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}">Identité bancaire</a>
-                          <a href="{{ path('my_admin_infos_prof') }}"><p><b>Professeur</b></p></a>
+                          <a href="{{ path('my_admin_infos_prof', { 'id': app.user.id }) }}"><p><b>Professeur</b></p></a>
                           <a href="{{ path('my_admin_infos_verification') }}">Vérifications</a>
-                          <a href="{{ path('my_admin_infos_compl') }}">Informations complémentaires</a>
+                          <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}">Informations complémentaires</a>
                         </div>
                     </li>
                     <li class="dropdown">

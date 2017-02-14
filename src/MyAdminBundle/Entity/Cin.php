@@ -3,6 +3,7 @@
 namespace MyAdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Cin
@@ -172,29 +173,6 @@ class Cin
     }
 
     /**
-     * Set cinAttachement
-     *
-     * @param \MyAdminBundle\Entity\CinAttachement $cinAttachement
-     * @return Cin
-     */
-    public function setCinAttachement(\MyAdminBundle\Entity\CinAttachement $cinAttachement = null)
-    {
-        $this->cinAttachement = $cinAttachement;
-
-        return $this;
-    }
-
-    /**
-     * Get cinAttachement
-     *
-     * @return \MyAdminBundle\Entity\CinAttachement 
-     */
-    public function getCinAttachement()
-    {
-        return $this->cinAttachement;
-    }
-
-    /**
      * Set confirmCondition
      *
      * @param boolean $confirmCondition
@@ -215,5 +193,28 @@ class Cin
     public function getConfirmCondition()
     {
         return $this->confirmCondition;
+    }
+
+    /**
+     * Set cinAttachement
+     *
+     * @param \MyAdminBundle\Entity\CinAttachement $cinAttachement
+     * @return Cin
+     */
+    public function setCinAttachement(\MyAdminBundle\Entity\CinAttachement $cinAttachement = null)
+    {
+        $this->cinAttachement = $cinAttachement;
+
+        return $this;
+    }
+
+    /**
+     * Get cinAttachement
+     *
+     * @return \MyAdminBundle\Entity\CinAttachement 
+     */
+    public function getCinAttachement()
+    {
+        return $this->cinAttachement;
     }
 }

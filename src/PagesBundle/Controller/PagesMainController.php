@@ -89,9 +89,18 @@ class PagesMainController extends Controller
      * @copyright © 2017.
      */
     public function resultSearchAction(Request $request){
-         // Get manager
-        $em = $this->getDoctrine()
-                   ->getManager();
+        // Get user
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
         
         // Create form and hydrate
         $form = $this->createForm(new SearchCityType(), null, array('em' => $em));
@@ -122,7 +131,9 @@ class PagesMainController extends Controller
             return $this->render('PagesBundle:PagesMain:search.html.twig', array(
                 'listUserCours'     => $listUserCours,
                 'form'              => $form->createView(),
-                'message'           => $message
+                'message'           => $message,
+                'messageNumber'     => $messageNumber,
+                '$messages'         => $messages
             ));
         }
         
@@ -140,8 +151,23 @@ class PagesMainController extends Controller
      * @copyright ©101Cours 2017.
      */
     public function resultOffreAction(UserCours $userCours, Request $request){
+        // Get user
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
         return $this->render('PagesBundle:PagesMain:offre.html.twig', array(
-            'userCours'  => $userCours
+            'userCours'  => $userCours,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages
         ));
     }
     

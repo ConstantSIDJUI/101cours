@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @ORM\Table(name="cin_attachement")
  * @ORM\Entity(repositoryClass="MyAdminBundle\Repository\CinAttachementRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class CinAttachement
 {
