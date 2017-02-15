@@ -5,14 +5,13 @@ namespace MyAdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use UserBundle\Entity\Avatar;
 use UserBundle\Entity\User;
 use UserBundle\Form\Type\UserProfileType;
-use MyAdminBundle\Form\Type\CinType;
-use UserBundle\Form\Type\AvatarType;
 use UserBundle\Form\Type\UserAvatarType;
 use UserBundle\Form\Type\UserRibType;
 use UserBundle\Form\Type\UserCinType;
+use UserBundle\Form\Type\UserComplementType;
+use UserBundle\Form\Type\UserProfessorType;
 
 class MyAdminController extends Controller
 {
@@ -22,7 +21,7 @@ class MyAdminController extends Controller
      * @access public
      * @version 1.0
      * @author Constant SIDJUI
-     * @copyright © 2016-2017.
+     * @copyright Â© 2016-2017.
      */
     public function dashboardAction(Request $request){
         $user = $this->getUser();
@@ -55,7 +54,7 @@ class MyAdminController extends Controller
      * @access public
      * @version 1.0
      * @author Constant SIDJUI
-     * @copyright © 2016-2017.
+     * @copyright Â© 2016-2017.
      */
     public function infosPersoAction(User $user, Request $request){
         
@@ -81,7 +80,7 @@ class MyAdminController extends Controller
             $em->flush();
             
             // Flash message and redirection
-            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été édité avec succès.');
+            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
             return $this->redirect($this->generateUrl('my_admin'));
         }
         
@@ -99,10 +98,9 @@ class MyAdminController extends Controller
      * @access public
      * @version 1.0
      * @author Anouar ISMAIL
-     * @copyright © 2016-2017.
+     * @copyright Â© 2016-2017.
      */
     public function infosCinAction(User $user, Request $request){
-        
         // Get manager
         $em = $this->getDoctrine()->getManager();
         
@@ -125,14 +123,12 @@ class MyAdminController extends Controller
                 // Set RootDir
                 $user->getCin()->getCinAttachement()->setRootDir($this->get('kernel')->getRootDir());
                 
-                var_dump($user->getCin());
-                die();
                 // Persist and commit
                 $em->persist($user);
                 $em->flush();
 
                 // Flash message and redirection
-                $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été édité avec succès.');
+                $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
                 return $this->redirect($this->generateUrl('my_admin'));
             }else{
                 return $this->render('MyAdminBundle:infos:cin.html.twig', array(
@@ -158,7 +154,7 @@ class MyAdminController extends Controller
      * @access public
      * @version 1.0
      * @author Anouar ISMAIL
-     * @copyright © 2016-2017.
+     * @copyright Â© 2016-2017.
      */
     public function infosPicAction(User $user, Request $request){
         
@@ -186,7 +182,7 @@ class MyAdminController extends Controller
             $em->flush();
             
             // Flash message and redirection
-            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été édité avec succès.');
+            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
             return $this->redirect($this->generateUrl('my_admin'));
         }
         
@@ -205,11 +201,44 @@ class MyAdminController extends Controller
      * @access public
      * @version 1.0
      * @author Anouar ISMAIL
-     * @copyright © 2016-2017.
+     * @copyright Â© 2016-2017.
      */
-    public function profAction(Request $request){
+    public function profAction(User $user, Request $request){
         
-        return $this->render('MyAdminBundle:infos:infos_prof.html.twig');
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Create form info cin
+        $form = $this->createForm(new UserProfessorType(), $user, array('em' => $em));
+        
+        // Get message user
+        $messages   = $em->getRepository('PagesBundle:Message')
+                         ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        // Handler
+        $form->handleRequest($request);
+        
+        if($form->isValid()){ 
+            $user->getProfessor()->getProfessorAttachement()->setRootDir($this->get('kernel')->getRootDir());
+            
+            // Persist and commit
+            $em->persist($user);
+            $em->flush();
+            
+            // Flash message and redirection
+            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
+            return $this->redirect($this->generateUrl('my_admin'));
+        }
+        
+        return $this->render('MyAdminBundle:infos:infos_prof.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages,
+            'form'              => $form->createView()
+        ));
     }
     
     /**
@@ -218,7 +247,7 @@ class MyAdminController extends Controller
      * @access public
      * @version 1.0
      * @author Anouar ISMAIL
-     * @copyright © 2016-2017.
+     * @copyright Â© 2016-2017.
      */
     public function verifAction(Request $request){
         
@@ -231,7 +260,7 @@ class MyAdminController extends Controller
      * @access public
      * @version 1.0
      * @author Anouar ISMAIL
-     * @copyright © 2016-2017.
+     * @copyright Â© 2016-2017.
      */
     public function ribAction(User $user, Request $request){
         
@@ -258,7 +287,7 @@ class MyAdminController extends Controller
                 $em->flush();
 
                 // Flash message and redirection
-                $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été édité avec succès.');
+                $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
                 return $this->redirect($this->generateUrl('my_admin'));
             }else{
                 return $this->render('MyAdminBundle:infos:rib.html.twig', array(
@@ -284,11 +313,46 @@ class MyAdminController extends Controller
      * @access public
      * @version 1.0
      * @author Anouar ISMAIL
-     * @copyright © 2016-2017.
+     * @copyright Â© 2016-2017.
      */
-    public function infoComplementaireAction(Request $request){
+    public function infoComplementaireAction(User $user, Request $request){
         
-        return $this->render('MyAdminBundle:infos:infos_complementaires.html.twig');
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Create form info cin
+        $form = $this->createForm(new UserComplementType(), $user, array('em' => $em));
+        
+        // Get message user
+        $messages   = $em->getRepository('PagesBundle:Message')
+                         ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        // Handler
+        $form->handleRequest($request);
+        
+        if($form->isValid()){ 
+            // Set RootDir
+            $user->getTraining()->getTrainingAttachement()->setRootDir($this->get('kernel')->getRootDir());
+            $user->getExperience()->getExperienceAttachement()->setRootDir($this->get('kernel')->getRootDir());
+                
+            // Persist and commit
+            $em->persist($user);
+            $em->flush();
+
+            // Flash message and redirection
+            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
+            return $this->redirect($this->generateUrl('my_admin'));
+        }
+        
+        return $this->render('MyAdminBundle:infos:infos_complementaires.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages,
+            'form'              => $form->createView()
+        ));
     }
     
 }

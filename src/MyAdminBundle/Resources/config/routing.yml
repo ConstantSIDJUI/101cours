@@ -7,46 +7,50 @@ my_admin:
     defaults: { _controller: MyAdminBundle:MyAdmin:dashboard }
     
 my_admin_infos_perso:
-    path:     /infos-personnelles/{id}
+    path:     /informations-personnelles/{id}
     methods: [GET|POST]
     defaults: { _controller: MyAdminBundle:MyAdmin:infosPerso }
     requirements:
         id: \d+
 
 my_admin_infos_cin:
-    path:     /infos-cin/{id}
+    path:     /informations-cin/{id}
     methods: [GET|POST]
     defaults: { _controller: MyAdminBundle:MyAdmin:infosCin }  
     requirements:
         id: \d+     
     
 my_admin_infos_picture:
-    path:     /infos_picture/{id}
+    path:     /informations-avatar/{id}
     methods: [GET|POST]
     defaults: { _controller: MyAdminBundle:MyAdmin:infosPic }  
     requirements:
         id: \d+   
     
 my_admin_infos_prof:
-    path:     /infos_professeur.html
-    methods: [GET]
-    defaults: { _controller: MyAdminBundle:MyAdmin:prof }
+    path:     /informations-professeur/{id}
+    methods: [GET|POST]
+    defaults: { _controller: MyAdminBundle:MyAdmin:prof }  
+    requirements:
+        id: \d+   
     
 my_admin_infos_verification:
-    path:     /infos_verification.html
+    path:     /informations-verification.html
     methods: [GET]
     defaults: { _controller: MyAdminBundle:MyAdmin:verif }    
 
 my_admin_infos_rib:
-    path:     /infos_identite_bancaire/{id}
+    path:     /informations-identite-bancaire/{id}
     methods: [GET|POST]
     defaults: { _controller: MyAdminBundle:MyAdmin:rib }
     requirements:
         id: \d+   
     
 my_admin_infos_compl:
-    path:     /infos_complementaires.html
-    methods: [GET]
-    defaults: { _controller: MyAdminBundle:MyAdmin:infoComplementaire } 
+    path:     /informations-complementaires/{id}
+    methods: [GET|POST]
+    defaults: { _controller: MyAdminBundle:MyAdmin:infoComplementaire }
+    requirements:
+        id: \d+   
     
     

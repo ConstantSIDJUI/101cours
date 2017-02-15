@@ -1,28 +1,29 @@
 <?php
 
-namespace UserBundle\Entity;
+namespace MyAdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Avatar
+ * TrainingAttachement
  *
- * @ORM\Table(name="avatar")
- * @ORM\Entity(repositoryClass="UserBundle\Repository\AvatarRepository")
+ * @ORM\Table(name="training_attachement")
+ * @ORM\Entity(repositoryClass="MyAdminBundle\Repository\TrainingAttachementRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Avatar
+class TrainingAttachement
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
 
     /**
      * @var string
@@ -149,7 +150,7 @@ class Avatar
      * @return string
      */
     protected function getUploadDir(){
-        return 'bundles/101cours/avatar';
+        return 'bundles/101cours/training';
     }
     
     /**
@@ -204,8 +205,6 @@ class Avatar
         return $this->file;
     }
 
-
-
     /**
      * Get id
      *
@@ -221,7 +220,7 @@ class Avatar
      *
      * @param string $name
      *
-     * @return AvatarAttachment
+     * @return LeaseAttachment
      */
     public function setName($name)
     {
@@ -245,7 +244,7 @@ class Avatar
      *
      * @param string $extension
      *
-     * @return AvatarAttachment
+     * @return LeaseAttachment
      */
     public function setExtension($extension)
     {
@@ -269,7 +268,7 @@ class Avatar
      *
      * @param \DateTime $dateUpdate
      *
-     * @return AvatarAttachment
+     * @return LeaseAttachment
      */
     public function setDateUpdate($dateUpdate)
     {

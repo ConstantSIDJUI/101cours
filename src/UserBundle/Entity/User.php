@@ -169,6 +169,22 @@ class User extends BaseUser
      * @ORM\OneToOne(targetEntity="UserBundle\Entity\Rib", cascade={"all"})
      */
     private $rib;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\Experience", cascade={"all"})
+     */
+    protected $experience;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\Training", cascade={"all"})
+     */
+    protected $training;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\Professor", cascade={"all"})
+     */
+    protected $professor;
+    
 
     public function __construct()
     {
@@ -734,52 +750,6 @@ class User extends BaseUser
     }
 
     /**
-     * Add cin
-     *
-     * @param \MyAdminBundle\Entity\Cin $cin
-     * @return User
-     */
-    public function addCin(\MyAdminBundle\Entity\Cin $cin)
-    {
-        $this->cin[] = $cin;
-
-        return $this;
-    }
-
-    /**
-     * Remove cin
-     *
-     * @param \MyAdminBundle\Entity\Cin $cin
-     */
-    public function removeCin(\MyAdminBundle\Entity\Cin $cin)
-    {
-        $this->cin->removeElement($cin);
-    }
-
-    /**
-     * Get cin
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCin()
-    {
-        return $this->cin;
-    }
-
-    /**
-     * Set cin
-     *
-     * @param \MyAdminBundle\Entity\Cin $cin
-     * @return User
-     */
-    public function setCin(\MyAdminBundle\Entity\Cin $cin = null)
-    {
-        $this->cin = $cin;
-
-        return $this;
-    }
-
-    /**
      * Set rib
      *
      * @param \UserBundle\Entity\Rib $rib
@@ -800,5 +770,97 @@ class User extends BaseUser
     public function getRib()
     {
         return $this->rib;
+    }
+
+    /**
+     * Set cin
+     *
+     * @param \MyAdminBundle\Entity\Cin $cin
+     * @return User
+     */
+    public function setCin(\MyAdminBundle\Entity\Cin $cin = null)
+    {
+        $this->cin = $cin;
+
+        return $this;
+    }
+
+    /**
+     * Get cin
+     *
+     * @return \MyAdminBundle\Entity\Cin 
+     */
+    public function getCin()
+    {
+        return $this->cin;
+    }
+
+    /**
+     * Set experience
+     *
+     * @param \MyAdminBundle\Entity\Experience $experience
+     * @return User
+     */
+    public function setExperience(\MyAdminBundle\Entity\Experience $experience = null)
+    {
+        $this->experience = $experience;
+
+        return $this;
+    }
+
+    /**
+     * Get experience
+     *
+     * @return \MyAdminBundle\Entity\Experience 
+     */
+    public function getExperience()
+    {
+        return $this->experience;
+    }
+
+    /**
+     * Set training
+     *
+     * @param \MyAdminBundle\Entity\Training $training
+     * @return User
+     */
+    public function setTraining(\MyAdminBundle\Entity\Training $training = null)
+    {
+        $this->training = $training;
+
+        return $this;
+    }
+
+    /**
+     * Get training
+     *
+     * @return \MyAdminBundle\Entity\Training 
+     */
+    public function getTraining()
+    {
+        return $this->training;
+    }
+
+    /**
+     * Set professor
+     *
+     * @param \MyAdminBundle\Entity\Professor $professor
+     * @return User
+     */
+    public function setProfessor(\MyAdminBundle\Entity\Professor $professor = null)
+    {
+        $this->professor = $professor;
+
+        return $this;
+    }
+
+    /**
+     * Get professor
+     *
+     * @return \MyAdminBundle\Entity\Professor 
+     */
+    public function getProfessor()
+    {
+        return $this->professor;
     }
 }
