@@ -71,7 +71,7 @@
                     </div>
                     <div class="friendsfb"><i class="fbfriendsicon fa fa-users" aria-hidden="true"></i> 300 amis sur facebook</div>
                     <div class="verifyinfos">
-                        <div class="cin"><i class="fa fa-address-card" aria-hidden="true"></i> <span>CIN</span> {% if userCours.user.cinVerifed > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                        <div class="cin"><i class="fa fa-address-card" aria-hidden="true"></i> <span>CIN</span> {% if userCours.user.cin is not empty %}{% if userCours.user.cin.cinVerifed > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}{% endif %}</div>
                         <div class="cin"><i class="fa fa-envelope" aria-hidden="true"></i> <span>Email</span> {% if userCours.user.emailVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
                         <div class="cin"><i class="fa fa-linkedin-square" aria-hidden="true"></i> <span>Linkedin</span> {% if userCours.user.linkedinVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
                         <div class="cin"><i class="fa fa-facebook-official" aria-hidden="true"></i> <span>Facebook</span> {% if userCours.user.facebookVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
@@ -97,19 +97,19 @@
                     {% set jour = 'now'|date('d - m -Y') -  userCours.createdDate|date('d - m -Y') %}
                     <span style="font-size:23px;"><b>{{ userCours.user.lastname }} {{ userCours.user.firstname }}</b> <span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i></span></span><br />
                     <span>{{ age }} ans</span><br />
-                    <span>Ville : {{ userCours.user.city.name }}</span><br />
+                    <span>Ville : {% if userCours.user.city is not empty %}{{ userCours.user.city.name }}{% endif %}</span><br />
                     <span>{{ userCours.user.status }}</span><br />
-                    <span>Matiéres métrisés : {{ userCours.user.profil.subjectMatter }}</span><br />
+                    <span>Matiéres métrisés : {% if userCours.user.profil is not empty %}{{ userCours.user.profil.subjectMatter }}{% endif %}</span><br />
                     <span>Lieu de cours : {% if userCours.home > 0 %}<img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/home.png') }}" />{% endif %} {% if userCours.coffe > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/coffe.png') }}" />{% endif %} {% if userCours.tea > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/tea.png') }}" />{% endif %}</span>
                 </div>
                 <div class="exp-wrap">
                     <div class="exper"><i class="expiconbg"></i> <b style="font-size:23px;">Experience</b></div>
-                    <h4>{{ userCours.user.profil.experience }}</h4>
+                    <h4>{% if userCours.user.experience is not empty %}{{ userCours.user.experience.name }} - {{ userCours.user.experience.title }}{% endif %}</h4>
                     {#<h5>101kapital.ma</h5>
                     <h5>Novembre 2016 - Aujourd'hui (2 mois)</h5>#}
                     <br />
                     <div class="exper"><i class="formaiconbg"></i> <b style="font-size:23px;">Formation</b></div>
-                    <h4>{{ userCours.user.profil.training }}</h4>
+                    <h4>{% if userCours.user.training is not empty %}{{ userCours.user.training.school }} {{ userCours.user.training.yearFrom }}-{{ userCours.user.training.yearTo }}{% endif %}</h4>
                     {#<h5>Wordpress and front end developer</h5>
                     <h5>2015 - 2016</h5>#}
                 </div>

@@ -65,20 +65,6 @@ class User extends BaseUser
     protected $about;
     
     /**
-     * @var string
-     *
-     * @ORM\Column(name="rib", type="string", nullable=true, length=255)
-     */
-    protected $rib;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cin", type="string", nullable=true, length=255)
-     */
-    protected $cin;
-    
-    /**
      * @var integer
      *
      * @ORM\Column(name="linkedin", type="integer", nullable=true)
@@ -93,30 +79,23 @@ class User extends BaseUser
     protected $facebook;
     
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="cin_verifed", type="integer", nullable=true)
-     */
-    protected $cinVerifed;
-    
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="email_verified", type="integer", nullable=true)
+     * @ORM\Column(name="email_verified", type="boolean", nullable=true)
      */
     protected $emailVerified;
     
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="linkedin_verified", type="integer", nullable=true)
+     * @ORM\Column(name="linkedin_verified", type="boolean", nullable=true)
      */
     protected $linkedinVerified;
     
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="facebook_verified", type="integer", nullable=true)
+     * @ORM\Column(name="facebook_verified", type="boolean", nullable=true)
      */
     protected $facebookVerified;
     
@@ -135,19 +114,16 @@ class User extends BaseUser
     protected $birthDate;
     
     /**
-     * @ORM\OneToMany(targetEntity="MonBail\PagesBundle\Entity\Message", mappedBy="user", cascade={"persist"})
-     *
-    private $messages;*/
-    
-    /**
-     * @ORM\OneToMany(targetEntity="MonBail\PagesBundle\Entity\Message", mappedBy="user", cascade={"persist"})
-     *
-    private $avatar;*/
-    
-    /**
      * @ORM\OneToMany(targetEntity="MyAdminBundle\Entity\Cours", mappedBy="user", cascade={"all"})
      */
     private $cours;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="confirm_condition", type="boolean", nullable=true)
+     */
+    protected $confirmCondition;
     
     /**
      * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\City", cascade={"all"}, inversedBy="user")
@@ -158,12 +134,74 @@ class User extends BaseUser
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Profil", cascade={"all"}, inversedBy="user")
      */
     private $profil;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PagesBundle\Entity\Message", mappedBy="userSend", cascade={"all"})
+     */
+    private $messageSend;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PagesBundle\Entity\Message", mappedBy="userReceive", cascade={"all"})
+     */
+    private $messageReceive;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PagesBundle\Entity\Notification", mappedBy="user", cascade={"all"})
+     */
+    private $notification;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\Cin", cascade={"all"})
+     */
+    private $cin;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Avatar", cascade={"all"})
+     */
+    protected $avatar;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\PostalAdress", cascade={"all"})
+     */
+    private $postalAdress;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Rib", cascade={"all"})
+     */
+    private $rib;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\Experience", cascade={"all"})
+     */
+    protected $experience;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\Training", cascade={"all"})
+     */
+    protected $training;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\Professor", cascade={"all"})
+     */
+    protected $professor;
+    
 
-   public function __construct()
-   {
-       parent::__construct();
-       // your own logic
-   }
+    public function __construct()
+    {
+        parent::__construct();
+        
+        // Set default value
+        $this->dateCreated  = new \DateTime(null, new \DateTimeZone('Europe/Paris'));
+    }
+
+    /**
+     * 
+     * @param type $email
+     */
+    public function setEmail($email){
+        parent::setEmail($email);
+        $this->setUsername($email);
+    }
 
     /**
      * Add cours
@@ -335,53 +373,7 @@ class User extends BaseUser
     {
         return $this->about;
     }
-
-    /**
-     * Set rib
-     *
-     * @param string $rib
-     * @return User
-     */
-    public function setRib($rib)
-    {
-        $this->rib = $rib;
-
-        return $this;
-    }
-
-    /**
-     * Get rib
-     *
-     * @return string 
-     */
-    public function getRib()
-    {
-        return $this->rib;
-    }
-
-    /**
-     * Set cin
-     *
-     * @param string $cin
-     * @return User
-     */
-    public function setCin($cin)
-    {
-        $this->cin = $cin;
-
-        return $this;
-    }
-
-    /**
-     * Get cin
-     *
-     * @return string 
-     */
-    public function getCin()
-    {
-        return $this->cin;
-    }
-
+    
     /**
      * Set linkedin
      *
@@ -426,29 +418,6 @@ class User extends BaseUser
     public function getFacebook()
     {
         return $this->facebook;
-    }
-
-    /**
-     * Set cinVerifed
-     *
-     * @param integer $cinVerifed
-     * @return User
-     */
-    public function setCinVerifed($cinVerifed)
-    {
-        $this->cinVerifed = $cinVerifed;
-
-        return $this;
-    }
-
-    /**
-     * Get cinVerifed
-     *
-     * @return integer 
-     */
-    public function getCinVerifed()
-    {
-        return $this->cinVerifed;
     }
 
     /**
@@ -610,5 +579,288 @@ class User extends BaseUser
     public function getProfil()
     {
         return $this->profil;
+    }
+
+    /**
+     * Add messageSend
+     *
+     * @param \PagesBundle\Entity\Message $messageSend
+     * @return User
+     */
+    public function addMessageSend(\PagesBundle\Entity\Message $messageSend)
+    {
+        $this->messageSend[] = $messageSend;
+
+        return $this;
+    }
+
+    /**
+     * Remove messageSend
+     *
+     * @param \PagesBundle\Entity\Message $messageSend
+     */
+    public function removeMessageSend(\PagesBundle\Entity\Message $messageSend)
+    {
+        $this->messageSend->removeElement($messageSend);
+    }
+
+    /**
+     * Get messageSend
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessageSend()
+    {
+        return $this->messageSend;
+    }
+
+    /**
+     * Add messageReceive
+     *
+     * @param \PagesBundle\Entity\Message $messageReceive
+     * @return User
+     */
+    public function addMessageReceive(\PagesBundle\Entity\Message $messageReceive)
+    {
+        $this->messageReceive[] = $messageReceive;
+
+        return $this;
+    }
+
+    /**
+     * Remove messageReceive
+     *
+     * @param \PagesBundle\Entity\Message $messageReceive
+     */
+    public function removeMessageReceive(\PagesBundle\Entity\Message $messageReceive)
+    {
+        $this->messageReceive->removeElement($messageReceive);
+    }
+
+    /**
+     * Get messageReceive
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessageReceive()
+    {
+        return $this->messageReceive;
+    }
+
+    /**
+     * Add notification
+     *
+     * @param \PagesBundle\Entity\Notification $notification
+     * @return User
+     */
+    public function addNotification(\PagesBundle\Entity\Notification $notification)
+    {
+        $this->notification[] = $notification;
+
+        return $this;
+    }
+
+    /**
+     * Remove notification
+     *
+     * @param \PagesBundle\Entity\Notification $notification
+     */
+    public function removeNotification(\PagesBundle\Entity\Notification $notification)
+    {
+        $this->notification->removeElement($notification);
+    }
+
+    /**
+     * Get notification
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNotification()
+    {
+        return $this->notification;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param \UserBundle\Entity\Avatar $avatar
+     * @return User
+     */
+    public function setAvatar(\UserBundle\Entity\Avatar $avatar = null)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return \UserBundle\Entity\Avatar 
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Set confirmCondition
+     *
+     * @param integer $confirmCondition
+     * @return User
+     */
+    public function setConfirmCondition($confirmCondition)
+    {
+        $this->confirmCondition = $confirmCondition;
+
+        return $this;
+    }
+
+    /**
+     * Get confirmCondition
+     *
+     * @return integer 
+     */
+    public function getConfirmCondition()
+    {
+        return $this->confirmCondition;
+    }
+
+    /**
+     * Set postalAdress
+     *
+     * @param \MyAdminBundle\Entity\PostalAdress $postalAdress
+     * @return User
+     */
+    public function setPostalAdress(\MyAdminBundle\Entity\PostalAdress $postalAdress = null)
+    {
+        $this->postalAdress = $postalAdress;
+
+        return $this;
+    }
+
+    /**
+     * Get postalAdress
+     *
+     * @return \MyAdminBundle\Entity\PostalAdress 
+     */
+    public function getPostalAdress()
+    {
+        return $this->postalAdress;
+    }
+
+    /**
+     * Set rib
+     *
+     * @param \UserBundle\Entity\Rib $rib
+     * @return User
+     */
+    public function setRib(\UserBundle\Entity\Rib $rib = null)
+    {
+        $this->rib = $rib;
+
+        return $this;
+    }
+
+    /**
+     * Get rib
+     *
+     * @return \UserBundle\Entity\Rib 
+     */
+    public function getRib()
+    {
+        return $this->rib;
+    }
+
+    /**
+     * Set cin
+     *
+     * @param \MyAdminBundle\Entity\Cin $cin
+     * @return User
+     */
+    public function setCin(\MyAdminBundle\Entity\Cin $cin = null)
+    {
+        $this->cin = $cin;
+
+        return $this;
+    }
+
+    /**
+     * Get cin
+     *
+     * @return \MyAdminBundle\Entity\Cin 
+     */
+    public function getCin()
+    {
+        return $this->cin;
+    }
+
+    /**
+     * Set experience
+     *
+     * @param \MyAdminBundle\Entity\Experience $experience
+     * @return User
+     */
+    public function setExperience(\MyAdminBundle\Entity\Experience $experience = null)
+    {
+        $this->experience = $experience;
+
+        return $this;
+    }
+
+    /**
+     * Get experience
+     *
+     * @return \MyAdminBundle\Entity\Experience 
+     */
+    public function getExperience()
+    {
+        return $this->experience;
+    }
+
+    /**
+     * Set training
+     *
+     * @param \MyAdminBundle\Entity\Training $training
+     * @return User
+     */
+    public function setTraining(\MyAdminBundle\Entity\Training $training = null)
+    {
+        $this->training = $training;
+
+        return $this;
+    }
+
+    /**
+     * Get training
+     *
+     * @return \MyAdminBundle\Entity\Training 
+     */
+    public function getTraining()
+    {
+        return $this->training;
+    }
+
+    /**
+     * Set professor
+     *
+     * @param \MyAdminBundle\Entity\Professor $professor
+     * @return User
+     */
+    public function setProfessor(\MyAdminBundle\Entity\Professor $professor = null)
+    {
+        $this->professor = $professor;
+
+        return $this;
+    }
+
+    /**
+     * Get professor
+     *
+     * @return \MyAdminBundle\Entity\Professor 
+     */
+    public function getProfessor()
+    {
+        return $this->professor;
     }
 }

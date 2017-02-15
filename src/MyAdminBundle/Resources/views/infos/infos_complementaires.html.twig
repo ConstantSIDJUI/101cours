@@ -1,0 +1,108 @@
+{% extends 'MyAdminBundle::Layout_My_Admin.html.twig' %}
+    
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+    
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+    
+    
+{% block content_my_admin %}
+    <div class="autre-wrapper">
+        <div class="container">
+            <div class="left-side-back">
+                <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}"><p><b>Information personelles</b></p></a>
+                <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}"><p>Cin</p></a>
+                <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}"><p>Photo</p></a>
+                <a href="{{ path('my_admin_infos_prof', { 'id': app.user.id }) }}"><p><b>Professeur</b></p></a>
+                <a href="{{ path('my_admin_infos_verification') }}"><p><b>Verifications</b></p></a>
+                <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}"><p><b>Identité bancaire</b></p></a>
+                <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}"><p><b>Informations complémentaires</b></p></a>
+            </div>
+            <div class="right-side-back">
+                <form method="post" {{ form_enctype(form) }} action="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}">
+                    <div class="experience">
+                        <div class="histo">Experience <span style="float:right;color:#555;">Voir des exemples</span></div>
+                        <table class="tablekap" style="width:100%">
+                            <tr>
+                                <td class="cinox"  style="width:30%;">{{ form_label(form.experience.name) }}</td>
+                                <td class="cinox" >{{ form_widget(form.experience.name) }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cinox"  style="width:30%;">{{ form_label(form.experience.title) }}</td>
+                                <td class="cinox" >{{ form_widget(form.experience.title) }}</td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td class="cinox"  style="width:30%;">Justificatif</td>
+                                <td class="cinox" >
+                                    <label class="lapiece" style="text-align: center;">
+                                        <i class="fa fa-file-text" aria-hidden="true"></i> Telecharger le justificatif
+                                        <div style="display: none;">{{ form_widget(form.experience.experienceAttachement.file) }}</div>
+                                        {#<input id="adddimage"  name="avatar" type="file" style="display: none;">#}
+                                    </label>
+                                    {#<button class="ppl lapiece"><i class="fa fa-file-text" aria-hidden="true"></i> Telecharger le justificatif</button>#}
+                                </td>
+                            </tr>
+                            <tr>
+                            {#<tr>
+                                <td style="width:20%;"></td>
+                                <td>
+                                    <div class="condwr">
+                                        <button class="save">Enregister</button>
+                                        <button class="cancel save">Annuler</button>
+                                    </div>
+                                </td>
+                            </tr>#}
+                        </table>
+                    </div>
+                    <div class="experience">
+                        <div class="histo">Formation <span style="float:right;color:#555;">Voir des exemples</span></div>
+                        <table class="tablekap" style="width:100%">
+                            <tr>
+                                <td class="cinox" style="width:30%;">{{ form_label(form.training.school) }}</td>
+                                <td class="cinox" >{{ form_widget(form.training.school) }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cinox"  style="width:30%;">Années*</td>
+                                <td class="cinox" >
+                                    {{ form_widget(form.training.yearFrom) }}
+                                    {{ form_widget(form.training.yearTo) }}
+                                    ou l'année prevue d'obtention de votre diplome
+                                </td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td  class="cinox" style="width:30%;">Justificatif</td>
+                                <td class="cinox" >
+                                    <label class="lapiece" style="text-align: center;">
+                                        <i class="fa fa-file-text" aria-hidden="true"></i> Telecharger le justificatif
+                                        <div style="display: none;">{{ form_widget(form.training.trainingAttachement.file) }}</div>
+                                        {#<input id="adddimage"  name="avatar" type="file" style="display: none;">#}
+                                    </label>
+                                    {#<button class="ppl lapiece"><i class="fa fa-file-text" aria-hidden="true"></i> Telecharger le justificatif</button>#}
+                                </td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td style="width:20%;"></td>
+                                <td class="cinox" >
+                                    <div class="condwr">
+                                        <p class="voir">Voir des examples</p>
+                                        <button class="save">Enregister</button>
+                                        <a href="{{ path('my_admin') }}" class="cancel save">
+                                            Annuler
+                                        </a>
+                                        {{ form_rest(form) }}
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}    

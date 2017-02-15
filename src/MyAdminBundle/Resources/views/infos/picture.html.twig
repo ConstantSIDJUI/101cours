@@ -1,0 +1,74 @@
+{% extends 'MyAdminBundle::Layout_My_Admin.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function readURL(input) {        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.avatar-img').attr('src', e.target.result);
+            },
+            reader.readAsDataURL(input.files[0]);
+        }
+    } 
+        $("#adddimage").change(function(){
+            readURL(this);
+        });
+        
+    </script>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_my_admin %}  
+<div class="autre-wrapper">
+    <div class="container">
+        <div class="left-side-back">
+            <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}"><p><b>Information personelles</b></p></a>
+            <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}"><p>Cin</p></a>
+            <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}"><p>Photo</p></a>
+            <a href="{{ path('my_admin_infos_prof', { 'id': app.user.id }) }}"><p><b>Professeur</b></p></a>
+            <a href="{{ path('my_admin_infos_verification') }}"><p><b>Verifications</b></p></a>
+            <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}"><p><b>Identité bancaire</b></p></a>
+            <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}"><p><b>Informations complémentaires</b></p></a>
+        </div>
+        <div style="padding:0px;" class="right-side-back">
+            <div class="histo">Historique des demandes</div>
+            <div class="photoleft">
+                <div class="cam">
+                    <img  class="avatar-img" src="{% if user.avatar is not empty %}{{ asset('bundles/101cours/avatar/' ~ user.avatar.name ~ '.' ~ user.avatar.extension) }}{% else %}{{ asset('bundles/pages/img/user_default.png') }}{% endif %}">
+                </div>
+                <form method="post" {{ form_enctype(form) }} action="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}">
+                    <div class="chosepic">
+                        <label class="chose">
+                            Choisir une photo
+                            <div style="display: none;">{{ form_widget(form.avatar.file) }}</div>
+                            {#<input id="adddimage"  name="avatar" type="file" style="display: none;">#}
+                        </label> 
+                        <span style="float: left;width: 100%;font-size: 14px;color: #d1d1d1;">PNG , JPG ou GIF de 3mo maximum</span>
+                        <button class="publierc2">Valider</button>
+                        {{ form_rest(form) }}
+                    </div> 
+                </form>
+            </div>
+            <div class="photoright">
+                <div class="rightimg">
+                    <img src="{{ asset('bundles/pages/img/user_default.png') }}" />
+                    <span class="checkpic"><i class="fa fa-check" aria-hidden="true"></i></span>
+                </div>
+                <p style="color:#6fc252;">Comment choisir la bonne photo</p>
+                <div class="instru">
+                    <p>Pas de lunettes de soleil</p>
+                    <p>Claire et lumineuse</p>
+                    <p>Face a l'objectif</p>
+                    <p>Un seul visage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

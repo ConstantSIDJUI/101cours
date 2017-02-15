@@ -30,6 +30,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     </head>
+    {{ include('UserBundle:Security:login_mobile.html.twig') }}
     {% block body %}   
     <body>
         {{ render(controller('UserBundle:Security:loginModal')) }}
@@ -43,14 +44,14 @@
                     {% if app.user is not null and is_granted('ROLE_USER') %}
                         <div class="loginp">
                             <div class="iconsconecte">
-                                <a href=""><div class="msgicon"><img src="{{ asset('bundles/pages/img/msg.png') }}" /><span class="nmbrmsg">5</span></div></a>
+                                <a href=""><div class="msgicon"><img src="{{ asset('bundles/pages/img/msg.png') }}" /><span class="nmbrmsg">{% if messageNumber is defined %}{{ messageNumber }}{% endif %}</span></div></a>
                             </div>
                             <div class="profilpic">
-                                <img src="{{ asset('bundles/pages/img/yaz.jpg') }}" />
+                                <img src="{% if app.user.avatar is not empty %}{{ asset('bundles/101cours/avatar/' ~ app.user.avatar.name ~ '.' ~ app.user.avatar.extension) }}{% else %}{{ asset('bundles/pages/img/user_default.png') }}{% endif %}" />
                             </div>
                             <div class="connectead">
                                 <ul>
-                                    <li><a href="#"><i style="margin-right: 10px;" class="fa fa-user" aria-hidden="true"></i>  Mon profil</a></li>
+                                    <li><a href="{{ path('my_admin') }}"><i style="margin-right: 10px;" class="fa fa-user" aria-hidden="true"></i>  Mon profil</a></li>
                                     <li><a href="#"><i style="margin-right: 10px;" class="fa fa-cog" aria-hidden="true"></i>  Paramètres</a></li>
                                     <li><a href="#"><i style="margin-right: 10px;" class="fa fa-line-chart" aria-hidden="true"></i>  Activités</a></li>
                                     <li><a href="{{ path('fos_user_security_logout') }}"><i style="margin-right: 10px;" class="fa fa-power-off" aria-hidden="true"></i>  Se déconnecter</a></li>

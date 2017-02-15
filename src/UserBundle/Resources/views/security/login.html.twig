@@ -9,8 +9,8 @@
             <span style="    font-size: 23px;padding: 20px;float: left;width: 100%;text-align: center;">Se connecter:</span>
             <div class="inscform">
                 <form action="{{ path("fos_user_security_check") }}" method="POST">
-                   <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                    <input type="text" id="username" placeholder="Username" class="email-in inscin" name="_username" value="{{ last_username }}" required="required"/>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <input type="email" id="username" placeholder="Adresse email" class="email-in inscin" name="_username" value="{{ last_username }}" required="required"/>
                     <input type="password" id="password" placeholder="Mot de passe" class="mdp-in inscin" required="required" name="_password" />
                     <a href="{{ path('fos_user_resetting_request') }}" class="aa">Mot de passe oublié</a>
                     <div class="hmfm">

@@ -61,21 +61,16 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
-# Swiftmailer Configuration
-#swiftmailer:
-    #transport: %mailer_transport%
-    #host:      %mailer_host%
-    #username:  %mailer_user%
-    #password:  %mailer_password%
-    #spool:     { type: memory }
-    
+# Swiftmailer Configuration    
 swiftmailer:
-    transport: mail
-    auth_mode:  login
-    host: auth.smtp.1and1.fr
-    port: 587
-    username:  101cour@anouarismail.com
-    password:  101cours@101cours  
+    transport: %mailer_transport%
+    auth_mode: %mailer_login%
+    host:      %mailer_host%
+    port:      %mailer_port%
+    encryption: %mailer_encryption%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    spool:     { type: memory }     
 
 # FosUserBundle Configuration
 fos_user:

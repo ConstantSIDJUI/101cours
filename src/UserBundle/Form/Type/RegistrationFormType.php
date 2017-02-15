@@ -15,19 +15,81 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use MyAdminBundle\Form\Type\AvatarType;
+
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+       parent::buildForm($builder, $options);
        $builder
-                ->add('status','choice', array(
-                'choices' => array(
-                    '1'         => 'Recevoir des cours',
-                    '2' => 'Donner des cours'
-                ),
+            ->remove('username')
+            ->add('status','choice', array(
+            'choices' => array(
+                '1'         => 'Recevoir des cours',
+                '2' => 'Donner des cours'
+            ),
+            'attr'  => array(
+                'class'         => ''
+            ),    
+            'required'    => false,
+            'empty_value' => false,
+            'empty_data'  => null,
+            'multiple' => false,
+            'expanded' => true
+            ))
+            ->add('lastname',   'text', array(
+                 'attr'  => array(
+                     'label'         => false,
+                     'class'         => 'nom inscin',
+                     'placeholder'   => 'Nom'
+                 )
+            ))
+           ->add('firstname',   'text', array(
+                 'attr'  => array(
+                     'label'         => false,
+                     'class'         => 'prenom inscin',
+                     'placeholder'   => 'Prénom'
+                 )
+            ))
+            ->add('email',      'email', array(
                 'attr'  => array(
-                    'class'         => ''
-                ),    
+                    'label'         => false,
+                    'class'         => 'email-in inscin',
+                    'placeholder'   => 'Votre adresse e-mail'
+                )
+            ))
+            ->add('password',      'password', array(
+                'attr'  => array(
+                    'label'         => false,
+                    'class'         => 'mdp-in inscin',
+                    'placeholder'   => 'Mot de passe'
+                )
+            ))
+            ->add('plainPassword',      'password', array(
+                'attr'  => array(
+                    'label'         => false,
+                    'class'         => 'mdp-in inscin',
+                    'placeholder'   => 'Confirmer le mot de passe'
+                )
+            ))
+            /*
+            ->add('birthDate', 'date', array(
+                'widget'            => 'single_text',
+                'input'             => 'datetime',
+                'required'          => false,
+                'format'            => 'dd/MM/yyyy',
+                'label'             => 'Date de naissance :',
+                'attr'              => array(
+                'class'             => 'field-input',
+            )
+            ))*/
+            ->add('gender','choice', array(
+                'choices' => array(
+                    '1'         => 'Homme',
+                    '2' => 'Femme'
+                ),
+                'label'         => false,
                 'required'    => false,
                 'empty_value' => false,
                 'empty_data'  => null,
@@ -35,7 +97,6 @@ class RegistrationFormType extends AbstractType
                 'expanded' => true
                 ))
                 
-               
                 ->add('lastname',   'text', array(
                      'attr'  => array(
                          'label'         => false,
@@ -44,7 +105,7 @@ class RegistrationFormType extends AbstractType
                      )
                 ))
                
-               ->add('username',   'text', array(
+               ->add('firstname',   'text', array(
                      'attr'  => array(
                          'label'         => false,
                          'class'         => 'prenom inscin',
@@ -75,30 +136,11 @@ class RegistrationFormType extends AbstractType
                         'placeholder'   => 'Confirmer le mot de passe'
                     )
                 ))
-               
-                ->add('birthDate', 'date', array(
-                    'widget'            => 'single_text',
-                    'input'             => 'datetime',
-                    'required'          => false,
-                    'format'            => 'dd/MM/yyyy',
-                    'label'             => 'Date de naissance :',
-                    'attr'              => array(
-                    'class'             => 'field-input',
-                )
-                ))
-               
-                ->add('gender','choice', array(
-                    'choices' => array(
-                        '1'         => 'Homme',
-                        '2' => 'Femme'
-                    ),
-                    'label'         => false,
-                    'required'    => false,
-                    'empty_value' => false,
-                    'empty_data'  => null,
-                    'multiple' => false,
-                    'expanded' => true
-                ))
+            ->add('confirmCondition',  'checkbox', array(
+                'label'         => 'J\'accepte les conditions générales d\'utulisations, et cértifié avoir +18ans',
+                'required'      => true,
+            )) 
+            //->add('avatar', new AvatarType())
             ;
     }
     
