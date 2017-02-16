@@ -410,4 +410,171 @@ class MyAdminController extends Controller
             '$messages'         => $messages
         ));
     }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the home page
+     * @access public
+     * @version 1.0
+     * @author Anouar ISMAIL
+     * @copyright Â© 2016-2017.
+     */
+    public function myreservationsAction(Request $request){
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        return $this->render('MyAdminBundle:reservation:myreservations.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages
+        ));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the home page
+     * @access public
+     * @version 1.0
+     * @author Anouar ISMAIL
+     * @copyright Â© 2016-2017.
+     */
+    public function moneyAction(Request $request){
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        return $this->render('MyAdminBundle:money:money.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages
+        ));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the home page
+     * @access public
+     * @version 1.0
+     * @author Anouar ISMAIL
+     * @copyright Â© 2016-2017.
+     */
+    public function detailsAction(Request $request){
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        return $this->render('MyAdminBundle:money:details.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages
+        ));
+    }
+    /**
+     * Generate and display the home page
+     * @return Render Display the home page
+     * @access public
+     * @version 1.0
+     * @author Anouar ISMAIL
+     * @copyright Â© 2016-2017.
+     */
+    public function paymentAction(Request $request){
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        return $this->render('MyAdminBundle:money:payment.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages
+        ));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the home page
+     * @access public
+     * @version 1.0
+     * @author Anouar ISMAIL
+     * @copyright Â© 2016-2017.
+     */
+    public function messageAction(Request $request){
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        return $this->render('MyAdminBundle:autres:messages.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages
+        ));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the home page
+     * @access public
+     * @version 1.0
+     * @author Anouar ISMAIL
+     * @copyright Â© 2016-2017.
+     */
+    public function avisAction(Request $request){
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        return $this->render('MyAdminBundle:autres:avis.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages
+        ));
+    }
 }

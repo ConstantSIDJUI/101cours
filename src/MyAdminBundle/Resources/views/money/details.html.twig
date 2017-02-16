@@ -1,0 +1,87 @@
+{% extends 'MyAdminBundle::Layout_My_Admin.html.twig' %}
+    
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+    
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+    
+    
+{% block content_my_admin %}
+    <div class="autre-wrapper">
+        <div class="container">
+            <div class="left-side-back">
+                <a href="{{ path('my_money_details') }}"><p>Mes mission actuelles</p></a>
+                <a href="{{ path('my_payment_details') }}"><p>Paiments reçues</p></a>
+                <a href="{{ path('my_money') }}"><p><b>Paiments vérsés</b></p></a>
+            </div>
+             <div class="right-side-back">
+
+<div class="experience">
+<div class="histo">Titre du cours <span style="float:right;color:#555;">Voir des exemples</span></div>
+  <div class="g8lfo9">
+    <div class="g8t">
+       <p>Code unique</p>
+       <p>ZE0258</p>
+    </div>
+    <div class="g8t">
+       <p>Client</p>
+       <p>Yazid Kherrati</p>
+    </div>
+    <div class="g8t-lkhr g8t">
+       <p>Accepté le</p>
+       <p>19 / 05 / 2016</p>
+    </div>
+  </div>
+  <div class="codefourni">
+    <div style="text-align:left;">Code fourni     <span class="w3-tooltip"><i class="fa fa-question-circle" aria-hidden="true"></i> <span  class="kaptoltip w3-text w3-tag">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></span></div>
+    <span><input type="text" class="codef"></span>
+    <span><button class="valdiderg8">Valider</button></span>
+  </div>
+
+
+  <table class="table table-bordered">
+    <tr>
+      <th></th>
+       <th style="text-align:center;background: #efefef;">Saisi le </th>
+       <th  style="text-align:center;background: #efefef;">Les codes saisis</th>
+       <th  style="text-align:center;background: #efefef;">Argent gangné</th>
+    </tr>
+    <tr>
+<td style="    background: #efefef;">Code de l'heur d'essaie</td>
+<td style="    background: #fff;">25 / 10 / 2016</td>
+<td style="    background: #fff;">J52452</td>
+<td style="    background: #fff;">300DH</td>
+    </tr>
+    <tr>
+<td style="    background: #efefef;">Code 2éme cours</td>
+<td style="    background: #fff;">test</td>
+<td style="    background: #fff;">test</td>
+<td style="    background: #fff;">test</td>
+    </tr>
+    <tr>
+<td style="    background: #efefef;">Code 3éme cours</td>
+<td style="    background: #fff;">test</td>
+<td style="    background: #fff;">test</td>
+<td style="    background: #fff;">test</td>
+    </tr>
+    <tr>
+<td style="    background: #efefef;">Code 4éme cours</td>
+<td style="    background: #fff;">test</td>
+<td style="    background: #fff;">test</td>
+<td style="    background: #fff;">test</td>
+    </tr>
+  </table>
+<div class="dateg8">
+ <div class="dt">Date</div>
+ <div class="dtp">1800dh</div>
+</div>
+<button class="payer">se faire payer</button>
+ </div>
+
+</div>
+        </div>
+    </div>
+{% endblock %}

@@ -61,5 +61,34 @@ my_admin_publier_annonce:
 my_admin_historique_annonces:
     path:     /mes-annonces.html
     methods: [GET]
-    defaults: { _controller: MyAdminBundle:MyAdmin:myannonces }    
- 
+    defaults: { _controller: MyAdminBundle:MyAdmin:myannonces }
+
+my_reservations:
+    path:     /mes-reservations.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:myreservations }     
+
+my_money:
+    path:     /argent.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:money }
+
+my_money_details:
+    path:     /details-argent.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:details }
+    
+my_payment_details:
+    path:     /details-paiments.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:payment }
+    
+my_boite_reception:
+    path:     /mes-messages.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:message }
+    
+avis:
+    path:     /avis.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:avis }     

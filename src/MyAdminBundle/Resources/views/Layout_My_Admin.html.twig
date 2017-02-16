@@ -74,24 +74,24 @@
                         </div>
                     </li>
                     <li class="dropdown">
-                          <a href="g1.php" class="dropbtn">Mes réservations</a>
+                          <a href="{{ path('my_reservations') }}" class="dropbtn">Mes réservations</a>
                           <div class="dropdown-content">
-                            <a href="b1.php">Réservations actuelles</a>
+                            <a href="{{ path('my_reservations') }}">Réservations actuelles</a>
                           </div>
                     </li>
                     <li class="dropdown">
-                        <a href="" class="dropbtn">Argent</a>
+                        <a href="{{ path('my_money') }}" class="dropbtn">Argent</a>
                         <div class="dropdown-content">
-                          <a href="h3.php">Paiments versés</a>
-                          <a href="g8.php">Mes missions actuelles</a>
-                          <a href="h4.php">Paiments reçues</a>
+                          <a href="{{ path('my_money') }}">Paiments versés</a>
+                          <a href="{{ path('my_money_details') }}">Mes missions actuelles</a>
+                          <a href="{{ path('my_payment_details') }}">Paiments reçues</a>
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="h1.php" class="dropbtn">Autres</a>
+                        <a href="" class="dropbtn">Autres</a>
                         <div class="dropdown-content">
-                          <a href="e1.php">messages</a>
-                          <a href="f1.php">Avis</a>
+                          <a href="{{ path('my_boite_reception') }}">messages</a>
+                          <a href="{{ path('avis') }}">Avis</a>
                         </div>
                     </li>
                 </ul>

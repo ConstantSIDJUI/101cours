@@ -1,0 +1,100 @@
+{% extends 'MyAdminBundle::Layout_My_Admin.html.twig' %}
+    
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+    
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+    
+    
+{% block content_my_admin %}
+    {{include ('MyAdminBundle:autres:avispopup.html.twig')}}
+    <div class="autre-wrapper">
+        <div class="container">
+            <div class="left-side-back">
+                <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}"><p><b>Information personelles</b></p></a>
+                <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}"><p>Cin</p></a>
+                <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}"><p>Photo</p></a>
+                <a href="{{ path('my_admin_infos_prof', { 'id': app.user.id }) }}"><p><b>Professeur</b></p></a>
+                <a href="{{ path('my_admin_infos_verification') }}"><p><b>Verifications</b></p></a>
+                <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}"><p><b>Identité bancaire</b></p></a>
+                <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}"><p><b>Informations complémentaires</b></p></a>
+            </div>
+             <div class="right-side-back">
+<div class="histo">Historique des demandes</div>
+
+<div class="f1-p">
+  <div class="f1pdp"><img src="{{ asset('bundles/pages/img/yaz.jpg') }}" /></div>
+  <div class="f1silakhr">
+  <div style="font-size: 25px;">Yazid Kh <i style="color:#64b93a;" class="fa fa-check-circle" aria-hidden="true"></i></div>
+  <div class="f1rat">
+    <fieldset class="f1rating rating">
+        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+    </fieldset>
+  </div>
+  <button onclick="document.getElementById('avispopup').style.display='block'" class="laisseravis">Laisser un avis</button>
+</div>
+</div>
+
+<div class="f1-p">
+  <div class="f1pdp"><img src="{{ asset('bundles/pages/img/yaz.jpg') }}" /></div>
+  <div class="f1silakhr">
+  <div style="font-size: 25px;">Yazid Kh <i style="color:#64b93a;" class="fa fa-check-circle" aria-hidden="true"></i></div>
+  <div class="f1rat">
+    <fieldset class="f1rating rating">
+        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+    </fieldset>
+  </div>
+  <button onclick="document.getElementById('avispopup').style.display='block'" class="laisseravis">Laisser un avis</button>
+</div>
+</div>
+
+<div class="f1-p">
+  <div class="f1pdp"><img src="{{ asset('bundles/pages/img/yaz.jpg') }}" /></div>
+  <div class="f1silakhr">
+  <div style="font-size: 25px;">Yazid Kh <i style="color:#64b93a;" class="fa fa-check-circle" aria-hidden="true"></i></div>
+  <div class="f1rat">
+    <fieldset class="f1rating rating">
+        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+    </fieldset>
+  </div>
+  <button onclick="document.getElementById('avispopup').style.display='block'" class="laisseravis">Laisser un avis</button>
+</div>
+</div>
+
+
+
+   </div>
+        </div>
+    </div>
+  
+{% endblock %}
