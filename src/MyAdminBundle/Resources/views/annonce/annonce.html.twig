@@ -1,0 +1,91 @@
+{% extends 'MyAdminBundle::Layout_My_Admin.html.twig' %}
+    
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+    
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+    
+    
+{% block content_my_admin %}
+    <div class="autre-wrapper">
+        <div class="container">
+            <div class="left-side-back">
+                <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}"><p><b>Information personelles</b></p></a>
+                <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}"><p>Cin</p></a>
+                <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}"><p>Photo</p></a>
+                <a href="{{ path('my_admin_infos_prof', { 'id': app.user.id }) }}"><p><b>Professeur</b></p></a>
+                <a href="{{ path('my_admin_infos_verification') }}"><p><b>Verifications</b></p></a>
+                <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}"><p><b>Identité bancaire</b></p></a>
+                <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}"><p><b>Informations complémentaires</b></p></a>
+            </div>
+            <div class="right-side-back">
+   <div class="histo">Publier une annonce</div>
+ <div class="right-side-backc2">
+   <table style="width:100%">
+    <tr>
+      <td>Ville</td>
+      <td><input type="text" class="tableinput" /></td>
+    </tr>
+    <tr>
+      <td>Niveau</td>
+      <td><input type="text" class="tableinput" /></td>
+    </tr>
+    <tr>
+      <td>Niveau</td>
+      <td><input type="text" class="tableinput" /></td>
+    </tr>
+  </table>
+<br />
+<br />
+  <table class="tarifs">
+    <tr>
+      <th style="width:20%;">Matiére</th>
+      <th class="lpackh">10h</th>
+      <th class="lpackh">16h</th>
+      <th class="lpackh">30h</th>
+    </tr>
+    <tr>
+      <td>Tarifs /h</td>
+      <td><input type="text" class="tttb tableinput" /></td>
+      <td><input type="text" class="tttb tableinput" /></td>
+      <td><input type="text" class=" tableinput" /></td>
+    </tr>
+    <tr>
+      <td>Total</td>
+<td><input type="text" class="tttb tableinput" /></td>
+<td><input type="text" class="tttb tableinput" /></td>
+<td><input type="text" class=" tableinput" /></td>
+    </tr>
+    <tr>
+      <td>Frais</td>
+<td><input type="text" class="tttb tableinput" /></td>
+<td><input type="text" class="tttb tableinput" /></td>
+<td><input type="text" class=" tableinput" /></td>
+    </tr>
+    <tr>
+      <td>Gain</td>
+<td><input type="text" class="tttb tableinput" /></td>
+<td><input type="text" class="tttb tableinput" /></td>
+<td><input type="text" class=" tableinput" /></td>
+    </tr>
+  </table>
+
+<div class="condwr">
+  <div class="condc2">
+    <label class="control control--checkbox"><span  class="accregc2" style="">J'accepte les conditions générales d'utulisations, et cértifié avoir +18ans</span>
+    <input type="checkbox" />
+    <div style="float:left;top:1px;" class="control__indicator kapcheck"></div>
+    </label>
+  </div>
+  <button class="publierc2">Publier l'annonce</button>
+</div>
+
+   </div>
+</div>
+            
+        </div>
+    </div>
+{% endblock %}

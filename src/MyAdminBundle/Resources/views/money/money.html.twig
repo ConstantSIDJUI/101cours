@@ -1,0 +1,73 @@
+{% extends 'MyAdminBundle::Layout_My_Admin.html.twig' %}
+    
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+    
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+    
+    
+{% block content_my_admin %}
+    <div class="autre-wrapper">
+        <div class="container">
+            <div class="left-side-back">
+                <a href="{{ path('my_money_details') }}"><p>Mes mission actuelles</p></a>
+                <a href="{{ path('my_payment_details') }}"><p>Paiments reçues</p></a>
+                <a href="{{ path('my_money') }}"><p><b>Paiments vérsés</b></p></a>
+            </div>
+ <div class="right-side-back">
+
+<div class="experience">
+<div class="histo">Paiments reçues</div>
+</div>
+<div class="thrk">
+  <table class="table table-bordered">
+    <tr>
+      <th style="text-align:center;background: #efefef;" >Code unique du cours</th>
+       <th style="text-align:center;background: #efefef;">Client</th>
+       <th  style="text-align:center;background: #efefef;">Date de payment</th>
+       <th  style="text-align:center;background: #efefef;">Heurs travaillés</th>
+       <th  style="text-align:center;background: #efefef;">Total vérse</th>
+       <th  style="text-align:center;background: #efefef;">Facture</th>
+    </tr>
+    <tr>
+<td style="    background: #fff;">ZE5454</td>
+<td style="    background: #fff;">Ahmed S</td>
+<td style="    background: #fff;">20/06/2016</td>
+<td style="    background: #fff;">3</td>
+<td style="    background: #fff;">Math</td>
+<td style="    background: #fff;"><i class="fa fa-download" aria-hidden="true"></i></td>
+    </tr>
+    <tr>
+<td style="    background: #fff;">ZE5454</td>
+<td style="    background: #fff;">Ahmed S</td>
+<td style="    background: #fff;">20/06/2016</td>
+<td style="    background: #fff;">3</td>
+<td style="    background: #fff;">Math</td>
+<td style="    background: #fff;"><i class="fa fa-download" aria-hidden="true"></i></td>
+    </tr>
+    <tr>
+<td style="    background: #fff;">ZE5454</td>
+<td style="    background: #fff;">Ahmed S</td>
+<td style="    background: #fff;">20/06/2016</td>
+<td style="    background: #fff;">3</td>
+<td style="    background: #fff;">Math</td>
+<td style="    background: #fff;"><i class="fa fa-download" aria-hidden="true"></i></td>
+    </tr>
+    <tr>
+<td style="    background: #fff;">ZE5454</td>
+<td style="    background: #fff;">Ahmed S</td>
+<td style="    background: #fff;">20/06/2016</td>
+<td style="    background: #fff;">3</td>
+<td style="    background: #fff;">Math</td>
+<td style="    background: #fff;"><i class="fa fa-download" aria-hidden="true"></i></td>
+    </tr>
+  </table>
+</div>
+
+</div>
+        </div>
+    </div>
+{% endblock %}

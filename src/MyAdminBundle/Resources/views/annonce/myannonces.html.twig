@@ -1,0 +1,150 @@
+{% extends 'MyAdminBundle::Layout_My_Admin.html.twig' %}
+    
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+    
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+    
+    
+{% block content_my_admin %}
+    <div class="autre-wrapper">
+        <div class="container">
+            <div class="left-side-back">
+                <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}"><p><b>Information personelles</b></p></a>
+                <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}"><p>Cin</p></a>
+                <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}"><p>Photo</p></a>
+                <a href="{{ path('my_admin_infos_prof', { 'id': app.user.id }) }}"><p><b>Professeur</b></p></a>
+                <a href="{{ path('my_admin_infos_verification') }}"><p><b>Verifications</b></p></a>
+                <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}"><p><b>Identité bancaire</b></p></a>
+                <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}"><p><b>Informations complémentaires</b></p></a>
+            </div>
+             <div class="right-side-back">
+<div class="histo">Historique des annonces</div>
+   <div class="profil-c1">
+
+     <div class="lesinfosb1">
+<div class="b1pdp">
+<img src="{{ asset('bundles/pages/img/yaz.jpg') }}" />
+</div>
+<span style="    font-size: 23px; " >Yazid Kh <i style="color:#64b93a;" class="fa fa-check-circle" aria-hidden="true"></i></span>
+</div>
+
+   <div class="alaibfo9c1">
+     <div class="m3lb1">
+     <h3><b>Cours de Mathematique</b></h3>
+     <p>Offe publiée depuis 5 jours</p>
+     <p>Statut de l'annonce : expiré</p>
+   </div>
+     <div class="prixc1">
+       <div class="ofrec1">20DH/h <span class="swy3">10H</span></div>
+       <div class="ofre2">18DH/h <span class="swy32">10H</span></div>
+       <div class="ofre2">14DH/h <span class="swy32">10H</span></div>
+     </div>
+   </div>
+   <div class="alaibtht">
+<a href="" class="ab1">Annuler le cours</a>
+<button class="pb1">Proposer un cours</button>
+   </div>
+
+   </div>
+
+   <div class="profil-c1">
+
+     <div class="lesinfosb1">
+<div class="b1pdp">
+<img src="{{ asset('bundles/pages/img/yaz.jpg') }}" />
+</div>
+<span style="    font-size: 23px; " >Yazid Kh <i style="color:#64b93a;" class="fa fa-check-circle" aria-hidden="true"></i></span>
+</div>
+
+   <div class="alaibfo9c1">
+     <div class="m3lb1">
+     <h3><b>Cours de Mathematique</b></h3>
+     <p>Offe publiée depuis 5 jours</p>
+     <p>Statut de l'annonce : expiré</p>
+   </div>
+     <div class="prixc1">
+       <div class="ofrec1">20DH/h <span class="swy3">10H</span></div>
+       <div class="ofre2">18DH/h <span class="swy32">10H</span></div>
+       <div class="ofre2">14DH/h <span class="swy32">10H</span></div>
+     </div>
+   </div>
+   <div class="alaibtht">
+<a href="" class="ab1">Annuler le cours</a>
+<button class="pb1">Proposer un cours</button>
+   </div>
+
+   </div>
+
+   <div class="profil-c1">
+
+     <div class="lesinfosb1">
+<div class="b1pdp">
+<img src="{{ asset('bundles/pages/img/yaz.jpg') }}" />
+</div>
+<span style="    font-size: 23px; " >Yazid Kh <i style="color:#64b93a;" class="fa fa-check-circle" aria-hidden="true"></i></span>
+</div>
+
+   <div class="alaibfo9c1">
+     <div class="m3lb1">
+     <h3><b>Cours de Mathematique</b></h3>
+     <p>Offe publiée depuis 5 jours</p>
+     <p>Statut de l'annonce : expiré</p>
+   </div>
+     <div class="prixc1">
+       <div class="ofrec1">20DH/h <span class="swy3">10H</span></div>
+       <div class="ofre2">18DH/h <span class="swy32">10H</span></div>
+       <div class="ofre2">14DH/h <span class="swy32">10H</span></div>
+     </div>
+   </div>
+   <div class="alaibtht">
+<a href="" class="ab1">Annuler le cours</a>
+<button class="pb1">Proposer un cours</button>
+   </div>
+
+   </div>
+
+   <div class="profil-c1">
+
+     <div class="lesinfosb1">
+<div class="b1pdp">
+<img src="{{ asset('bundles/pages/img/yaz.jpg') }}" />
+</div>
+<span style="    font-size: 23px; " >Yazid Kh <i style="color:#64b93a;" class="fa fa-check-circle" aria-hidden="true"></i></span>
+</div>
+
+   <div class="alaibfo9c1">
+     <div class="m3lb1">
+     <h3><b>Cours de Mathematique</b></h3>
+     <p>Offe publiée depuis 5 jours</p>
+     <p>Statut de l'annonce : expiré</p>
+   </div>
+     <div class="prixc1">
+       <div class="ofrec1">20DH/h <span class="swy3">10H</span></div>
+       <div class="ofre2">18DH/h <span class="swy32">10H</span></div>
+       <div class="ofre2">14DH/h <span class="swy32">10H</span></div>
+     </div>
+   </div>
+   <div class="alaibtht">
+<a href="" class="ab1">Annuler le cours</a>
+<button class="pb1">Proposer un cours</button>
+   </div>
+
+   </div>
+
+   <div class="numerotation">
+    <span class="shm"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+    <span><a href="">1</a></span>
+    <span><a href="" >2</a></span>
+    <span><a href="" style="border-right:none;">3</a></span>
+    <span style="margin-left:10px;" class="shm"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+   </div>
+
+   </div>
+
+        </div>
+    </div>
+{% endblock %}
