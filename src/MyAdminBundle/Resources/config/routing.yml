@@ -52,5 +52,14 @@ my_admin_infos_compl:
     defaults: { _controller: MyAdminBundle:MyAdmin:infoComplementaire }
     requirements:
         id: \d+   
-    
-    
+        
+my_admin_publier_annonce:
+    path:     /publier-annonce.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:annonce }
+
+my_admin_historique_annonces:
+    path:     /mes-annonces.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:myannonces }    
+ 

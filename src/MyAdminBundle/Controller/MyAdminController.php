@@ -355,4 +355,59 @@ class MyAdminController extends Controller
         ));
     }
     
+    /**
+     * Generate and display the home page
+     * @return Render Display the home page
+     * @access public
+     * @version 1.0
+     * @author Anouar ISMAIL
+     * @copyright Â© 2016-2017.
+     */
+    public function annonceAction(Request $request){
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        return $this->render('MyAdminBundle:annonce:annonce.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages
+        ));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the home page
+     * @access public
+     * @version 1.0
+     * @author Anouar ISMAIL
+     * @copyright Â© 2016-2017.
+     */
+    public function myannoncesAction(Request $request){
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        return $this->render('MyAdminBundle:annonce:myannonces.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            '$messages'         => $messages
+        ));
+    }
 }
