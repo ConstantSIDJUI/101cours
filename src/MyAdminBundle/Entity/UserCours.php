@@ -29,28 +29,35 @@ class UserCours
     private $createdDate;
     
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="home", type="integer", nullable=true)
+     * @ORM\Column(name="home", type="boolean", nullable=true)
      */
     protected $home;
     
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="coffe", type="integer", nullable=true)
+     * @ORM\Column(name="coffe", type="boolean", nullable=true)
      */
     protected $coffe;
     
     /**
-     * @var integer
+     * @var boolean
      *
-     * @ORM\Column(name="tea", type="integer", nullable=true)
+     * @ORM\Column(name="tea", type="boolean", nullable=true)
      */
     protected $tea;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="confirm_condition", type="boolean", nullable=true)
+     */
+    protected $confirmCondition;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"all"}, inversedBy="userCours")
      * @ORM\JoinColumn(nullable=true)
      */
     private $user;
@@ -60,6 +67,29 @@ class UserCours
      * @ORM\JoinColumn(nullable=true)
      */
     private $cours;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MyAdminBundle\Entity\Annonce", cascade={"all"})
+     */
+    protected $annonce;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\City", cascade={"all"}, inversedBy="userCours")
+     */
+    private $cities;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\Level", cascade={"all"}, inversedBy="userCours")
+     */
+    private $level;
+    
+    /**
+     * Constructor
+     */
+    public function __construct(){
+        // Set date update
+        $this->createdDate = new \DateTime();
+    }
 
 
     /**
@@ -70,29 +100,6 @@ class UserCours
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \UserBundle\Entity\User $user
-     * @return UserCours
-     */
-    public function setUser(\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     /**
@@ -142,9 +149,124 @@ class UserCours
     }
 
     /**
+     * Set confirmCondition
+     *
+     * @param boolean $confirmCondition
+     * @return UserCours
+     */
+    public function setConfirmCondition($confirmCondition)
+    {
+        $this->confirmCondition = $confirmCondition;
+
+        return $this;
+    }
+
+    /**
+     * Get confirmCondition
+     *
+     * @return boolean 
+     */
+    public function getConfirmCondition()
+    {
+        return $this->confirmCondition;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     * @return UserCours
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set annonce
+     *
+     * @param \MyAdminBundle\Entity\Annonce $annonce
+     * @return UserCours
+     */
+    public function setAnnonce(\MyAdminBundle\Entity\Annonce $annonce = null)
+    {
+        $this->annonce = $annonce;
+
+        return $this;
+    }
+
+    /**
+     * Get annonce
+     *
+     * @return \MyAdminBundle\Entity\Annonce 
+     */
+    public function getAnnonce()
+    {
+        return $this->annonce;
+    }
+
+    /**
+     * Set cities
+     *
+     * @param \MyAdminBundle\Entity\City $cities
+     * @return UserCours
+     */
+    public function setCities(\MyAdminBundle\Entity\City $cities = null)
+    {
+        $this->cities = $cities;
+
+        return $this;
+    }
+
+    /**
+     * Get cities
+     *
+     * @return \MyAdminBundle\Entity\City 
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
+     * Set level
+     *
+     * @param \MyAdminBundle\Entity\Level $level
+     * @return UserCours
+     */
+    public function setLevel(\MyAdminBundle\Entity\Level $level = null)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return \MyAdminBundle\Entity\Level 
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
      * Set home
      *
-     * @param integer $home
+     * @param boolean $home
      * @return UserCours
      */
     public function setHome($home)
@@ -157,7 +279,7 @@ class UserCours
     /**
      * Get home
      *
-     * @return integer 
+     * @return boolean 
      */
     public function getHome()
     {
@@ -167,7 +289,7 @@ class UserCours
     /**
      * Set coffe
      *
-     * @param integer $coffe
+     * @param boolean $coffe
      * @return UserCours
      */
     public function setCoffe($coffe)
@@ -180,7 +302,7 @@ class UserCours
     /**
      * Get coffe
      *
-     * @return integer 
+     * @return boolean 
      */
     public function getCoffe()
     {
@@ -190,7 +312,7 @@ class UserCours
     /**
      * Set tea
      *
-     * @param integer $tea
+     * @param boolean $tea
      * @return UserCours
      */
     public function setTea($tea)
@@ -203,7 +325,7 @@ class UserCours
     /**
      * Get tea
      *
-     * @return integer 
+     * @return boolean 
      */
     public function getTea()
     {

@@ -167,15 +167,15 @@
                                     {% set age = 'now'|date('Y') -  listUserCour.user.birthDate|date('Y') %}
                                     {% set jour = 'now'|date('d - m -Y') -  listUserCour.createdDate|date('d - m -Y') %}
                                     <span>{{ age }} ans</span><br />
-                                    <span>Ville : {{ listUserCour.user.city.name }}</span><br />
-                                    <span>{{ listUserCour.user.status }}</span><br />
-                                    <span>Matiéres métrisés : {{ listUserCour.user.profil.subjectMatter }}</span><br />
+                                    <span>Ville : {% if listUserCour.cities is not empty %}{{ listUserCour.cities.name }}{% endif %}</span><br />
+                                    <span>{% if listUserCour.user.status == 1 %} Etudiant {% else %} Professeur {% endif %}</span><br />
+                                    <span>Matiéres métrisés : {% if listUserCour.user.profil is not empty %}{{ listUserCour.user.profil.subjectMatter }} {% endif %}</span><br />
                                     <span>Lieu de travail :  {% if listUserCour.home > 0 %}<img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/home.png') }}" />{% endif %} {% if listUserCour.coffe > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/coffe.png') }}" />{% endif %} {% if listUserCour.tea > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/tea.png') }}" />{% endif %}</span>
                                 </div>
                                 <div class="rightinfos ">
-                                    <div class="ofre1">20DH/h <span class="swy3">10H</span></div>
-                                    <div class="ofre2">18DH/h <span class="swy32">10H</span></div>
-                                    <div class="ofre2">14DH/h <span class="swy32">10H</span></div>
+                                    <div class="ofre1">{% if listUserCour.annonce is not empty %}{{ listUserCour.annonce.tarif10 }}{% endif %}DH/h <span class="swy3">10H</span></div>
+                                    <div class="ofre2">{% if listUserCour.annonce is not empty %}{{ listUserCour.annonce.tarif16 }}{% endif %}DH/h <span class="swy32">10H</span></div>
+                                    <div class="ofre2">{% if listUserCour.annonce is not empty %}{{ listUserCour.annonce.tarif30 }}{% endif %}DH/h <span class="swy32">10H</span></div>
                                 </div>
                                 <span class="datedepub">Offre publié depuis {{jour}} jour{% if jour > 1 %}s{% endif %}</span>
                             </div>

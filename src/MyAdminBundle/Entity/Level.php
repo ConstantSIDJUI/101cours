@@ -43,9 +43,9 @@ class Level
     private $status;
     
     /**
-     * @ORM\OneToMany(targetEntity="MyAdminBundle\Entity\Cours", mappedBy="level", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="MyAdminBundle\Entity\UserCours", mappedBy="level", cascade={"all"})
      */
-    private $cours;
+    private $userCours;
 
 
     /**
@@ -126,12 +126,15 @@ class Level
     {
         return $this->status;
     }
+    
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->cours = new \Doctrine\Common\Collections\ArrayCollection();
+        // Set date update
+        $this->createdDate = new \DateTime();
     }
 
     /**
@@ -148,22 +151,35 @@ class Level
     }
 
     /**
-     * Remove cours
+     * Add userCours
      *
-     * @param \MyAdminBundle\Entity\Cours $cours
+     * @param \MyAdminBundle\Entity\UserCours $userCours
+     * @return Level
      */
-    public function removeCour(\MyAdminBundle\Entity\Cours $cours)
+    public function addUserCour(\MyAdminBundle\Entity\UserCours $userCours)
     {
-        $this->cours->removeElement($cours);
+        $this->userCours[] = $userCours;
+
+        return $this;
     }
 
     /**
-     * Get cours
+     * Remove userCours
+     *
+     * @param \MyAdminBundle\Entity\UserCours $userCours
+     */
+    public function removeUserCour(\MyAdminBundle\Entity\UserCours $userCours)
+    {
+        $this->userCours->removeElement($userCours);
+    }
+
+    /**
+     * Get userCours
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCours()
+    public function getUserCours()
     {
-        return $this->cours;
+        return $this->userCours;
     }
 }

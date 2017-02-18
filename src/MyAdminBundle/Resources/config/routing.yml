@@ -55,7 +55,7 @@ my_admin_infos_compl:
         
 my_admin_publier_annonce:
     path:     /publier-annonce.html
-    methods: [GET]
+    methods: [GET|POST]
     defaults: { _controller: MyAdminBundle:MyAdmin:annonce }
 
 my_admin_historique_annonces:

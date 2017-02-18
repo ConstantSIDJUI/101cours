@@ -64,24 +64,17 @@ class Cours
     private $status;
     
     /**
-     * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\City", cascade={"all"}, inversedBy="cours")
-     */
-    private $cities;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"all"}, inversedBy="cours")
-     */
-    private $user;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\Level", cascade={"all"}, inversedBy="cours")
-     */
-    private $level;
-    
-    /**
      * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\Material", cascade={"all"}, inversedBy="cours")
      */
     private $material;
+    
+    /**
+     * Constructor
+     */
+    public function __construct(){
+        // Set date update
+        $this->createdDate = new \DateTime();
+    }
 
 
     /**
@@ -230,75 +223,6 @@ class Cours
     public function getStatus()
     {
         return $this->status;
-    }
-
-    /**
-     * Set cities
-     *
-     * @param \MyAdminBundle\Entity\City $cities
-     * @return Cours
-     */
-    public function setCities(\MyAdminBundle\Entity\City $cities = null)
-    {
-        $this->cities = $cities;
-
-        return $this;
-    }
-
-    /**
-     * Get cities
-     *
-     * @return \MyAdminBundle\Entity\City 
-     */
-    public function getCities()
-    {
-        return $this->cities;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \UserBundle\Entity\User $user
-     * @return Cours
-     */
-    public function setUser(\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set level
-     *
-     * @param \MyAdminBundle\Entity\Level $level
-     * @return Cours
-     */
-    public function setLevel(\MyAdminBundle\Entity\Level $level = null)
-    {
-        $this->level = $level;
-
-        return $this;
-    }
-
-    /**
-     * Get level
-     *
-     * @return \MyAdminBundle\Entity\Level 
-     */
-    public function getLevel()
-    {
-        return $this->level;
     }
 
     /**
