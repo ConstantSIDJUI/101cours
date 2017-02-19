@@ -2,6 +2,65 @@
     
 {% block javascripts %}
     {{ parent() }}
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#myadminbundle_usercours_search_cityUserCours').autocomplete({
+                minLength: 2,
+                messages: {
+                    noResults: '',
+                    results: function() {}
+                },
+                source : function(requete, reponse){
+                    $.ajax({
+                        type: "POST",
+                        url : "{{ path('pages_ajax_searchajaxcities') }}",
+                        dataType : 'json',
+                        data : 'city=' + requete['term'],
+                        maxRows : 10,
+                        success : function(data){
+                            reponse($.map(data, function(objet){
+                                objet['label'] = objet['name'] + ' (' + objet['postalCode'] + ')';
+                                return objet;
+                            }));
+                        }
+                    });
+                },
+                select: function(event, ui){
+                    $('#myadminbundle_usercours_cities').val(ui.item.id);
+                }
+            }).data('ui-autocomplete')._renderItem = function(ul, item){
+                return $('<li>').append('<a style="text-transform: capitalize;">' + item.name + ' (' + item.postalCode + ')' + '</a>').appendTo(ul);
+            };
+            
+            $('#myadminbundle_usercours_annonce_tarif10').click(function(e){
+                var total10 = 0;
+                val_tarif10 = parseInt($('input#myadminbundle_usercours_annonce_tarif10').val());
+                given_val_etat_lessor   = parseInt($('input#monbail_leasebundle_lease_locationStudyEntryLessor').val());
+                given_val_other_lessor   = parseInt($('input#monbail_leasebundle_lease_otherServicesLessor').val());
+
+                if( isNaN( val_tarif10)){
+                    val_tarif10 = 0;
+                }
+
+                total10 = val_tarif10 * 10;
+                $('#tmyadminbundle_usercours_annonce_total10').val(total10);
+            });
+
+            setInterval(function(){
+                // change value charge roomer
+                var total10 = 0;
+                val_tarif10 = parseInt($('input#myadminbundle_usercours_annonce_tarif10').val());
+                if( isNaN( val_tarif10)){
+                    val_tarif10 = 0;
+                }
+                total10 = val_tarif10 * 10;
+                $('#tmyadminbundle_usercours_annonce_total10').val(total10);
+
+            }, 200);
+        });
+    </script>
 {% endblock %}
     
 {% block title %}
@@ -22,70 +81,125 @@
                 <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}"><p><b>Informations complémentaires</b></p></a>
             </div>
             <div class="right-side-back">
-   <div class="histo">Publier une annonce</div>
- <div class="right-side-backc2">
-   <table style="width:100%">
-    <tr>
-      <td>Ville</td>
-      <td><input type="text" class="tableinput" /></td>
-    </tr>
-    <tr>
-      <td>Niveau</td>
-      <td><input type="text" class="tableinput" /></td>
-    </tr>
-    <tr>
-      <td>Niveau</td>
-      <td><input type="text" class="tableinput" /></td>
-    </tr>
-  </table>
-<br />
-<br />
-  <table class="tarifs">
-    <tr>
-      <th style="width:20%;">Matiére</th>
-      <th class="lpackh">10h</th>
-      <th class="lpackh">16h</th>
-      <th class="lpackh">30h</th>
-    </tr>
-    <tr>
-      <td>Tarifs /h</td>
-      <td><input type="text" class="tttb tableinput" /></td>
-      <td><input type="text" class="tttb tableinput" /></td>
-      <td><input type="text" class=" tableinput" /></td>
-    </tr>
-    <tr>
-      <td>Total</td>
-<td><input type="text" class="tttb tableinput" /></td>
-<td><input type="text" class="tttb tableinput" /></td>
-<td><input type="text" class=" tableinput" /></td>
-    </tr>
-    <tr>
-      <td>Frais</td>
-<td><input type="text" class="tttb tableinput" /></td>
-<td><input type="text" class="tttb tableinput" /></td>
-<td><input type="text" class=" tableinput" /></td>
-    </tr>
-    <tr>
-      <td>Gain</td>
-<td><input type="text" class="tttb tableinput" /></td>
-<td><input type="text" class="tttb tableinput" /></td>
-<td><input type="text" class=" tableinput" /></td>
-    </tr>
-  </table>
-
-<div class="condwr">
-  <div class="condc2">
-    <label class="control control--checkbox"><span  class="accregc2" style="">J'accepte les conditions générales d'utulisations, et cértifié avoir +18ans</span>
-    <input type="checkbox" />
-    <div style="float:left;top:1px;" class="control__indicator kapcheck"></div>
-    </label>
-  </div>
-  <button class="publierc2">Publier l'annonce</button>
-</div>
-
-   </div>
-</div>
-            
+                <form method="post" {{ form_enctype(form) }} action="{{ path('my_admin_publier_annonce') }}">
+                    <div class="histo">Publier une annonce</div>
+                    <div class="right-side-backc2">
+                        <table style="width:100%">
+                            <tr>
+                                <td>Ville</td>
+                                <td>
+                                    <div style="display: none;">
+                                        {{ form_widget(form.cities) }}
+                                    </div>
+                                    {{ form_widget(form.search_cityUserCours, { 'attr': {'class': 'tableinput'} }) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cours</td>
+                                <td>{{ form_widget(form.cours, { 'attr': {'class': 'tableinput'}}) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Niveau</td>
+                                <td>{{ form_widget(form.level, { 'attr': {'class': 'tableinput'}}) }}</td>
+                            </tr>
+                        </table>
+                        <br />
+                        <br />
+                        <table class="tarifs">
+                            <tr>
+                                <th >Lieu de travaille</th>
+                                <th class="lpackh">{{ form_label(form.home) }}</th>
+                                <th class="lpackh">{{ form_label(form.coffe) }}</th>
+                                <th class="lpackh">{{ form_label(form.tea) }}</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <label class="control control--checkbox"><span  class="accregc2" style=""></span>
+                                        {{ form_widget(form.home) }}
+                                        <div style="float:left;top:1px;" class="control__indicator kapcheck"></div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="control control--checkbox"><span  class="accregc2" style=""></span>
+                                        {{ form_widget(form.coffe) }}
+                                        <div style="float:left;top:1px;" class="control__indicator kapcheck"></div>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label class="control control--checkbox"><span  class="accregc2" style=""></span>
+                                        {{ form_widget(form.tea) }}
+                                        <div style="float:left;top:1px;" class="control__indicator kapcheck"></div>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <br />
+                        <table class="tarifs">
+                            <tr>
+                                <th style="width:20%;">Matiére</th>
+                                <th class="lpackh">10h</th>
+                                <th class="lpackh">16h</th>
+                                <th class="lpackh">30h</th>
+                            </tr>
+                            <tr>
+                                <td>Tarifs /h</td>
+                                <td>{{ form_widget(form.annonce.tarif10, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.tarif16, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.tarif30, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>{{ form_widget(form.annonce.total10, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.total16, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.total30, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Frais de virement bancaire </td>
+                                <td>{{ form_widget(form.annonce.frais10, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.frais16, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.frais30, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Frais 101cours</td>
+                                <td>{{ form_widget(form.annonce.frais101cours10, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.frais101cours16, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.frais101cours30, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                            </tr>
+                            <tr>
+                                <td>TVA</td>
+                                <td>{{ form_widget(form.annonce.tva10, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.tva16, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.tva30, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Prix payé par le client par pack </td>
+                                <td>{{ form_widget(form.annonce.pricePack10, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.pricePack16, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.pricePack30, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Prix Payé par le client par heure</td>
+                                <td>{{ form_widget(form.annonce.priceHour10, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.priceHour16, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                                <td>{{ form_widget(form.annonce.priceHour30, { 'attr': {'class': 'tttb tableinput'}}) }}</td>
+                            </tr>
+                        </table>
+                        <div class="condwr">
+                            <div class="condc2">
+                                <label class="control control--checkbox"><span  class="accregc2" style="">{{ form_label(form.confirmCondition) }}</span>
+                                    {{ form_widget(form.confirmCondition) }}
+                                    <div style="float:left;top:1px;" class="control__indicator kapcheck"></div>
+                                </label>
+                            </div>
+                            <button class="publierc2">Publier l'annonce</button>
+                            {{ form_rest(form) }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+                
         </div>
     </div>
 {% endblock %}

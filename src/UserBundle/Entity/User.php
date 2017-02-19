@@ -185,6 +185,11 @@ class User extends BaseUser
      */
     protected $professor;
     
+    /**
+     * @ORM\OneToMany(targetEntity="MyAdminBundle\Entity\UserCours", mappedBy="user", cascade={"all"})
+     */
+    private $userCours;
+    
 
     public function __construct()
     {
@@ -862,5 +867,38 @@ class User extends BaseUser
     public function getProfessor()
     {
         return $this->professor;
+    }
+
+    /**
+     * Add userCours
+     *
+     * @param \MyAdminBundle\Entity\UserCours $userCours
+     * @return User
+     */
+    public function addUserCour(\MyAdminBundle\Entity\UserCours $userCours)
+    {
+        $this->userCours[] = $userCours;
+
+        return $this;
+    }
+
+    /**
+     * Remove userCours
+     *
+     * @param \MyAdminBundle\Entity\UserCours $userCours
+     */
+    public function removeUserCour(\MyAdminBundle\Entity\UserCours $userCours)
+    {
+        $this->userCours->removeElement($userCours);
+    }
+
+    /**
+     * Get userCours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserCours()
+    {
+        return $this->userCours;
     }
 }

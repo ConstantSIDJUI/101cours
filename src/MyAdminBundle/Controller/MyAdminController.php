@@ -12,6 +12,8 @@ use UserBundle\Form\Type\UserRibType;
 use UserBundle\Form\Type\UserCinType;
 use UserBundle\Form\Type\UserComplementType;
 use UserBundle\Form\Type\UserProfessorType;
+use MyAdminBundle\Form\Type\UserCoursType;
+use MyAdminBundle\Entity\UserCours;
 
 class MyAdminController extends Controller
 {
@@ -369,6 +371,12 @@ class MyAdminController extends Controller
         // Get manager
         $em = $this->getDoctrine()->getManager();
         
+        // New UserCours
+        $userCours = new UserCours;
+        
+        // Create form info cin
+        $form = $this->createForm(new UserCoursType(), $userCours, array('em' => $em));
+        
         // Get message user
         $messages       = $em->getRepository('PagesBundle:Message')
                              ->findBy(array('userReceive' => $user, 'status' => null));
@@ -376,10 +384,27 @@ class MyAdminController extends Controller
         // Get number of message not read
         $messageNumber  = count($messages);
         
+        // Handler
+        $form->handleRequest($request);
+        
+        if($form->isValid()){ 
+            //Set User
+            $userCours->setUser($user);
+                    
+            // Persist and commit
+            $em->persist($userCours);
+            $em->flush();
+
+            // Flash message and redirection
+            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
+            return $this->redirect($this->generateUrl('my_admin_historique_annonces'));
+        }
+        
         return $this->render('MyAdminBundle:annonce:annonce.html.twig', array(
             'user'              => $user,
             'messageNumber'     => $messageNumber,
-            '$messages'         => $messages
+            '$messages'         => $messages,
+            'form'              => $form->createView()
         ));
     }
     

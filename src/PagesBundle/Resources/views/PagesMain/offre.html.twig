@@ -50,11 +50,11 @@
 {% block content %}
     <div class="autre-wrapper">
         <div class="container">
-            <div class="loffre"><i style="cursor:pointer;float:left;background: #28b6de;padding: 20px;color: #fff;" class="fa fa-chevron-left" aria-hidden="true"></i> Cours de {{ userCours.cours.libelle }} pour {{ userCours.cours.level.libelle }} à {{ userCours.cours.cities.name }}</div>
+            <div class="loffre"><i style="cursor:pointer;float:left;background: #28b6de;padding: 20px;color: #fff;" class="fa fa-chevron-left" aria-hidden="true"></i> Cours de {{ userCours.cours.libelle }} pour {{ userCours.level.libelle }} à {{ userCours.cities.name }}</div>
             <div class="profil-left-side">
                 
                 <div class="user-infos">
-                    <div class="user-pdp"><img src="{{ asset('bundles/pages/img/yaz.jpg') }}" /></div>
+                    <div class="user-pdp"><img src="{% if userCours.user.avatar is not empty %}{{ asset('bundles/101cours/avatar/' ~ userCours.user.avatar.name ~ '.' ~ userCours.user.avatar.extension) }}{% else %}{{ asset('bundles/pages/img/user_default.png') }}{% endif %}" /></div>
                     <div class="rating">
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="friendsfb"><i class="fbfriendsicon fa fa-users" aria-hidden="true"></i> 300 amis sur facebook</div>
                     <div class="verifyinfos">
-                        <div class="cin"><i class="fa fa-address-card" aria-hidden="true"></i> <span>CIN</span> {% if userCours.user.cin is not empty %}{% if userCours.user.cin.cinVerifed > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}{% endif %}</div>
+                        <div class="cin"><i class="fa fa-address-card" aria-hidden="true"></i> <span>CIN</span> {% if userCours.user.cin is not empty %}{% if userCours.user.cin.cinVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}{% endif %}</div>
                         <div class="cin"><i class="fa fa-envelope" aria-hidden="true"></i> <span>Email</span> {% if userCours.user.emailVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
                         <div class="cin"><i class="fa fa-linkedin-square" aria-hidden="true"></i> <span>Linkedin</span> {% if userCours.user.linkedinVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
                         <div class="cin"><i class="fa fa-facebook-official" aria-hidden="true"></i> <span>Facebook</span> {% if userCours.user.facebookVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
@@ -80,8 +80,8 @@
                 
                 <div class="activitewrapper">
                     <span><b>Activité</b></span><br />
-                    <span>Annonces publiées : 100</span>
-                    <span>Conexion : 17/0/</span>
+                    <span>Annonces publiées : {{ userCours.user.userCours|length }}</span>
+                    <span>Conexion : {{ userCours.user.lastlogin|date('d - m -Y') }}</span>
                     <span>Inscription : {{ userCours.user.dateCreated|date('d - m -Y') }}</span>
                     <span>Heureus enseignées : 200</span>
                 </div>
@@ -97,8 +97,8 @@
                     {% set jour = 'now'|date('d - m -Y') -  userCours.createdDate|date('d - m -Y') %}
                     <span style="font-size:23px;"><b>{{ userCours.user.lastname }} {{ userCours.user.firstname }}</b> <span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i></span></span><br />
                     <span>{{ age }} ans</span><br />
-                    <span>Ville : {% if userCours.user.city is not empty %}{{ userCours.user.city.name }}{% endif %}</span><br />
-                    <span>{{ userCours.user.status }}</span><br />
+                    <span>Ville : {% if userCours.cities is not empty %}{{ userCours.cities.name }}{% endif %}</span><br />
+                    <span>{% if userCours.user.status == 1 %} Etudiant {% else %} Professeur {% endif %}</span><br />
                     <span>Matiéres métrisés : {% if userCours.user.profil is not empty %}{{ userCours.user.profil.subjectMatter }}{% endif %}</span><br />
                     <span>Lieu de cours : {% if userCours.home > 0 %}<img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/home.png') }}" />{% endif %} {% if userCours.coffe > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/coffe.png') }}" />{% endif %} {% if userCours.tea > 0 %} <img style="margin-left: 10px;    margin-bottom: 0px;margin-top: -5px;width: 19px;" src="{{ asset('bundles/pages/img/tea.png') }}" />{% endif %}</span>
                 </div>
@@ -141,59 +141,57 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
                 </div>
             </div>
-            
             <div class="profil-right-side">
                 <div class="packs">
                     <span class="packt">Choisissez votre pack</span>
-                    <form action="" method="post">
+                    <form method="post" {{ form_enctype(form) }} action="{{ path('pages_result_search', { 'id': userCours.id }) }}">
                         <div class="packrow">
                             <span class="huwa">
-                                <label  class="control control--checkbox">30dh pour 10dh/h
-                                    <input class="radio" type="radio" />
+                                <label for="myadminbundle_demande_pack30" class="control control--checkbox">30h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif30 }}{% endif %}dh/h
+                                    {{ form_widget(form.pack30) }}
                                 </label>
                             </span>
                             <span class="packprix">
-                                450DH
+                                {% set tarif30 = 30 * userCours.annonce.tarif30 %}
+                                {{ tarif30 }}DH
                             </span>
                         </div>
-                        
                         <div class="packrow">
                             <span class="huwa">
-                                <label  class="control control--checkbox">20dh pour 20dh/h
-                                    <input class="radio" type="radio" />
+                                <label for="myadminbundle_demande_pack16"  class="control control--checkbox">16h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif16 }}{% endif %}dh/h
+                                    {{ form_widget(form.pack16) }}
                                 </label>
                             </span>
                             <span class="packprix">
-                                400DH
+                                {% set tarif16 = 16 * userCours.annonce.tarif16 %}
+                                {{ tarif16 }}DH
                             </span>
                         </div>
-                        
                         <div class="packrow">
                             <span class="huwa">
-                                <label class="control control--checkbox">10h pour 25dh/h
-                                    <input class="radio" type="radio" />
+                                <label for="myadminbundle_demande_pack10" class="control control--checkbox">10h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif10 }}{% endif %}dh/h
+                                    {{ form_widget(form.pack10) }}
                                 </label>
                             </span>
                             <span class="packprix">
-                                250DH
+                                {% set tarif10 = 10 * userCours.annonce.tarif10 %}
+                                {{ tarif10 }}DH
                             </span>
                         </div>
                         
                         <div class="offreconditions">
-                            <label class="control control--checkbox"><span  class="accreg" style="">J'accepte les conditions générales d'utulisations, et cértifié avoir +18ans</span>
-                                <input type="checkbox" />
+                            <label class="control control--checkbox"><span  class="accreg" style="">{{ form_label(form.confirmCondition) }}</span>
+                                {{ form_widget(form.confirmCondition) }}
                                 <div style="float:left;top:1px;" class="control__indicator kapcheck"></div>
                             </label>
                         </div>
-                        
                         <button class="envoyerdemande">Envoyer une demande</button>
+                        {{ form_rest(form) }}
+                    </form>
                 </div>
             </div>
-            </form>
         </div>
     </div>
     <!-- end of les pages -->

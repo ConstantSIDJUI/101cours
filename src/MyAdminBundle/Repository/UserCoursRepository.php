@@ -27,8 +27,8 @@ class UserCoursRepository extends EntityRepository
                    ->select('l')
                    ->join('l.cours', 'c')
                    ->where('c = :cours')
-                   ->andWhere('c.cities = :city')
-                   ->andWhere('c.level = :level')
+                   ->andWhere('l.cities = :city')
+                   ->andWhere('l.level = :level')
                    ->setParameter('city', $data['cities'])
                    ->setParameter('level', $data['level'])
                    ->setParameter('cours', $data['cours']);
@@ -55,7 +55,7 @@ class UserCoursRepository extends EntityRepository
                    ->select('l')
                    ->join('l.cours', 'c')
                    ->where('c = :cours')
-                   ->andWhere('c.level = :level')
+                   ->andWhere('l.level = :level')
                    ->setParameter('level', $data['level'])
                    ->setParameter('cours', $data['cours']);
         
