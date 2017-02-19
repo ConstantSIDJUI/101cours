@@ -84,6 +84,11 @@ class UserCours
     private $level;
     
     /**
+     * @ORM\OneToMany(targetEntity="MyAdminBundle\Entity\Demande", mappedBy="userCours", cascade={"all"})
+     */
+    private $demandes;
+    
+    /**
      * Constructor
      */
     public function __construct(){
@@ -330,5 +335,38 @@ class UserCours
     public function getTea()
     {
         return $this->tea;
+    }
+
+    /**
+     * Add demandes
+     *
+     * @param \MyAdminBundle\Entity\Demande $demandes
+     * @return UserCours
+     */
+    public function addDemande(\MyAdminBundle\Entity\Demande $demandes)
+    {
+        $this->demandes[] = $demandes;
+
+        return $this;
+    }
+
+    /**
+     * Remove demandes
+     *
+     * @param \MyAdminBundle\Entity\Demande $demandes
+     */
+    public function removeDemande(\MyAdminBundle\Entity\Demande $demandes)
+    {
+        $this->demandes->removeElement($demandes);
+    }
+
+    /**
+     * Get demandes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDemandes()
+    {
+        return $this->demandes;
     }
 }

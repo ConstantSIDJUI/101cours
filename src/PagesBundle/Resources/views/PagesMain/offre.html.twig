@@ -141,19 +141,16 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
                 </div>
             </div>
-            
             <div class="profil-right-side">
                 <div class="packs">
                     <span class="packt">Choisissez votre pack</span>
-                    <form action="" method="post">
+                    <form method="post" {{ form_enctype(form) }} action="{{ path('pages_result_search', { 'id': userCours.id }) }}">
                         <div class="packrow">
                             <span class="huwa">
-                                <label  class="control control--checkbox">30h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif30 }}{% endif %}dh/h
-                                    <input class="radio" type="radio" />
+                                <label for="myadminbundle_demande_pack30" class="control control--checkbox">30h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif30 }}{% endif %}dh/h
+                                    {{ form_widget(form.pack30) }}
                                 </label>
                             </span>
                             <span class="packprix">
@@ -161,11 +158,10 @@
                                 {{ tarif30 }}DH
                             </span>
                         </div>
-                        
                         <div class="packrow">
                             <span class="huwa">
-                                <label  class="control control--checkbox">16h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif16 }}{% endif %}dh/h
-                                    <input class="radio" type="radio" />
+                                <label for="myadminbundle_demande_pack16"  class="control control--checkbox">16h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif16 }}{% endif %}dh/h
+                                    {{ form_widget(form.pack16) }}
                                 </label>
                             </span>
                             <span class="packprix">
@@ -173,11 +169,10 @@
                                 {{ tarif16 }}DH
                             </span>
                         </div>
-                        
                         <div class="packrow">
                             <span class="huwa">
-                                <label class="control control--checkbox">10h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif10 }}{% endif %}dh/h
-                                    <input class="radio" type="radio" />
+                                <label for="myadminbundle_demande_pack10" class="control control--checkbox">10h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif10 }}{% endif %}dh/h
+                                    {{ form_widget(form.pack10) }}
                                 </label>
                             </span>
                             <span class="packprix">
@@ -187,16 +182,16 @@
                         </div>
                         
                         <div class="offreconditions">
-                            <label class="control control--checkbox"><span  class="accreg" style="">J'accepte les conditions générales d'utulisations, et cértifié avoir +18ans</span>
-                                <input type="checkbox" />
+                            <label class="control control--checkbox"><span  class="accreg" style="">{{ form_label(form.confirmCondition) }}</span>
+                                {{ form_widget(form.confirmCondition) }}
                                 <div style="float:left;top:1px;" class="control__indicator kapcheck"></div>
                             </label>
                         </div>
-                        
                         <button class="envoyerdemande">Envoyer une demande</button>
+                        {{ form_rest(form) }}
+                    </form>
                 </div>
             </div>
-            </form>
         </div>
     </div>
     <!-- end of les pages -->

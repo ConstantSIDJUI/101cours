@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Entity\User;
 use MyAdminBundle\Form\Type\SearchCityType;
 use MyAdminBundle\Entity\UserCours;
+use MyAdminBundle\Form\Type\DemandeType;
+use MyAdminBundle\Entity\Demande;
 
 class PagesMainController extends Controller 
 {
@@ -157,17 +159,39 @@ class PagesMainController extends Controller
         // Get manager
         $em = $this->getDoctrine()->getManager();
         
+        // new demande
+        $demande = new Demande();
+        
+        // Create form and hydrate
+        $form = $this->createForm(new DemandeType(), $demande);
+        
         // Get message user
         $messages       = $em->getRepository('PagesBundle:Message')
                              ->findBy(array('userReceive' => $user, 'status' => null));
         
         // Get number of message not read
         $messageNumber  = count($messages);
+        var_dump($form);
+        var_dump($form->isValid());
+        die();
+        if($form->isValid()){
+            //Set User
+            $demande->setUserCours($userCours);
+                    
+            // Persist and commit
+            $em->persist($demande);
+            $em->flush();
+
+            // Flash message and redirection
+            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
+            return $this->redirect($this->generateUrl('my_admin_historique_annonces'));
+        }
         
         return $this->render('PagesBundle:PagesMain:offre.html.twig', array(
             'userCours'  => $userCours,
             'messageNumber'     => $messageNumber,
-            '$messages'         => $messages
+            '$messages'         => $messages,
+            'form'              => $form->createView()
         ));
     }
     
