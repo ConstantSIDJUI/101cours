@@ -14,14 +14,17 @@ class DemandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pack30',  'radio', array(
-                //'label'         => 'J\'accepte les conditions générales d\'utulisations, et cértifié avoir +18ans',
-                'required'      => false,
-                'attr'          => array(
-                    'class'   => 'radio'
-                )
+            ->add('pack',        'choice', array(
+                'choices'       => array(
+                    30   => 'Personne physique',
+                    16   => 'Personne morale',
+                    10   => 'Personne morale'), 
+                'expanded'      => true,
+                'label'         => false,
+                'data'          => 30,
+                'required'      => true
             ))
-            ->add('pack16',  'radio', array(
+            /*->add('pack16',  'radio', array(
                 //'label'         => 'J\'accepte les conditions générales d\'utulisations, et cértifié avoir +18ans',
                 'required'      => false,
                 'attr'          => array(
@@ -34,11 +37,11 @@ class DemandeType extends AbstractType
                 'attr'          => array(
                     'class'   => 'radio'
                 )
-            ))
+            ))*/
             ->add('confirmCondition',  'checkbox', array(
                 'label'         => 'J\'accepte les conditions générales d\'utlisations, et cértifié avoir +18ans',
                 'required'      => true,
-            ))      
+            )) 
         ;
     }
     

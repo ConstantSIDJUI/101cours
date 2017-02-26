@@ -22,26 +22,11 @@ class Demande
     private $id;
 
     /**
-     * @var bool
+     * @var integer
      *
-     * @ORM\Column(name="pack30", type="boolean", nullable=true)
+     * @ORM\Column(name="pack", type="integer", nullable=true)
      */
-    private $pack30;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="pack16", type="boolean", nullable=true)
-     */
-    private $pack16;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="pack10", type="boolean", nullable=true)
-     */
-    private $pack10;
-
+    private $pack;
     /**
      * @var \DateTime
      *
@@ -81,72 +66,26 @@ class Demande
     }
 
     /**
-     * Set pack30
+     * Set pack
      *
-     * @param boolean $pack30
+     * @param integer $pack
      * @return Demande
      */
-    public function setPack30($pack30)
+    public function setPack($pack)
     {
-        $this->pack30 = $pack30;
+        $this->pack = $pack;
 
         return $this;
     }
 
     /**
-     * Get pack30
+     * Get pack
      *
-     * @return boolean 
+     * @return integer 
      */
-    public function getPack30()
+    public function getPack()
     {
-        return $this->pack30;
-    }
-
-    /**
-     * Set pack16
-     *
-     * @param boolean $pack16
-     * @return Demande
-     */
-    public function setPack16($pack16)
-    {
-        $this->pack16 = $pack16;
-
-        return $this;
-    }
-
-    /**
-     * Get pack16
-     *
-     * @return boolean 
-     */
-    public function getPack16()
-    {
-        return $this->pack16;
-    }
-
-    /**
-     * Set pack10
-     *
-     * @param boolean $pack10
-     * @return Demande
-     */
-    public function setPack10($pack10)
-    {
-        $this->pack10 = $pack10;
-
-        return $this;
-    }
-
-    /**
-     * Get pack10
-     *
-     * @return boolean 
-     */
-    public function getPack10()
-    {
-        return $this->pack10;
+        return $this->pack;
     }
 
     /**

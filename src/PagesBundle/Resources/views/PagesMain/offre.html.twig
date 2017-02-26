@@ -149,8 +149,8 @@
                     <form method="post" {{ form_enctype(form) }} action="{{ path('pages_result_search', { 'id': userCours.id }) }}">
                         <div class="packrow">
                             <span class="huwa">
-                                <label for="myadminbundle_demande_pack30" class="control control--checkbox">30h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif30 }}{% endif %}dh/h
-                                    {{ form_widget(form.pack30) }}
+                                <label for="myadminbundle_demande_pack_0" class="control control--checkbox">30h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif30 }}{% endif %}dh/h
+                                    {{ form_widget(form.pack[0]) }}
                                 </label>
                             </span>
                             <span class="packprix">
@@ -160,8 +160,8 @@
                         </div>
                         <div class="packrow">
                             <span class="huwa">
-                                <label for="myadminbundle_demande_pack16"  class="control control--checkbox">16h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif16 }}{% endif %}dh/h
-                                    {{ form_widget(form.pack16) }}
+                                <label for="myadminbundle_demande_pack_1"  class="control control--checkbox">16h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif16 }}{% endif %}dh/h
+                                    {{ form_widget(form.pack[1]) }}
                                 </label>
                             </span>
                             <span class="packprix">
@@ -171,8 +171,8 @@
                         </div>
                         <div class="packrow">
                             <span class="huwa">
-                                <label for="myadminbundle_demande_pack10" class="control control--checkbox">10h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif10 }}{% endif %}dh/h
-                                    {{ form_widget(form.pack10) }}
+                                <label for="myadminbundle_demande_pack_2" class="control control--checkbox">10h pour {% if userCours.annonce is not empty %}{{ userCours.annonce.tarif10 }}{% endif %}dh/h
+                                    {{ form_widget(form.pack[2]) }}
                                 </label>
                             </span>
                             <span class="packprix">
