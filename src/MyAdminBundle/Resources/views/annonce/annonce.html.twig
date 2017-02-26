@@ -34,20 +34,96 @@
                 return $('<li>').append('<a style="text-transform: capitalize;">' + item.name + ' (' + item.postalCode + ')' + '</a>').appendTo(ul);
             };
             
+            $('#myadminbundle_usercours_annonce_frais10').val(30);
+            $('#myadminbundle_usercours_annonce_frais16').val(30);
+            $('#myadminbundle_usercours_annonce_frais30').val(30);
+            
             $('#myadminbundle_usercours_annonce_tarif10').click(function(e){
                 var total10 = 0;
                 val_tarif10 = parseInt($('input#myadminbundle_usercours_annonce_tarif10').val());
-                given_val_etat_lessor   = parseInt($('input#monbail_leasebundle_lease_locationStudyEntryLessor').val());
-                given_val_other_lessor   = parseInt($('input#monbail_leasebundle_lease_otherServicesLessor').val());
-
                 if( isNaN( val_tarif10)){
                     val_tarif10 = 0;
                 }
 
                 total10 = val_tarif10 * 10;
-                $('#tmyadminbundle_usercours_annonce_total10').val(total10);
+                $('#myadminbundle_usercours_annonce_total10').val(total10);
+                
+                val_frais101cours10 = Math.ceil((total10 * 15)/100);
+                $('#myadminbundle_usercours_annonce_frais101cours10').val(val_frais101cours10); 
+                
+                val_tva10 = Math.ceil((val_frais101cours10 * 20)/100);
+                $('#myadminbundle_usercours_annonce_tva10').val(val_tva10);
+                
+                val_pricePack10 = total10 + val_frais101cours10 + 30 + val_tva10;
+                $('#myadminbundle_usercours_annonce_priceHour10').val(val_pricePack10);
+                
+                $('#myadminbundle_usercours_annonce_pricePack10').val(Math.ceil(val_pricePack10/10));
             });
+            
+            $('#myadminbundle_usercours_annonce_tarif16').click(function(e){
+                var total16 = 0;
+                val_tarif10 = parseInt($('input#myadminbundle_usercours_annonce_tarif10').val());
+                if( isNaN( val_tarif10)){
+                    val_tarif10 = 0;
+                }
+                
+                val_tarif16 = parseInt($('input#myadminbundle_usercours_annonce_tarif16').val());
+                if( isNaN( val_tarif16)){
+                    val_tarif16 = 0;
+                }
 
+                total16 = val_tarif16 * 16;
+                $('#myadminbundle_usercours_annonce_total16').val(total16);
+                
+                val_frais101cours16 = Math.ceil((total16 * 15)/100);
+                $('#myadminbundle_usercours_annonce_frais101cours16').val(val_frais101cours16);
+                
+                val_tva16 = Math.ceil((val_frais101cours16 * 20)/100);
+                $('#myadminbundle_usercours_annonce_tva16').val(val_tva16);
+                
+                val_pricePack16 = total16 + val_frais101cours16 + 30 + val_tva16;
+                $('#myadminbundle_usercours_annonce_priceHour16').val(val_pricePack16);
+                
+                $('#myadminbundle_usercours_annonce_pricePack16').val(Math.ceil(val_pricePack16/16));
+                
+                val_tarifDeduit16 = Math.ceil(val_tarif10/1.16);
+                if(val_tarif16 > val_tarifDeduit16)
+                    $('#myadminbundle_usercours_annonce_tarif16').val(val_tarifDeduit16);
+            });
+            
+            $('#myadminbundle_usercours_annonce_tarif16').click(function(e){
+                var total30 = 0;
+                
+                val_tarif16 = parseInt($('input#myadminbundle_usercours_annonce_tarif16').val());
+                if( isNaN( val_tarif16)){
+                    val_tarif16 = 0;
+                }
+                
+                val_tarif30 = parseInt($('input#myadminbundle_usercours_annonce_tarif30').val());
+                if( isNaN( val_tarif30)){
+                    val_tarif30 = 0;
+                }
+
+                total30 = val_tarif30 * 30;
+                $('#myadminbundle_usercours_annonce_total30').val(total30);
+                
+                val_frais101cours30 = Math.ceil((total30 * 15)/100);
+                $('#myadminbundle_usercours_annonce_frais101cours30').val(val_frais101cours30);
+                
+                val_tva30 = Math.ceil((val_frais101cours30 * 20)/100);
+                $('#myadminbundle_usercours_annonce_tva30').val(val_tva30);
+                
+                val_pricePack30 = total30 + val_frais101cours30 + 30 + val_tva30;
+                $('#myadminbundle_usercours_annonce_priceHour30').val(val_pricePack30);
+                
+                $('#myadminbundle_usercours_annonce_pricePack30').val(Math.ceil(val_pricePack30/30));
+                
+                val_tarifDeduit30 = Math.ceil(val_tarif16/1.16);
+                if(val_tarif30 > val_tarifDeduit30)
+                    $('#myadminbundle_usercours_annonce_tarif30').val(val_tarifDeduit30);
+                
+            });
+            
             setInterval(function(){
                 // change value charge roomer
                 var total10 = 0;
@@ -56,8 +132,57 @@
                     val_tarif10 = 0;
                 }
                 total10 = val_tarif10 * 10;
-                $('#tmyadminbundle_usercours_annonce_total10').val(total10);
+                $('#myadminbundle_usercours_annonce_total10').val(total10);    
+                val_frais101cours10 = Math.ceil((total10 * 15)/100);
+                $('#myadminbundle_usercours_annonce_frais101cours10').val(val_frais101cours10);  
+                val_tva10 = Math.ceil((val_frais101cours10 * 20)/100);
+                $('#myadminbundle_usercours_annonce_tva10').val(val_tva10);
+                val_pricePack10 = total10 + val_frais101cours10 + 30 + val_tva10;
+                $('#myadminbundle_usercours_annonce_priceHour10').val(val_pricePack10);
+                $('#myadminbundle_usercours_annonce_pricePack10').val(Math.ceil(val_pricePack10/10));
+                
+                var total16 = 0;
+                val_tarif16 = parseInt($('input#myadminbundle_usercours_annonce_tarif16').val());
 
+                if( isNaN( val_tarif16)){
+                    val_tarif16 = 0;
+                }
+                total16 = val_tarif16 * 16;
+                $('#myadminbundle_usercours_annonce_total16').val(total16);
+                val_frais101cours16 = Math.ceil((total16 * 15)/100);
+                $('#myadminbundle_usercours_annonce_frais101cours16').val(val_frais101cours16);
+                val_tva16 = Math.ceil((val_frais101cours16 * 20)/100);
+                $('#myadminbundle_usercours_annonce_tva16').val(val_tva16);
+                val_pricePack16 = total16 + val_frais101cours16 + 30 +val_tva16;
+                $('#myadminbundle_usercours_annonce_priceHour16').val(val_pricePack16);
+                $('#myadminbundle_usercours_annonce_pricePack16').val(Math.ceil(val_pricePack16/16));
+                
+                var total30 = 0;
+                val_tarif30 = parseInt($('input#myadminbundle_usercours_annonce_tarif30').val());
+
+                if( isNaN( val_tarif30)){
+                    val_tarif30 = 0;
+                }
+                total30 = val_tarif30 * 30;
+                $('#myadminbundle_usercours_annonce_total30').val(total30);      
+                val_frais101cours30 = Math.ceil((total30 * 15)/100);
+                $('#myadminbundle_usercours_annonce_frais101cours30').val(val_frais101cours30);
+                val_tva30 = Math.ceil((val_frais101cours30 * 20)/100);
+                $('#myadminbundle_usercours_annonce_tva30').val(val_tva30);
+                val_pricePack30 = total30 + val_frais101cours30 + 30 +val_tva30;
+                $('#myadminbundle_usercours_annonce_priceHour30').val(val_pricePack30);
+                $('#myadminbundle_usercours_annonce_pricePack30').val(Math.ceil(val_pricePack30/30));
+                
+                val_tarifDeduit16 = Math.ceil(val_tarif10/1.16);
+                if(val_tarif16 > val_tarifDeduit16)
+                    $('#myadminbundle_usercours_annonce_tarif16').val(val_tarifDeduit16);
+                
+                
+                val_tarifDeduit30 = Math.ceil(val_tarif16/1.16);
+                if(val_tarif30 > val_tarifDeduit30)
+                    $('#myadminbundle_usercours_annonce_tarif30').val(val_tarifDeduit30);
+                    
+                
             }, 200);
         });
     </script>

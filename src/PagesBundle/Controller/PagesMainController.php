@@ -172,6 +172,9 @@ class PagesMainController extends Controller
         // Get number of message not read
         $messageNumber  = count($messages);
         
+        // request form
+        $form->handleRequest($request);
+        
         if($form->isValid()){
             //Set User
             $demande->setUserCours($userCours);

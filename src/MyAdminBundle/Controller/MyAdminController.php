@@ -426,13 +426,18 @@ class MyAdminController extends Controller
         $messages       = $em->getRepository('PagesBundle:Message')
                              ->findBy(array('userReceive' => $user, 'status' => null));
         
+        // Get message user
+        $annonces       = $em->getRepository('MyAdminBundle:UserCours')
+                             ->findBy(array('user' => $user));
+        
         // Get number of message not read
         $messageNumber  = count($messages);
         
         return $this->render('MyAdminBundle:annonce:myannonces.html.twig', array(
             'user'              => $user,
             'messageNumber'     => $messageNumber,
-            '$messages'         => $messages
+            '$messages'         => $messages,
+            'annonces'          => $annonces
         ));
     }
     
