@@ -49,21 +49,20 @@ class UserProfileType extends AbstractType
                      'placeholder'   => 'Nom'
                  )
             ))
-            /*
             ->add('birthDate', 'date', array(
                 'widget'            => 'single_text',
                 'input'             => 'datetime',
-                'required'          => false,
+                'required'          => true,
                 'format'            => 'dd/MM/yyyy',
                 'label'             => 'Date de naissance :',
                 'attr'              => array(
                 'class'             => 'field-input',
             )
-            ))*/
+            ))
             ->add('status','choice', array(
                 'choices' => array(
                     '1'         => 'Recevoir des cours',
-                    '2' => 'Donner des cours'
+                    '2'         => 'Donner des cours'
                 ),
                 'attr'  => array(
                     'class'     => 'g1sl searching1'

@@ -5,10 +5,10 @@
         </tr>
         <tr>
             <td>
-                <button type=button class="recevoir">
+                <label for="fos_user_registration_form_status_0" class="recevoir">
                     {{ form_widget(form.status[0]) }}
                     {{ form_label(form.status[0]) }}
-                </button>
+                </label>
             </td>
         </tr>
         <tr>
@@ -18,10 +18,10 @@
         </tr>
         <tr>
             <td>
-                <button type=button class="donner">
+                <label for="fos_user_registration_form_status_1" class="donner">
                     {{ form_widget(form.status[1]) }}
                     {{ form_label(form.status[1]) }}
-                </button>
+                </label>
             </td>
         </tr>
         <tr>
@@ -91,7 +91,10 @@
         <tr>
             <td>
                 <div>
-                    <select class=" inscan" name="DOBMonth">
+                    {{ form_widget(form.birthDate.month, { 'attr': {'class': 'inscan'} }) }}
+                    {{ form_widget(form.birthDate.day, { 'attr': {'class': 'inscan'} } ) }}
+                    {{ form_widget(form.birthDate.year, { 'attr': {'class': 'inscan'} } ) }}
+                    {#<select class=" inscan" name="DOBMonth">
                         <option> Mois  </option>
                         <option value="January">January</option>
                         <option value="Febuary">Febuary</option>
@@ -191,7 +194,7 @@
                         <option value="1949">1949</option>
                         <option value="1948">1948</option>
                         <option value="1947">1947</option>
-                    </select>
+                    </select>#}
                 </div>
             </td>
         </tr>

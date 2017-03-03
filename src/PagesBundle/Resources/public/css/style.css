@@ -1253,15 +1253,15 @@ margin-left: 20px;
     padding: 20px;
     border-radius: 4px;
 }
-.recevoir:focus {
-  background: #37d236;
-  outline: none;
-  color: #fff;
+.recevoir-check {
+  background: #37d236 !important;
+  outline: none  !important;
+  color: #fff  !important;
 }
-.donner:focus {
-  background: #1ebfe8;
-  outline: none;
-  color: #fff;
+.donner-check {
+  background: #1ebfe8 !important;
+  outline: none !important;
+  color: #fff !important;
 }
 .donner {
   float: left;

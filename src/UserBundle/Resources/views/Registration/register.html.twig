@@ -1,11 +1,44 @@
 {% extends '::base.html.twig' %}
-{% block js %}
+{% block javascripts %}
     {{ parent() }}
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript">
         $(function(){
-            $('.field-checkbox input, .field-radio input').addClass('field-input');
+            $('.recevoir').click(function() {
+                console.log('donner cour');
+                if($('#fos_user_registration_form_status_0').is(':checked')) 
+                { 
+                    $('.recevoir').addClass('recevoir-check'); 
+                }else{
+                    $('.recevoir').removeClass('recevoir-check');
+                }
+                
+                if($('#fos_user_registration_form_status_1').is(':checked')) 
+                { 
+                    $('.donner').addClass('donner-check'); 
+                }else{
+                    $('.donner').removeClass('donner-check');
+                }
+            });
             
-            $('#fos_user_registration_form_birthDate').datepicker({
+            $('.donner').click(function() {
+                if($('#fos_user_registration_form_status_0').is(':checked')) 
+                { 
+                    $('.recevoir').addClass('recevoir-check'); 
+                }else{
+                    $('.recevoir').removeClass('recevoir-check');
+                }
+                
+                if($('#fos_user_registration_form_status_1').is(':checked')) 
+                { 
+                    $('.donner').addClass('donner-check'); 
+                }else{
+                    $('.donner').removeClass('donner-check');
+                }
+            });
+            
+            /*$('#fos_user_registration_form_birthDate').datepicker({
                 changeMonth: true,
                 changeYear: true,
                 yearRange:'0:+80',
@@ -23,7 +56,7 @@
                 dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
                 weekHeader: 'Sem.',
                 dateFormat : 'dd/mm/yy'
-            });
+            });*/
         });
     </script>
 </script>

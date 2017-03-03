@@ -73,17 +73,19 @@ class RegistrationFormType extends AbstractType
                     'placeholder'   => 'Confirmer le mot de passe'
                 )
             ))
-            /*
             ->add('birthDate', 'date', array(
-                'widget'            => 'single_text',
-                'input'             => 'datetime',
-                'required'          => false,
+                //'widget'            => 'single_text',
+                //'input'             => 'datetime',
+                'required'          => true,
                 'format'            => 'dd/MM/yyyy',
                 'label'             => 'Date de naissance :',
+                'years'             => range(date('Y')-2, date('Y')-70),
+                //'days'              => array(1),
+                'empty_value'       => array('year' => 'Année', 'month' => 'Mois', 'day' => 'Jours'),
                 'attr'              => array(
-                'class'             => 'field-input',
+                //'class'             => 'field-input',
             )
-            ))*/
+            ))
             ->add('gender','choice', array(
                 'choices' => array(
                     '1'         => 'Homme',

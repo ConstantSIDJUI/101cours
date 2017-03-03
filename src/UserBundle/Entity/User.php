@@ -107,7 +107,7 @@ class User extends BaseUser
     protected $status;
     
     /**
-     * @var string
+     * @var \DateTime
      *
      * @ORM\Column(name="birth_date", type="datetime", nullable=true)
      */
