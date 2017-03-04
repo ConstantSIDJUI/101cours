@@ -45,8 +45,11 @@
                             </div>
                         </div>
                         <div class="alaibtht">
-                            <a href="" class="ab1">Annuler le cours</a>
-                            <button class="pb1">Proposer un cours</button>
+                            {% if annonce.activated %}
+                                <a href="{{ path('my_admin_publier_annonce_desactive', { 'id': annonce.id }) }}" class="ab1">Annuler le cours</a>
+                            {% else %}
+                                <a href="{{ path('my_admin_publier_annonce_active', { 'id': annonce.id }) }}" class="ab1">Activer le cours</a>
+                            {% endif %}
                         </div>
 
                     </div>

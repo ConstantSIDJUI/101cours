@@ -57,6 +57,20 @@ my_admin_publier_annonce:
     path:     /publier-annonce.html
     methods: [GET|POST]
     defaults: { _controller: MyAdminBundle:MyAdmin:annonce }
+    
+my_admin_publier_annonce_active:
+    path:     /activer-annonce/{id}
+    methods: [GET|POST]
+    defaults: { _controller: MyAdminBundle:MyAdmin:activeAnnonce }
+    requirements:
+        id: \d+  
+    
+my_admin_publier_annonce_desactive:
+    path:     /desactiver-annonce/{id}
+    methods: [GET|POST]
+    defaults: { _controller: MyAdminBundle:MyAdmin:desactiveAnnonce }
+    requirements:
+        id: \d+ 
 
 my_admin_historique_annonces:
     path:     /mes-annonces.html

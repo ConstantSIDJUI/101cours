@@ -27,11 +27,13 @@ class UserCoursRepository extends EntityRepository
                    ->select('l')
                    ->join('l.cours', 'c')
                    ->where('c = :cours')
+                   ->andWhere('l.activated = :active')
                    ->andWhere('l.cities = :city')
                    ->andWhere('l.level = :level')
                    ->setParameter('city', $data['cities'])
                    ->setParameter('level', $data['level'])
-                   ->setParameter('cours', $data['cours']);
+                   ->setParameter('cours', $data['cours'])
+                   ->setParameter('active', true);
         
         // Get query
         $query = $qb->getQuery();
@@ -55,9 +57,11 @@ class UserCoursRepository extends EntityRepository
                    ->select('l')
                    ->join('l.cours', 'c')
                    ->where('c = :cours')
+                   ->andWhere('l.activated = :active')
                    ->andWhere('l.level = :level')
                    ->setParameter('level', $data['level'])
-                   ->setParameter('cours', $data['cours']);
+                   ->setParameter('cours', $data['cours'])
+                   ->setParameter('active', true);
         
         // Get query
         $query = $qb->getQuery();

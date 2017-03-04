@@ -55,6 +55,13 @@ class UserCours
      * @ORM\Column(name="confirm_condition", type="boolean", nullable=true)
      */
     protected $confirmCondition;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activated", type="boolean", nullable=true)
+     */
+    protected $activated;
 
     /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"all"}, inversedBy="userCours")
@@ -368,5 +375,28 @@ class UserCours
     public function getDemandes()
     {
         return $this->demandes;
+    }
+
+    /**
+     * Set activated
+     *
+     * @param boolean $activated
+     * @return UserCours
+     */
+    public function setActivated($activated)
+    {
+        $this->activated = $activated;
+
+        return $this;
+    }
+
+    /**
+     * Get activated
+     *
+     * @return boolean 
+     */
+    public function getActivated()
+    {
+        return $this->activated;
     }
 }

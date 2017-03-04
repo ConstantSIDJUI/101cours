@@ -390,6 +390,9 @@ class MyAdminController extends Controller
         if($form->isValid()){ 
             //Set User
             $userCours->setUser($user);
+            
+            //Set activated
+            $userCours->setActivated(true);
                     
             // Persist and commit
             $em->persist($userCours);
@@ -406,6 +409,56 @@ class MyAdminController extends Controller
             '$messages'         => $messages,
             'form'              => $form->createView()
         ));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the activate annonce
+     * @access public
+     * @version 1.0
+     * @author Constant SIDJUI
+     * @copyright Â© 2016-2017.
+     */
+    public function activeAnnonceAction(UserCours $userCours){
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+
+        //Set activated
+        $userCours->setActivated(true);
+
+        // Persist and commit
+        $em->persist($userCours);
+        $em->flush();
+
+        // Flash message and redirection
+        $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
+        return $this->redirect($this->generateUrl('my_admin_historique_annonces'));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the desactivate annonce
+     * @access public
+     * @version 1.0
+     * @author Constant SIDJUI
+     * @copyright Â© 2016-2017.
+     */
+    public function desactiveAnnonceAction(UserCours $userCours){
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+
+        //Set activated
+        $userCours->setActivated(false);
+
+        // Persist and commit
+        $em->persist($userCours);
+        $em->flush();
+
+        // Flash message and redirection
+        $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
+        return $this->redirect($this->generateUrl('my_admin_historique_annonces'));
     }
     
     /**
