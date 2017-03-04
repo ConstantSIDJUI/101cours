@@ -50,13 +50,14 @@ class UserProfileType extends AbstractType
                  )
             ))
             ->add('birthDate', 'date', array(
-                'widget'            => 'single_text',
-                'input'             => 'datetime',
                 'required'          => true,
                 'format'            => 'dd/MM/yyyy',
                 'label'             => 'Date de naissance :',
+                'years'             => range(date('Y')-18, date('Y')-70),
+                //'days'              => array(1),
+                'empty_value'       => array('year' => 'Année', 'month' => 'Mois', 'day' => 'Jours'),
                 'attr'              => array(
-                'class'             => 'field-input',
+                //'class'             => 'field-input',
             )
             ))
             ->add('status','choice', array(

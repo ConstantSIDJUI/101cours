@@ -59,27 +59,13 @@ class RegistrationFormType extends AbstractType
                     'placeholder'   => 'Votre adresse e-mail'
                 )
             ))
-            ->add('password',      'password', array(
-                'attr'  => array(
-                    'label'         => false,
-                    'class'         => 'mdp-in inscin',
-                    'placeholder'   => 'Mot de passe'
-                )
-            ))
-            ->add('plainPassword',      'password', array(
-                'attr'  => array(
-                    'label'         => false,
-                    'class'         => 'mdp-in inscin',
-                    'placeholder'   => 'Confirmer le mot de passe'
-                )
-            ))
             ->add('birthDate', 'date', array(
                 //'widget'            => 'single_text',
                 //'input'             => 'datetime',
                 'required'          => true,
                 'format'            => 'dd/MM/yyyy',
                 'label'             => 'Date de naissance :',
-                'years'             => range(date('Y')-2, date('Y')-70),
+                'years'             => range(date('Y')-18, date('Y')-70),
                 //'days'              => array(1),
                 'empty_value'       => array('year' => 'Année', 'month' => 'Mois', 'day' => 'Jours'),
                 'attr'              => array(
@@ -120,22 +106,6 @@ class RegistrationFormType extends AbstractType
                         'label'         => false,
                         'class'         => 'email-in inscin',
                         'placeholder'   => 'Votre adresse e-mail'
-                    )
-                ))
-               
-                ->add('password',      'password', array(
-                    'attr'  => array(
-                        'label'         => false,
-                        'class'         => 'mdp-in inscin',
-                        'placeholder'   => 'Mot de passe'
-                    )
-                ))
-               
-                ->add('plainPassword',      'password', array(
-                    'attr'  => array(
-                        'label'         => false,
-                        'class'         => 'mdp-in inscin',
-                        'placeholder'   => 'Confirmer le mot de passe'
                     )
                 ))
             ->add('confirmCondition',  'checkbox', array(

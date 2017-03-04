@@ -19,10 +19,7 @@ class ProfessorAttachementType extends AbstractType
                 'attr'  => array(
                     'id'         => 'adddimage'
                 )
-            ))  
-            ->remove('name')
-            ->remove('extension')
-            ->add('dateUpdate')        
+            ))         
         ;
     }
     

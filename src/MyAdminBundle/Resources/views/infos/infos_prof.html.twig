@@ -24,7 +24,7 @@
             <div class="right-side-back">
                 <form method="post" {{ form_enctype(form) }} action="{{ path('my_admin_infos_prof', { 'id': app.user.id }) }}">
                     <div class="right-side-backc2">
-                        <div class="histo">Historique des demandes</div>
+                        <div class="histo">Informations Professeur</div>
                         <table class="tablekap" style="width:100%">
                             <tr>
                                 <td class="cinox" style="width:30%;">{{ form_label(form.professor.level) }}</td>
@@ -56,9 +56,6 @@
                                         <a href="{{ path('my_admin') }}" class="cancel save">
                                             Annuler
                                         </a>
-                                            {{ form_widget(form.professor.professorAttachement.dateUpdate.date.day) }}
-                                            {{ form_widget(form.professor.professorAttachement.dateUpdate.date.month) }}
-                                            {{ form_widget(form.professor.professorAttachement.dateUpdate.date.year) }}
                                         {{ form_rest(form) }}
                                         {#<button class="cancel save">Annuler</button>#}
                                     </div>

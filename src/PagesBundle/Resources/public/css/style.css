@@ -2490,3 +2490,7 @@ width: 38%;
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.remove-type-radio input[type="radio"] {
+  display: none;
+}

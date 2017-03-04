@@ -37,7 +37,7 @@
             <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}"><p><b>Informations complémentaires</b></p></a>
         </div>
         <div style="padding:0px;" class="right-side-back">
-            <div class="histo">Historique des demandes</div>
+            <div class="histo">Information Photo</div>
             <div class="photoleft">
                 <div class="cam">
                     <img  class="avatar-img" src="{% if user.avatar is not empty %}{{ asset('bundles/101cours/avatar/' ~ user.avatar.name ~ '.' ~ user.avatar.extension) }}{% else %}{{ asset('bundles/pages/img/user_default.png') }}{% endif %}">

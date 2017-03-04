@@ -22,7 +22,7 @@
                 <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}"><p><b>Informations complémentaires</b></p></a>
             </div>
             <div class="right-side-backc2">
-                <div class="histo">Historique des demandes</div>
+                <div class="histo">Information CIN</div>
                 <form method="post" {{ form_enctype(form) }} action="{{ path('my_admin_infos_cin', { 'id': app.user.id }) }}">
                     <table  class="tablekap" style="width:100%">
                         <tr>
@@ -61,7 +61,7 @@
                                             <div style="float:left;top:1px;" class="control__indicator kapcheck"></div>
                                         </label>
                                     </div>
-                                    <button class="publierc2">Publier l'annonce</button>
+                                    <button class="publierc2">Enregistrer</button>
                                     {{ form_rest(form) }}
                                 </div>
                             </td>
