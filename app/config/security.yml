@@ -4,8 +4,10 @@ security:
        FOS\UserBundle\Model\UserInterface: sha512
 
    role_hierarchy:
+       ROLE_ETUDIANT:       ROLE_USER
+       ROLE_PROFESSEUR:       ROLE_ETUDIANT
        ROLE_ADMIN:       ROLE_USER
-       ROLE_SUPER_ADMIN: ROLE_ADMIN
+       ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
    providers:
        fos_userbundle:
@@ -39,3 +41,5 @@ security:
        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
        - { path: ^/admin/, role: ROLE_ADMIN }
        - { path: ^/my_admin/, role: ROLE_USER }
+       - { path: ^/etudiante/, role: ROLE_ETUDIANT }
+       - { path: ^/professeur/, role: ROLE_PROFESSEUR }
