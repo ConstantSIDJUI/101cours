@@ -142,7 +142,7 @@
                     <div class="wahd">
                         <div class="left-wahd">
                             <a  href="{{ path('pages_result_search', { 'id' : listUserCour.id }) }}">
-                                <div class="user-pdp"><img src="{{ asset('bundles/pages/img/yaz.jpg') }}" /></div>
+                                <div class="user-pdp"><img src="{% if listUserCour.user.avatar is not empty %}{{ asset('bundles/101cours/avatar/' ~ listUserCour.user.avatar.name ~ '.' ~ listUserCour.user.avatar.extension) }}{% else %}{{ asset('bundles/pages/img/user_default.png') }}{% endif %}" /></div>
                             </a>
                             <div class="rating">
                                 <fieldset class="rating">

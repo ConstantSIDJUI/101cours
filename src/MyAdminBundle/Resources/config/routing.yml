@@ -71,6 +71,39 @@ my_admin_publier_annonce_desactive:
     defaults: { _controller: MyAdminBundle:MyAdmin:desactiveAnnonce }
     requirements:
         id: \d+ 
+    
+my_admin_accepte_demande:
+    path:     /accepter-demande/{id}
+    methods: [GET|POST]
+    defaults: { _controller: MyAdminBundle:MyAdmin:acceptDemande }
+    requirements:
+        id: \d+ 
+    
+my_admin_refused_demande:
+    path:     /refuser-demande/{id}
+    methods: [GET|POST]
+    defaults: { _controller: MyAdminBundle:MyAdmin:refuseDemande }
+    requirements:
+        id: \d+ 
+    
+my_admin_archive_message:
+    path:     /archiver-message/{id}
+    methods: [GET|POST]
+    defaults: { _controller: MyAdminBundle:MyAdmin:archiveMessage }
+    requirements:
+        id: \d+ 
+    
+my_admin_delete_message:
+    path:     /supprimer-message/{id}
+    methods: [GET|POST]
+    defaults: { _controller: MyAdminBundle:MyAdmin:deleteMessage }
+    requirements:
+        id: \d+ 
+    
+my_admin_archive:
+    path:     /messages-archivees.html
+    methods: [GET]
+    defaults: { _controller: MyAdminBundle:MyAdmin:archive }
 
 my_admin_historique_annonces:
     path:     /mes-annonces.html

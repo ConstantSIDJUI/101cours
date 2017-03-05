@@ -52,9 +52,16 @@ class Message
     /**
      * @var int
      *
-     * @ORM\Column(name="is_read", type="integer", nullable=true)
+     * @ORM\Column(name="archive", type="integer", nullable=true)
      */
-    private $isRead;
+    private $archive;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="isDelete", type="integer", nullable=true)
+     */
+    private $isDelete;
     
     /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"all"}, inversedBy="messageSend")
@@ -67,6 +74,18 @@ class Message
      * @ORM\JoinColumn(name="userReceive_id", referencedColumnName="id", nullable=true)
      */
     private $userReceive;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\UserCours", cascade={"all"}, inversedBy="message")
+     * @ORM\JoinColumn(name="userCours_id", referencedColumnName="id", nullable=true)
+     */
+    private $userCours;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\Demande", cascade={"all"}, inversedBy="message")
+     * @ORM\JoinColumn(name="demande_id", referencedColumnName="id", nullable=true)
+     */
+    private $demande;
 
 
     /**
@@ -172,29 +191,6 @@ class Message
     }
 
     /**
-     * Set isRead
-     *
-     * @param integer $isRead
-     * @return Message
-     */
-    public function setIsRead($isRead)
-    {
-        $this->isRead = $isRead;
-
-        return $this;
-    }
-
-    /**
-     * Get isRead
-     *
-     * @return integer 
-     */
-    public function getIsRead()
-    {
-        return $this->isRead;
-    }
-
-    /**
      * Set userSend
      *
      * @param \UserBundle\Entity\User $userSend
@@ -238,5 +234,97 @@ class Message
     public function getUserReceive()
     {
         return $this->userReceive;
+    }
+
+    /**
+     * Set userCours
+     *
+     * @param \MyAdminBundle\Entity\UserCours $userCours
+     * @return Message
+     */
+    public function setUserCours(\MyAdminBundle\Entity\UserCours $userCours = null)
+    {
+        $this->userCours = $userCours;
+
+        return $this;
+    }
+
+    /**
+     * Get userCours
+     *
+     * @return \MyAdminBundle\Entity\UserCours 
+     */
+    public function getUserCours()
+    {
+        return $this->userCours;
+    }
+
+    /**
+     * Set archive
+     *
+     * @param integer $archive
+     * @return Message
+     */
+    public function setArchive($archive)
+    {
+        $this->archive = $archive;
+
+        return $this;
+    }
+
+    /**
+     * Get archive
+     *
+     * @return integer 
+     */
+    public function getArchive()
+    {
+        return $this->archive;
+    }
+
+    /**
+     * Set demande
+     *
+     * @param \MyAdminBundle\Entity\Demande $demande
+     * @return Message
+     */
+    public function setDemande(\MyAdminBundle\Entity\Demande $demande = null)
+    {
+        $this->demande = $demande;
+
+        return $this;
+    }
+
+    /**
+     * Get demande
+     *
+     * @return \MyAdminBundle\Entity\Demande 
+     */
+    public function getDemande()
+    {
+        return $this->demande;
+    }
+
+    /**
+     * Set isDelete
+     *
+     * @param integer $isDelete
+     * @return Message
+     */
+    public function setIsDelete($isDelete)
+    {
+        $this->isDelete = $isDelete;
+
+        return $this;
+    }
+
+    /**
+     * Get isDelete
+     *
+     * @return integer 
+     */
+    public function getIsDelete()
+    {
+        return $this->isDelete;
     }
 }

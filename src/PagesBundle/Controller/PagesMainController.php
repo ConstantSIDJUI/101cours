@@ -10,6 +10,7 @@ use UserBundle\Entity\User;
 use MyAdminBundle\Form\Type\SearchCityType;
 use MyAdminBundle\Entity\UserCours;
 use MyAdminBundle\Form\Type\DemandeType;
+use PagesBundle\Entity\Message;
 use MyAdminBundle\Entity\Demande;
 
 class PagesMainController extends Controller 
@@ -156,11 +157,20 @@ class PagesMainController extends Controller
         // Get user
         $user = $this->getUser();
         
+        // Subjet
+        $subjet = 'Demande pour le cours de ' . $userCours->getCours()->getLibelle() . ' à ' . $userCours->getCities()->getName();
+        
+        // Content
+        $content = 'Bonjour, vous avez reçu une nouvelle de mande de ' . $user->getFirstName() . ' ' . $user->getLastName();
+        
         // Get manager
         $em = $this->getDoctrine()->getManager();
         
         // new demande
         $demande = new Demande();
+        
+        // New message
+        $message = new Message();
         
         // Create form and hydrate
         $form = $this->createForm(new DemandeType(), $demande);
@@ -182,10 +192,23 @@ class PagesMainController extends Controller
             // Persist and commit
             $em->persist($demande);
             $em->flush();
+            
+            // Set message
+            $message->setSubject($subjet);
+            $message->setContent($content);
+            $message->setUserCours($userCours);
+            $message->setUserSend($user);
+            $message->setUserReceive($userCours->getUser());
+            $message->setCreatedDate(new \DateTime());
+            $message->setDemande($demande);
+                    
+            // Persist and commit
+            $em->persist($message);
+            $em->flush();
 
             // Flash message and redirection
             $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
-            return $this->redirect($this->generateUrl('my_admin_historique_annonces'));
+            return $this->redirect($this->generateUrl('my_reservations'));
         }
         
         return $this->render('PagesBundle:PagesMain:offre.html.twig', array(

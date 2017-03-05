@@ -14,11 +14,11 @@
         <div class="container">
             <div class="left-side-back">
                 <a href="{{ path('my_boite_reception') }}"><span><b>Boite de réception</b></span></a>
-                <a href="{{ path('my_admin_archive') }}"><p>Archivés</p></a>
+                <a href=""><p>Archivés</p></a>
             </div>
                 
             <div class="right-side-back">
-                <div class="histo">Historique des messages</div>
+                <div class="histo">Historique des archives</div>
                 {% for message in messages %}
                     <div style="margin:0px;margin-bottom:20px !important;" class="verifications-box">
                         <div  class="new-title">
@@ -30,17 +30,7 @@
                             </p>
                             <div class="e1btns">
                                 {#<span class="float-left">{{ message.demande.dateUpdate | date('d/m/Y') }}</span>#}
-                                {% if message.demande.accept is not empty %}
-                                    {% if message.demande.accept %}
-                                        Demande Acceptée
-                                    {% else %}
-                                        Demande Refusée
-                                    {% endif%}
-                                    <a href="{{ path('my_admin_archive_message', { 'id': message.id }) }}" class="e1btn">Archiver</a>
-                                {% else %}
-                                    <a href="{{ path('my_admin_accepte_demande', { 'id': message.id }) }}" class="e1btn">Accepter</a>
-                                    <a href="{{ path('my_admin_refused_demande', { 'id': message.id }) }}" class="e1btn">Refuser</a>
-                                {% endif %}
+                                <a href="{{ path('my_admin_delete_message', { 'id': message.id }) }}" class="e1btn">Supprimer</a>
                             </div>
                         </div>
                     </div>

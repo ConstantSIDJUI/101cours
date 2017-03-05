@@ -12,4 +12,54 @@ use Doctrine\ORM\EntityRepository;
  */
 class MessageRepository extends EntityRepository
 {
+    /**
+     * Get cours for city
+     * @return list message for user
+     * @access public
+     * @version 1.0
+     * @Author Constant SIDJUI
+     * @copyright ©100Cours 2017.
+     */
+    public function getMessages($user){
+        
+        // Build query builder
+    	$qb = $this->createQueryBuilder('m')
+                   ->select('m')
+                   ->where('m.userReceive = :user')
+                   ->andWhere('m.archive is null')
+                   ->orWhere('m.archive = false')
+                   ->orderBy('m.createdDate', 'desc')
+                   ->setParameter('user', $user);
+        
+        // Get query
+        $query = $qb->getQuery();
+    	
+    	// Return results
+        return $query->getResult();
+    }
+    /**
+     * Get cours for city
+     * @return list archive for user
+     * @access public
+     * @version 1.0
+     * @Author Constant SIDJUI
+     * @copyright ©100Cours 2017.
+     */
+    public function getArchive($user){
+        
+        // Build query builder
+    	$qb = $this->createQueryBuilder('m')
+                   ->select('m')
+                   ->where('m.userReceive = :user')
+                   ->andWhere('m.archive = 1')
+                   ->andWhere('m.isDelete is Null')
+                   ->orderBy('m.createdDate', 'desc')
+                   ->setParameter('user', $user);
+        
+        // Get query
+        $query = $qb->getQuery();
+    	
+    	// Return results
+        return $query->getResult();
+    }
 }

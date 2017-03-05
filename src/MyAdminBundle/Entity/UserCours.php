@@ -96,6 +96,11 @@ class UserCours
     private $demandes;
     
     /**
+     * @ORM\OneToMany(targetEntity="PagesBundle\Entity\Message", mappedBy="userCours", cascade={"all"})
+     */
+    private $message;
+    
+    /**
      * Constructor
      */
     public function __construct(){
@@ -398,5 +403,38 @@ class UserCours
     public function getActivated()
     {
         return $this->activated;
+    }
+
+    /**
+     * Add message
+     *
+     * @param \PagesBundle\Entity\Message $message
+     * @return UserCours
+     */
+    public function addMessage(\PagesBundle\Entity\Message $message)
+    {
+        $this->message[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param \PagesBundle\Entity\Message $message
+     */
+    public function removeMessage(\PagesBundle\Entity\Message $message)
+    {
+        $this->message->removeElement($message);
+    }
+
+    /**
+     * Get message
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessage()
+    {
+        return $this->message;
     }
 }

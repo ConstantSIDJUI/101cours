@@ -40,12 +40,24 @@ class Demande
      * @ORM\Column(name="confirm_condition", type="boolean", nullable=true)
      */
     protected $confirmCondition;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="accept", type="integer", nullable=true)
+     */
+    protected $accept;
 
     /**
      * @ORM\ManyToOne(targetEntity="MyAdminBundle\Entity\UserCours", cascade={"all"}, inversedBy="demandes")
      * @ORM\JoinColumn(nullable=true)
      */
     private $userCours;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="PagesBundle\Entity\Message", mappedBy="demande", cascade={"all"})
+     */
+    private $message;
     
     /**
      * Constructor
@@ -155,5 +167,61 @@ class Demande
     public function getUserCours()
     {
         return $this->userCours;
+    }
+
+    /**
+     * Set accept
+     *
+     * @param integer $accept
+     * @return Demande
+     */
+    public function setAccept($accept)
+    {
+        $this->accept = $accept;
+
+        return $this;
+    }
+
+    /**
+     * Get accept
+     *
+     * @return integer 
+     */
+    public function getAccept()
+    {
+        return $this->accept;
+    }
+
+    /**
+     * Add message
+     *
+     * @param \PagesBundle\Entity\Message $message
+     * @return Demande
+     */
+    public function addMessage(\PagesBundle\Entity\Message $message)
+    {
+        $this->message[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param \PagesBundle\Entity\Message $message
+     */
+    public function removeMessage(\PagesBundle\Entity\Message $message)
+    {
+        $this->message->removeElement($message);
+    }
+
+    /**
+     * Get message
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMessage()
+    {
+        return $this->message;
     }
 }

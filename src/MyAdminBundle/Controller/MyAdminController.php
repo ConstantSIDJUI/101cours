@@ -14,6 +14,7 @@ use UserBundle\Form\Type\UserComplementType;
 use UserBundle\Form\Type\UserProfessorType;
 use MyAdminBundle\Form\Type\UserCoursType;
 use MyAdminBundle\Entity\UserCours;
+use PagesBundle\Entity\Message;
 
 class MyAdminController extends Controller
 {
@@ -623,14 +624,74 @@ class MyAdminController extends Controller
         $messages       = $em->getRepository('PagesBundle:Message')
                              ->findBy(array('userReceive' => $user, 'status' => null));
         
+        // Get message user
+        $listMessages   = $em->getRepository('PagesBundle:Message')
+                             ->getMessages($user);
+        
         // Get number of message not read
         $messageNumber  = count($messages);
         
         return $this->render('MyAdminBundle:autres:messages.html.twig', array(
             'user'              => $user,
             'messageNumber'     => $messageNumber,
-            '$messages'         => $messages
+            'messages'          => $listMessages
         ));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the archive page
+     * @access public
+     * @version 1.0
+     * @author Constant SIDJUI
+     * @copyright Â© 2016-2017.
+     */
+    public function archiveAction(Request $request){
+        $user = $this->getUser();
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get message user
+        $messages       = $em->getRepository('PagesBundle:Message')
+                             ->findBy(array('userReceive' => $user, 'status' => null));
+        
+        // Get message user
+        $listMessages   = $em->getRepository('PagesBundle:Message')
+                             ->getArchive($user);
+        
+        // Get number of message not read
+        $messageNumber  = count($messages);
+        
+        return $this->render('MyAdminBundle:autres:archives.html.twig', array(
+            'user'              => $user,
+            'messageNumber'     => $messageNumber,
+            'messages'          => $listMessages
+        ));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the desactivate annonce
+     * @access public
+     * @version 1.0
+     * @author Constant SIDJUI
+     * @copyright Â© 2016-2017.
+     */
+    public function deleteMessageAction(Message $message){
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+
+        //Set activated
+        $message->setIsDelete(1);
+
+        // Persist and commit
+        $em->persist($message);
+        $em->flush();
+
+        // Flash message and redirection
+        $this->get('session')->getFlashBag()->add('success', 'Votre message a étés supprimé avec succès.');
+        return $this->redirect($this->generateUrl('my_admin_archive'));
     }
     
     /**
@@ -659,5 +720,82 @@ class MyAdminController extends Controller
             'messageNumber'     => $messageNumber,
             '$messages'         => $messages
         ));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the accept Message
+     * @access public
+     * @version 1.0
+     * @author Constant SIDJUI
+     * @copyright Â© 2016-2017.
+     */
+    public function acceptDemandeAction(Message $message){
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+
+        //Set activated
+        $message->setStatus(true);
+        $message->getDemande()->setAccept(1);
+
+        // Persist and commit
+        $em->persist($message);
+        $em->flush();
+
+        // Flash message and redirection
+        $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été éffectué avec succès.');
+        return $this->redirect($this->generateUrl('my_boite_reception'));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the refused Message
+     * @access public
+     * @version 1.0
+     * @author Constant SIDJUI
+     * @copyright Â© 2016-2017.
+     */
+    public function refuseDemandeAction(Message $message){
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+
+        //Set activated
+        $message->setStatus(true);
+        $message->getDemande()->setAccept(0);
+
+        // Persist and commit
+        $em->persist($message);
+        $em->flush();
+
+        // Flash message and redirection
+        $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été éffectué avec succès.');
+        return $this->redirect($this->generateUrl('my_boite_reception'));
+    }
+    
+    /**
+     * Generate and display the home page
+     * @return Render Display the archive Message
+     * @access public
+     * @version 1.0
+     * @author Constant SIDJUI
+     * @copyright Â© 2016-2017.
+     */
+    public function archiveMessageAction(Message $message){
+        
+        // Get manager
+        $em = $this->getDoctrine()->getManager();
+
+        //Set activated
+        $message->setArchive(1);
+
+        // Persist and commit
+        $em->persist($message);
+        $em->flush();
+
+        // Flash message and redirection
+        $this->get('session')->getFlashBag()->add('success', 'Vos informations ont été éffectué avec succès.');
+        return $this->redirect($this->generateUrl('my_boite_reception'));
     }
 }
