@@ -116,6 +116,7 @@
     <script src="{{ asset('bundles/pages/js/add.js') }}"></script>
     <script src="{{ asset('bundles/pages/js/wow.js') }}"></script>
     <script src="{{ asset('bundles/pages/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/pages/js/jquery.modal.min.js') }}"></script>
     {#<script src="{{ asset('bundles/pages/js/npm.js') }}"></script>#}
     <script>
         // Get the modal
@@ -186,7 +187,7 @@
             }
         }
     </script>
-    <script src='js/add.js'></script>
+    <script src="{{ asset('bundles/pages/js/add.js') }}"></script>
     <script>
         function betterParseFloat(x){
             if(isNaN(parseFloat(x)) && x.length > 0)
@@ -203,7 +204,7 @@
             return "$"+dollars+"."+cents;
         }
     </script>
-    <script src='js/wow.js'></script>
+    <script src="{{ asset('bundles/pages/js/wow.js') }}"></script>
     <script>
         new WOW().init();
     </script>

@@ -197,6 +197,10 @@ class User extends BaseUser
         
         // Set default value
         $this->dateCreated  = new \DateTime(null, new \DateTimeZone('Europe/Paris'));
+        if($this->getStatus() == 1)
+            $this->roles = array('ROLE_PROFESSEUR');
+        else
+           $this->roles = array('ROLE_ETUDIANT'); 
     }
 
     /**

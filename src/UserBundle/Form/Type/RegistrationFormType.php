@@ -26,13 +26,13 @@ class RegistrationFormType extends AbstractType
             ->remove('username')
             ->add('status','choice', array(
             'choices' => array(
-                '1'         => 'Recevoir des cours',
-                '2' => 'Donner des cours'
+                '0'         => 'Recevoir des cours',
+                '1'         => 'Donner des cours'
             ),
             'attr'  => array(
                 'class'         => ''
             ),    
-            'required'    => false,
+            'required'    => true,
             'empty_value' => false,
             'empty_data'  => null,
             'multiple' => false,

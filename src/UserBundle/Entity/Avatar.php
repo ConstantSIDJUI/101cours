@@ -47,7 +47,7 @@ class Avatar
     
     /**
      * @Assert\File(
-     *     maxSize = "5M",
+     *     maxSize = "3M",
      *     mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/x-icon"},
      *     mimeTypesMessage = "Le fichier choisi ne correspond pas à un fichier valide",
      *     notFoundMessage = "Le fichier n'a pas été trouvé sur le disque",

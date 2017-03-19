@@ -12,6 +12,10 @@
                 $(".dkshiihbt").toggle();
             });
             
+            $(".cinverified").click(function(){
+                alert("CIN non verifié");
+            });
+            
             $('#myadminbundle_searchcity_search_cityCours').autocomplete({
                 minLength: 2,
                 messages: {
@@ -48,110 +52,125 @@
 {% endblock %}
 
 {% block content %}
-     {% block menu_my_admin %}
-    <div class="tht-back-nav">
-        <div class="container">
-            <div class="wst-tht">
-                <ul>
-                    <li><a class="active" href="{{ path('my_admin') }}">Tableau de bord</a></li>
-                    <li class="dropdown">
-                        <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}" class="dropbtn">Profil</a>
-                        <div class="dropdown-content">
-                          <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}">Informations Personelles</a>
-                          <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}">CIN</a>
-                          <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}">Photo</a>
-                          <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}">Identité bancaire</a>
-                          <a href="{{ path('my_admin_infos_prof', { 'id': app.user.id }) }}"><p><b>Professeur</b></p></a>
-                          <a href="{{ path('my_admin_infos_verification') }}">Vérifications</a>
-                          <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}">Informations complémentaires</a>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                        <a href="{{ path('my_admin_historique_annonces') }}" class="dropbtn">Vos Annonces</a>
-                        <div class="dropdown-content">
-                          <a href="{{ path('my_admin_historique_annonces') }}">Mes annonces publiées</a>
-                          <a href="{{ path('my_admin_publier_annonce') }}">Publier une annonce</a>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                          <a href="{{ path('my_reservations') }}" class="dropbtn">Mes réservations</a>
-                          <div class="dropdown-content">
-                            <a href="{{ path('my_reservations') }}">Réservations actuelles</a>
-                          </div>
-                    </li>
-                    <li class="dropdown">
-                        <a href="{{ path('my_money') }}" class="dropbtn">Argent</a>
-                        <div class="dropdown-content">
-                          <a href="{{ path('my_money') }}">Paiments versés</a>
-                          <a href="{{ path('my_money_details') }}">Mes missions actuelles</a>
-                          <a href="{{ path('my_payment_details') }}">Paiments reçues</a>
-                        </div>
-                    </li>
-                    <li class="dropdown">
-                        <a href="" class="dropbtn">Autres</a>
-                        <div class="dropdown-content">
-                          <a href="{{ path('my_boite_reception') }}">messages</a>
-                          <a href="{{ path('avis') }}">Avis</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-      </div>             
-    </div>
+    {% block menu_my_admin %}
+        <div class="tht-back-nav">
+            <div class="container">
+                <div class="wst-tht">
+                    <ul>
+                        <li><a class="active" href="{{ path('my_admin') }}">Tableau de bord</a></li>
+                        <li class="dropdown">
+                            <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}" class="dropbtn">Profil</a>
+                            <div class="dropdown-content">
+                                <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}">Informations Personelles</a>
+                                <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}">CIN</a>
+                                <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}">Photo</a>
+                                <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}">Identité bancaire</a>
+                                {% if is_granted('ROLE_PROFESSEUR') %}
+                                    <a href="{{ path('my_admin_infos_prof', { 'id': app.user.id }) }}"><p><b>Professeur</b></p></a>
+                                    <a href="{{ path('my_admin_infos_verification') }}">Vérifications</a>
+                                    <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}">Informations complémentaires</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                        {% if is_granted('ROLE_PROFESSEUR') %}
+                            <li class="dropdown">
+                                <a href="{{ path('my_admin_historique_annonces') }}" class="dropbtn">Vos Annonces</a>
+                                <div class="dropdown-content">
+                                    <a href="{{ path('my_admin_historique_annonces') }}">Mes annonces publiées</a>
+                                    <a class="{% if user.cin is empty %}cinverified{%else%}{% if user.cin is not empty %}{% if user.cin.cinVerified < 1 %}cinverified{% endif %}{% endif %}{% endif %}"href="{% if user.cin is not empty %}{% if user.cin.cinVerified > 0 %}{{ path('my_admin_publier_annonce') }}{% endif %}{% endif %}">Publier une annonce</a>
+                                    {#<a {% if user.cin is empty %}rel="modal:open" href="#cinVerified"{%else%}{% if user.cin is not empty %}{% if user.cin.cinVerified < 1 %}rel="modal:open" href="#cinVerified"{% endif %}{% endif %}{% endif %} href="{% if user.cin is not empty %}{% if user.cin.cinVerified > 0 %}{{ path('my_admin_publier_annonce') }}{% endif %}{% endif %}">Publier une annonce</a>#}
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if is_granted('ROLE_ETUDIANT') %}
+                            <li class="dropdown">
+                                <a href="{{ path('my_reservations') }}" class="dropbtn">Mes réservations</a>
+                                <div class="dropdown-content">
+                                    <a href="{{ path('my_reservations') }}">Réservations actuelles</a>
+                                </div>
+                            </li>
+                        {% endif %}
+                        <li class="dropdown">
+                            <a href="{{ path('my_money') }}" class="dropbtn">Argent</a>
+                            <div class="dropdown-content">
+                                {% if is_granted('ROLE_ETUDIANT') %}
+                                    <a href="{{ path('my_money') }}">Paiments versés</a>
+                                {% endif %}
+                                {% if is_granted('ROLE_PROFESSEUR') %}
+                                    <a href="{{ path('my_money_details') }}">Mes missions actuelles</a>
+                                    <a href="{{ path('my_payment_details') }}">Paiments reçues</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="" class="dropbtn">Autres</a>
+                            <div class="dropdown-content">
+                                <a href="{{ path('my_boite_reception') }}">messages</a>
+                                {% if is_granted('ROLE_ETUDIANT') %}
+                                    <a href="{{ path('avis') }}">Avis</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>             
+        </div>
     {% endblock %}
     {% block content_my_admin %}
-    <div class="autre-wrapper">
-        <div class="container">
-            {% if user.cin is empty %}
-                <div class="cinm">
-                    <div class="iconleft"><i class="fa fa-address-card" aria-hidden="true"></i></div>
-                    <div class="cinktbalwst">
-                        <span style="font-size:17px;"><b>CIN Manquante </b><i class="fa fa-question-circle" aria-hidden="true"></i></span><br />
-                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-                    </div>
-                    <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}">
-                        <button class="addcin">Ajouter CIN</button></a>
-                </div>
-            {% endif %}
-            <div class="left-side-back">
-                <div class="lesinfosback">
-                    <div class="backpdp">
-                        <img src="{% if user.avatar is not empty %}{{ asset('bundles/101cours/avatar/' ~ user.avatar.name ~ '.' ~ user.avatar.extension) }}{% else %}{{ asset('bundles/pages/img/user_default.png') }}{% endif %}" />
-                        <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}"><div class="bdel">Ajouter une photo de profil</div></a>
-                    </div>
-                    <span style="    font-size: 23px; " >{{ user.firstname }} {{ user.lastname }}</span><br /><br />
-                    <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}">Voir le profil</a>
-                    <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}">Modifier le profil</a>
-                    <div class="verifications-box">
-                        <div class="ver-title">
-                            Vérification  <i class="fa fa-question-circle" aria-hidden="true"></i>
+        <div class="autre-wrapper">
+            <div class="container">
+                {% if user.cin is empty %}
+                    <div class="cinm">
+                        <div class="iconleft"><i class="fa fa-address-card" aria-hidden="true"></i></div>
+                        <div class="cinktbalwst">
+                            <span style="font-size:17px;"><b>CIN Manquante </b><i class="fa fa-question-circle" aria-hidden="true"></i></span><br />
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
                         </div>
-                        <div class="ver-row">
-                            <div class="verifyinfos">
-                                <div class="cin"><i class="fa fa-address-card" aria-hidden="true"></i> <span>CIN</span> {% if user.cin is not empty %}{% if user.cin.cinVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}{% endif %}</div>
-                                <div class="cin"><i class="fa fa-envelope" aria-hidden="true"></i> <span>Email</span> {% if user.emailVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
-                                <div class="cin"><i class="fa fa-linkedin-square" aria-hidden="true"></i> <span>Linkedin</span> {% if user.linkedinVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
-                                <div class="cin"><i class="fa fa-facebook-official" aria-hidden="true"></i> <span>Facebook</span> {% if user.facebookVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                        <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}">
+                            <button class="addcin">Ajouter CIN</button></a>
+                    </div>
+                {% endif %}
+                <div class="left-side-back">
+                    <div class="lesinfosback">
+                        <div class="backpdp">
+                            <img src="{% if user.avatar is not empty %}{{ asset('bundles/101cours/avatar/' ~ user.avatar.name ~ '.' ~ user.avatar.extension) }}{% else %}{{ asset('bundles/pages/img/user_default.png') }}{% endif %}" />
+                            <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}"><div class="bdel">Ajouter une photo de profil</div></a>
+                        </div>
+                        <span style="    font-size: 23px; " >{{ user.firstname }} {{ user.lastname }}</span><br /><br />
+                        <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}">Voir le profil</a>
+                        <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}">Modifier le profil</a>
+                        <div class="verifications-box">
+                            <div class="ver-title">
+                                Vérification  <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            </div>
+                            <div class="ver-row">
+                                <div class="verifyinfos">
+                                    <div class="cin"><i class="fa fa-address-card" aria-hidden="true"></i> <span>CIN</span> {% if user.cin is not empty %}{% if user.cin.cinVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}{% endif %}</div>
+                                    <div class="cin"><i class="fa fa-envelope" aria-hidden="true"></i> <span>Email</span><span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span></div>
+                                    <div class="cin"><i class="fa fa-linkedin-square" aria-hidden="true"></i> <span>Linkedin</span> {% if user.linkedinVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                                    <div class="cin"><i class="fa fa-facebook-official" aria-hidden="true"></i> <span>Facebook</span> {% if user.facebookVerified > 0 %}<span class="checkverify"><i class="fa fa-check-circle" aria-hidden="true"></i> Vérifié</span>{% endif %}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="right-side-back">
-                <div style="margin:0px;" class="verifications-box">
-                    <div  class="new-title">
-                        <i style="font-weight:bold;color:#1ebfe9;margin-right:5px;" class="fa fa-envelope-o" aria-hidden="true"></i> Nouveaux messages <span style="margin-left:5px;color:#1ebfe9;" >({{ messageNumber }})</span>
-                    </div>
-                    <div class="new-row">
-                        <span>Notification 1 : Veullez ajouter votre CIN afin d'activer votre compte</span>
-                        <span>Vous pouvez coupler votre compte facebook avec notre site</span>
-                        <span><a style="color:#1ebfe9;font-size:15px;" href="">Voir tous les messages</a></span>
+                <div class="right-side-back">
+                    <div style="margin:0px;" class="verifications-box">
+                        <div  class="new-title">
+                            <i style="font-weight:bold;color:#1ebfe9;margin-right:5px;" class="fa fa-envelope-o" aria-hidden="true"></i> Nouveaux messages <span style="margin-left:5px;color:#1ebfe9;" >({{ messageNumber }})</span>
+                        </div>
+                        <div class="new-row">
+                            <span>Notification 1 : Veullez ajouter votre CIN afin d'activer votre compte</span>
+                            <span>Vous pouvez coupler votre compte facebook avec notre site</span>
+                            <span><a style="color:#1ebfe9;font-size:15px;" href="">Voir tous les messages</a></span>
+                        </div>
                     </div>
                 </div>
+                <div id="cinVerified" style="display: none;">
+                    {% include 'MyAdminBundle:annonce:cinverifiedpopup.html.twig' %}
+                </div>
             </div>
-            
         </div>
-    </div>
     {% endblock %}
     <!-- end of les pages -->
 {% endblock %}

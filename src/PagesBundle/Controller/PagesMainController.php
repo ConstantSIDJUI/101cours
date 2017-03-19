@@ -157,11 +157,13 @@ class PagesMainController extends Controller
         // Get user
         $user = $this->getUser();
         
-        // Subjet
-        $subjet = 'Demande pour le cours de ' . $userCours->getCours()->getLibelle() . ' à ' . $userCours->getCities()->getName();
-        
-        // Content
-        $content = 'Bonjour, vous avez reçu une nouvelle de mande de ' . $user->getFirstName() . ' ' . $user->getLastName();
+        if($user){
+            // Subjet
+            $subjet = 'Demande pour le cours de ' . $userCours->getCours()->getLibelle() . ' à ' . $userCours->getCities()->getName();
+
+            // Content
+            $content = 'Bonjour, vous avez reçu une nouvelle de mande de ' . $user->getFirstName() . ' ' . $user->getLastName();
+        }
         
         // Get manager
         $em = $this->getDoctrine()->getManager();
@@ -186,29 +188,33 @@ class PagesMainController extends Controller
         $form->handleRequest($request);
         
         if($form->isValid()){
-            //Set User
-            $demande->setUserCours($userCours);
-                    
-            // Persist and commit
-            $em->persist($demande);
-            $em->flush();
             
-            // Set message
-            $message->setSubject($subjet);
-            $message->setContent($content);
-            $message->setUserCours($userCours);
-            $message->setUserSend($user);
-            $message->setUserReceive($userCours->getUser());
-            $message->setCreatedDate(new \DateTime());
-            $message->setDemande($demande);
-                    
-            // Persist and commit
-            $em->persist($message);
-            $em->flush();
+            if($user){         //Set User
+                $demande->setUserCours($userCours);
 
-            // Flash message and redirection
-            $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
-            return $this->redirect($this->generateUrl('my_reservations'));
+                // Persist and commit
+                $em->persist($demande);
+                $em->flush();
+
+                // Set message
+                $message->setSubject($subjet);
+                $message->setContent($content);
+                $message->setUserCours($userCours);
+                $message->setUserSend($user);
+                $message->setUserReceive($userCours->getUser());
+                $message->setCreatedDate(new \DateTime());
+                $message->setDemande($demande);
+
+                // Persist and commit
+                $em->persist($message);
+                $em->flush();
+
+                // Flash message and redirection
+                $this->get('session')->getFlashBag()->add('success', 'Vos informations ont Ã©tÃ© Ã©ditÃ© avec succÃ¨s.');
+                return $this->redirect($this->generateUrl('my_reservations'));
+            }else{
+                return $this->redirect($this->generateUrl('fos_user_security_login'));
+            }
         }
         
         return $this->render('PagesBundle:PagesMain:offre.html.twig', array(

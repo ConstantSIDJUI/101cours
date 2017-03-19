@@ -1,80 +1,58 @@
 {% extends 'MyAdminBundle::Layout_My_Admin.html.twig' %}
-
+    
 {% block javascripts %}
     {{ parent() }}
 {% endblock %}
-
+    
 {% block title %}
     {{ parent() }}
 {% endblock %}
-
-
+    
+    
 {% block content_my_admin %} 
-     <div class="autre-wrapper">
-     <div class="container">
-      <div class="left-side-back">
-        <a href="{{ path('my_admin_infos_perso', { 'id' : app.user.id }) }}"><p><b>Information personelles</b></p></a>
-        <a href="{{ path('my_admin_infos_cin', { 'id' : app.user.id }) }}"><p>Cin</p></a>
-        <a href="{{ path('my_admin_infos_picture', { 'id': app.user.id }) }}"><p>Photo</p></a>
-        <a href="{{ path('my_admin_infos_prof', { 'id': app.user.id }) }}"><p><b>Professeur</b></p></a>
-        <a href="{{ path('my_admin_infos_verification') }}"><p><b>Verifications</b></p></a>
-        <a href="{{ path('my_admin_infos_rib', { 'id': app.user.id }) }}"><p><b>Identité bancaire</b></p></a>
-        <a href="{{ path('my_admin_infos_compl', { 'id': app.user.id }) }}"><p><b>Informations complémentaires</b></p></a>
+    <div class="autre-wrapper">
+        <div class="container">
+            {% include 'MyAdminBundle:infos:rightMenu.html.twig' %}
+            <div class="right-side-back">
+                <div class="histo">Historique des demandes</div>
+                <div style="margin:0px;margin-bottom:10px !important;" class="verifications-box">
+                    <div  class="new-title">
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Charte de bonne conduite
+                    </div>
+                    <div class="new-rowg4">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    </div>
+                    <div class="e1btns">
+                        <button style="margin:20px;" class="e1btn">Modifier</button>
+                    </div>
+                </div>
+       
+                <div style="margin:0px;margin-bottom:10px !important;" class="verifications-box">
+                    <div  class="new-title">
+                        <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
+                    </div>
+                    <div class="new-rowg4">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    </div>
+                    <div class="e1btns">
+                        <button style="margin:20px;" class="e1btn">Modifier</button>
+                    </div>
+                </div>
+       
+                <div style="margin:0px;margin-bottom:10px !important;" class="verifications-box">
+                    <div  class="new-title">
+                        <i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin
+                    </div>
+                    <div class="new-rowg4">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    </div>
+                    <div class="e1btns">
+                        <button style="margin:20px;" class="e1btn">Modifier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
- <div class="right-side-back">
-<div class="histo">Historique des demandes</div>
-   <div style="margin:0px;margin-bottom:10px !important;" class="verifications-box">
-     <div  class="new-title">
- <i class="fa fa-envelope" aria-hidden="true"></i> Charte de bonne conduite
-     </div>
-     <div class="new-rowg4">
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-     </div>
-     <div class="e1btns">
-     <button style="margin:20px;" class="e1btn">Modifier</button>
-     </div>
-   </div>
-
-   <div style="margin:0px;margin-bottom:10px !important;" class="verifications-box">
-     <div  class="new-title">
-<i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook
-     </div>
-     <div class="new-rowg4">
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-     </div>
-     <div class="e1btns">
-     <button style="margin:20px;" class="e1btn">Modifier</button>
-     </div>
-   </div>
-
-   <div style="margin:0px;margin-bottom:10px !important;" class="verifications-box">
-     <div  class="new-title">
-<i class="fa fa-linkedin-square" aria-hidden="true"></i> Linkedin
-     </div>
-     <div class="new-rowg4">
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-     </div>
-     <div class="e1btns">
-     <button style="margin:20px;" class="e1btn">Modifier</button>
-     </div>
-   </div>
-
-
-   </div>
-
-
-
-   </div>
-
-
-
-
-
 </div>
-
-
-
- </div>
- </div>
 {% endblock %}    

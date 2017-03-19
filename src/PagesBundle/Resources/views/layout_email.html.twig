@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %} {% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <style type="text/css">
+            * {
+                margin: O;
+                padding: O;
+            }
+            body {
+                background: #fff;
+                font-family: Montserrat;
+                color: #555;
+            }
+            
+            .email-container {
+                background: #fff;
+                width: 50%;
+                margin: 20px auto;
+                border: 1px solid #efefef;
+                height: auto;
+                overflow: hidden;
+            }
+            .header-of-email {
+                background: #efefef;
+                padding: 20px;
+                overflow: hidden;
+            }
+            .logo-email {
+                display: block;
+                width: 100px;
+                height: 90px;
+                margin: 0px auto;
+                background: url(../img/logo-email.png);
+                background-size: 100px 90px;
+            }
+            .body-of-email {
+                padding: 10px;
+                overflow: hidden;
+            } 
+            .rdv {
+                float: left;
+                margin-top: 20px;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .email-btn {
+                background: transparent;
+                border: 2px solid #1ebfe8;
+                color: #1ebfe8;
+                padding: 15px;
+                outline: none;
+                border-radius: 4px;
+                font-size: 16px;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+            .enail-btn:hover{
+                background: #1ebfe8;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header-of-email">
+            <div class="logo-email">
+
+            </div>
+        </div>
+        <div class="body-of-email">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
