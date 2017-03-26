@@ -6,6 +6,7 @@ namespace UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
 /**
 * @ORM\Entity
@@ -100,9 +101,9 @@ class User extends BaseUser
     protected $facebookVerified;
     
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="status", type="string", nullable=true, length=255)
+     * @ORM\Column(name="status", type="integer", nullable=true)
      */
     protected $status;
     
@@ -197,10 +198,6 @@ class User extends BaseUser
         
         // Set default value
         $this->dateCreated  = new \DateTime(null, new \DateTimeZone('Europe/Paris'));
-        if($this->getStatus() == 1)
-            $this->roles = array('ROLE_PROFESSEUR');
-        else
-           $this->roles = array('ROLE_ETUDIANT'); 
     }
 
     /**

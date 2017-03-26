@@ -6,19 +6,22 @@
     <script type="text/javascript">
         $(function(){
             $('.recevoir').click(function() {
-                console.log('donner cour');
                 if($('#fos_user_registration_form_status_0').is(':checked')) 
                 { 
                     $('.recevoir').addClass('recevoir-check'); 
+                    document.getElementById('fos_user_registration_form_roles_0').value='ROLE_ETUDIANT';
                 }else{
                     $('.recevoir').removeClass('recevoir-check');
+                    document.getElementById('fos_user_registration_form_roles_0').value='ROLE_PROFESSEUR'; 
                 }
                 
                 if($('#fos_user_registration_form_status_1').is(':checked')) 
                 { 
-                    $('.donner').addClass('donner-check'); 
+                    $('.donner').addClass('donner-check');
+                    document.getElementById('fos_user_registration_form_roles_0').value='ROLE_PROFESSEUR'; 
                 }else{
                     $('.donner').removeClass('donner-check');
+                    document.getElementById('fos_user_registration_form_roles_0').value='ROLE_ETUDIANT';
                 }
             });
             
@@ -26,15 +29,19 @@
                 if($('#fos_user_registration_form_status_0').is(':checked')) 
                 { 
                     $('.recevoir').addClass('recevoir-check'); 
+                    document.getElementById('fos_user_registration_form_roles_0').value='ROLE_ETUDIANT';
                 }else{
                     $('.recevoir').removeClass('recevoir-check');
+                    document.getElementById('fos_user_registration_form_roles_0').value='ROLE_PROFESSEUR'; 
                 }
                 
                 if($('#fos_user_registration_form_status_1').is(':checked')) 
                 { 
                     $('.donner').addClass('donner-check'); 
+                    document.getElementById('fos_user_registration_form_roles_0').value='ROLE_PROFESSEUR'; 
                 }else{
                     $('.donner').removeClass('donner-check');
+                    document.getElementById('fos_user_registration_form_roles_0').value='ROLE_ETUDIANT';
                 }
             });
             

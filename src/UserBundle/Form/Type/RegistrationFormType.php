@@ -26,8 +26,8 @@ class RegistrationFormType extends AbstractType
             ->remove('username')
             ->add('status','choice', array(
             'choices' => array(
-                '0'         => 'Recevoir des cours',
-                '1'         => 'Donner des cours'
+                0         => 'Recevoir des cours',
+                1         => 'Donner des cours'
             ),
             'attr'  => array(
                 'class'         => ''
@@ -37,6 +37,15 @@ class RegistrationFormType extends AbstractType
             'empty_data'  => null,
             'multiple' => false,
             'expanded' => true
+            ))
+            ->add('roles', 'collection', array(
+                'type' => 'choice',
+                'options' => array(
+                    'choices' => array(
+                        'ROLE_PROFESSEUR' => 'professeur',
+                        'ROLE_ETUDIANT' => 'etudiant'
+                    )
+                )
             ))
             ->add('lastname',   'text', array(
                  'attr'  => array(
